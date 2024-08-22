@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		B82023412C779CD8002F0494 /* Le_BaluchonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */; };
-		B82023432C779CD8002F0494 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023422C779CD8002F0494 /* ContentView.swift */; };
+		B82023432C779CD8002F0494 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023422C779CD8002F0494 /* CurrencyView.swift */; };
 		B82023452C779CDA002F0494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82023442C779CDA002F0494 /* Assets.xcassets */; };
 		B82023482C779CDA002F0494 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82023472C779CDA002F0494 /* Preview Assets.xcassets */; };
 		B82023522C779CDA002F0494 /* Le_BaluchonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023512C779CDA002F0494 /* Le_BaluchonTests.swift */; };
 		B820235C2C779CDB002F0494 /* Le_BaluchonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820235B2C779CDB002F0494 /* Le_BaluchonUITests.swift */; };
 		B820235E2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820235D2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift */; };
+		B820236B2C779E44002F0494 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820236A2C779E44002F0494 /* CurrencyViewModel.swift */; };
+		B820236D2C779E58002F0494 /* CurrencyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820236C2C779E58002F0494 /* CurrencyAPIService.swift */; };
+		B820236F2C779E76002F0494 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820236E2C779E76002F0494 /* MockURLProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		B820233D2C779CD8002F0494 /* Le-Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le-Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonApp.swift; sourceTree = "<group>"; };
-		B82023422C779CD8002F0494 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B82023422C779CD8002F0494 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		B82023442C779CDA002F0494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B82023472C779CDA002F0494 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B820234D2C779CDA002F0494 /* Le-BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le-BaluchonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,9 @@
 		B82023572C779CDA002F0494 /* Le-BaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le-BaluchonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B820235B2C779CDB002F0494 /* Le_BaluchonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonUITests.swift; sourceTree = "<group>"; };
 		B820235D2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B820236A2C779E44002F0494 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		B820236C2C779E58002F0494 /* CurrencyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPIService.swift; sourceTree = "<group>"; };
+		B820236E2C779E76002F0494 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */,
-				B82023422C779CD8002F0494 /* ContentView.swift */,
+				B82023422C779CD8002F0494 /* CurrencyView.swift */,
+				B820236A2C779E44002F0494 /* CurrencyViewModel.swift */,
+				B820236C2C779E58002F0494 /* CurrencyAPIService.swift */,
+				B820236E2C779E76002F0494 /* MockURLProtocol.swift */,
 				B82023442C779CDA002F0494 /* Assets.xcassets */,
 				B82023462C779CDA002F0494 /* Preview Content */,
 			);
@@ -257,7 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B82023432C779CD8002F0494 /* ContentView.swift in Sources */,
+				B82023432C779CD8002F0494 /* CurrencyView.swift in Sources */,
+				B820236D2C779E58002F0494 /* CurrencyAPIService.swift in Sources */,
+				B820236F2C779E76002F0494 /* MockURLProtocol.swift in Sources */,
+				B820236B2C779E44002F0494 /* CurrencyViewModel.swift in Sources */,
 				B82023412C779CD8002F0494 /* Le_BaluchonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

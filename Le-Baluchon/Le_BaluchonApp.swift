@@ -11,7 +11,7 @@ import SwiftUI
 struct Le_BaluchonApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CurrencyView()
         }
     }
 }
