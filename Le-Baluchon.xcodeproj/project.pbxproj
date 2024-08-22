@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B82023412C779CD8002F0494 /* Le_BaluchonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */; };
+		B82023432C779CD8002F0494 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023422C779CD8002F0494 /* ContentView.swift */; };
+		B82023452C779CDA002F0494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82023442C779CDA002F0494 /* Assets.xcassets */; };
+		B82023482C779CDA002F0494 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82023472C779CDA002F0494 /* Preview Assets.xcassets */; };
+		B82023522C779CDA002F0494 /* Le_BaluchonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023512C779CDA002F0494 /* Le_BaluchonTests.swift */; };
+		B820235C2C779CDB002F0494 /* Le_BaluchonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820235B2C779CDB002F0494 /* Le_BaluchonUITests.swift */; };
+		B820235E2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820235D2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B820234E2C779CDA002F0494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B82023352C779CD8002F0494 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B820233C2C779CD8002F0494;
+			remoteInfo = "Le-Baluchon";
+		};
+		B82023582C779CDA002F0494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B82023352C779CD8002F0494 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B820233C2C779CD8002F0494;
+			remoteInfo = "Le-Baluchon";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B820233D2C779CD8002F0494 /* Le-Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le-Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonApp.swift; sourceTree = "<group>"; };
+		B82023422C779CD8002F0494 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B82023442C779CDA002F0494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B82023472C779CDA002F0494 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B820234D2C779CDA002F0494 /* Le-BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le-BaluchonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B82023512C779CDA002F0494 /* Le_BaluchonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonTests.swift; sourceTree = "<group>"; };
+		B82023572C779CDA002F0494 /* Le-BaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le-BaluchonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B820235B2C779CDB002F0494 /* Le_BaluchonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonUITests.swift; sourceTree = "<group>"; };
+		B820235D2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B820233A2C779CD8002F0494 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B820234A2C779CDA002F0494 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B82023542C779CDA002F0494 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B82023342C779CD8002F0494 = {
+			isa = PBXGroup;
+			children = (
+				B820233F2C779CD8002F0494 /* Le-Baluchon */,
+				B82023502C779CDA002F0494 /* Le-BaluchonTests */,
+				B820235A2C779CDA002F0494 /* Le-BaluchonUITests */,
+				B820233E2C779CD8002F0494 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B820233E2C779CD8002F0494 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B820233D2C779CD8002F0494 /* Le-Baluchon.app */,
+				B820234D2C779CDA002F0494 /* Le-BaluchonTests.xctest */,
+				B82023572C779CDA002F0494 /* Le-BaluchonUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B820233F2C779CD8002F0494 /* Le-Baluchon */ = {
+			isa = PBXGroup;
+			children = (
+				B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */,
+				B82023422C779CD8002F0494 /* ContentView.swift */,
+				B82023442C779CDA002F0494 /* Assets.xcassets */,
+				B82023462C779CDA002F0494 /* Preview Content */,
+			);
+			path = "Le-Baluchon";
+			sourceTree = "<group>";
+		};
+		B82023462C779CDA002F0494 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B82023472C779CDA002F0494 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B82023502C779CDA002F0494 /* Le-BaluchonTests */ = {
+			isa = PBXGroup;
+			children = (
+				B82023512C779CDA002F0494 /* Le_BaluchonTests.swift */,
+			);
+			path = "Le-BaluchonTests";
+			sourceTree = "<group>";
+		};
+		B820235A2C779CDA002F0494 /* Le-BaluchonUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B820235B2C779CDB002F0494 /* Le_BaluchonUITests.swift */,
+				B820235D2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift */,
+			);
+			path = "Le-BaluchonUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B820233C2C779CD8002F0494 /* Le-Baluchon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B82023612C779CDB002F0494 /* Build configuration list for PBXNativeTarget "Le-Baluchon" */;
+			buildPhases = (
+				B82023392C779CD8002F0494 /* Sources */,
+				B820233A2C779CD8002F0494 /* Frameworks */,
+				B820233B2C779CD8002F0494 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Le-Baluchon";
+			productName = "Le-Baluchon";
+			productReference = B820233D2C779CD8002F0494 /* Le-Baluchon.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B820234C2C779CDA002F0494 /* Le-BaluchonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B82023642C779CDB002F0494 /* Build configuration list for PBXNativeTarget "Le-BaluchonTests" */;
+			buildPhases = (
+				B82023492C779CDA002F0494 /* Sources */,
+				B820234A2C779CDA002F0494 /* Frameworks */,
+				B820234B2C779CDA002F0494 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B820234F2C779CDA002F0494 /* PBXTargetDependency */,
+			);
+			name = "Le-BaluchonTests";
+			productName = "Le-BaluchonTests";
+			productReference = B820234D2C779CDA002F0494 /* Le-BaluchonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B82023562C779CDA002F0494 /* Le-BaluchonUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B82023672C779CDB002F0494 /* Build configuration list for PBXNativeTarget "Le-BaluchonUITests" */;
+			buildPhases = (
+				B82023532C779CDA002F0494 /* Sources */,
+				B82023542C779CDA002F0494 /* Frameworks */,
+				B82023552C779CDA002F0494 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B82023592C779CDA002F0494 /* PBXTargetDependency */,
+			);
+			name = "Le-BaluchonUITests";
+			productName = "Le-BaluchonUITests";
+			productReference = B82023572C779CDA002F0494 /* Le-BaluchonUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B82023352C779CD8002F0494 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					B820233C2C779CD8002F0494 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					B820234C2C779CDA002F0494 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = B820233C2C779CD8002F0494;
+					};
+					B82023562C779CDA002F0494 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = B820233C2C779CD8002F0494;
+					};
+				};
+			};
+			buildConfigurationList = B82023382C779CD8002F0494 /* Build configuration list for PBXProject "Le-Baluchon" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B82023342C779CD8002F0494;
+			productRefGroup = B820233E2C779CD8002F0494 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B820233C2C779CD8002F0494 /* Le-Baluchon */,
+				B820234C2C779CDA002F0494 /* Le-BaluchonTests */,
+				B82023562C779CDA002F0494 /* Le-BaluchonUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B820233B2C779CD8002F0494 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B82023482C779CDA002F0494 /* Preview Assets.xcassets in Resources */,
+				B82023452C779CDA002F0494 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B820234B2C779CDA002F0494 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B82023552C779CDA002F0494 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B82023392C779CD8002F0494 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B82023432C779CD8002F0494 /* ContentView.swift in Sources */,
+				B82023412C779CD8002F0494 /* Le_BaluchonApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B82023492C779CDA002F0494 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B82023522C779CDA002F0494 /* Le_BaluchonTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B82023532C779CDA002F0494 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B820235C2C779CDB002F0494 /* Le_BaluchonUITests.swift in Sources */,
+				B820235E2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B820234F2C779CDA002F0494 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B820233C2C779CD8002F0494 /* Le-Baluchon */;
+			targetProxy = B820234E2C779CDA002F0494 /* PBXContainerItemProxy */;
+		};
+		B82023592C779CDA002F0494 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B820233C2C779CD8002F0494 /* Le-Baluchon */;
+			targetProxy = B82023582C779CDA002F0494 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B820235F2C779CDB002F0494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B82023602C779CDB002F0494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B82023622C779CDB002F0494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Le-Baluchon/Preview Content\"";
+				DEVELOPMENT_TEAM = CJ4U3HXF7J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.RedouaneAmour.Le-Baluchon";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B82023632C779CDB002F0494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Le-Baluchon/Preview Content\"";
+				DEVELOPMENT_TEAM = CJ4U3HXF7J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.RedouaneAmour.Le-Baluchon";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B82023652C779CDB002F0494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CJ4U3HXF7J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.RedouaneAmour.Le-BaluchonTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Le-Baluchon.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Le-Baluchon";
+			};
+			name = Debug;
+		};
+		B82023662C779CDB002F0494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CJ4U3HXF7J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.RedouaneAmour.Le-BaluchonTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Le-Baluchon.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Le-Baluchon";
+			};
+			name = Release;
+		};
+		B82023682C779CDB002F0494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CJ4U3HXF7J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.RedouaneAmour.Le-BaluchonUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Le-Baluchon";
+			};
+			name = Debug;
+		};
+		B82023692C779CDB002F0494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CJ4U3HXF7J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.RedouaneAmour.Le-BaluchonUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Le-Baluchon";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B82023382C779CD8002F0494 /* Build configuration list for PBXProject "Le-Baluchon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B820235F2C779CDB002F0494 /* Debug */,
+				B82023602C779CDB002F0494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B82023612C779CDB002F0494 /* Build configuration list for PBXNativeTarget "Le-Baluchon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B82023622C779CDB002F0494 /* Debug */,
+				B82023632C779CDB002F0494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B82023642C779CDB002F0494 /* Build configuration list for PBXNativeTarget "Le-BaluchonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B82023652C779CDB002F0494 /* Debug */,
+				B82023662C779CDB002F0494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B82023672C779CDB002F0494 /* Build configuration list for PBXNativeTarget "Le-BaluchonUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B82023682C779CDB002F0494 /* Debug */,
+				B82023692C779CDB002F0494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B82023352C779CD8002F0494 /* Project object */;
+}
