@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct CurrencyView: View {
-    let currencyViewModel = CurrencyViewModel()
+    @ObservedObject private var currencyViewModel = CurrencyViewModel()
+    @State private var baseCurrency: Currencies = .Euro
+    @State private var convertToCurrency: Currencies = .USDollar
+    @State private var baseValue: Float = 1000.0
 
     var body: some View {
         VStack {
-            HStack {
-                // Utiliser le navigation link pour le picker
-            }
+            DropDownView(selectedCurrency: $baseCurrency, value: $baseValue)
+            DropDownView(selectedCurrency: $convertToCurrency, value: $currencyViewModel.value)
+            Spacer()
             Button(action: {
-                currencyViewModel.fetchCurrency()
+                currencyViewModel.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation, baseValue: baseValue)
             }, label: {
                 Text("Fetch currency")
             })
