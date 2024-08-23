@@ -12,23 +12,17 @@
 		B82023432C779CD8002F0494 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023422C779CD8002F0494 /* CurrencyView.swift */; };
 		B82023452C779CDA002F0494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82023442C779CDA002F0494 /* Assets.xcassets */; };
 		B82023482C779CDA002F0494 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82023472C779CDA002F0494 /* Preview Assets.xcassets */; };
-		B82023522C779CDA002F0494 /* Le_BaluchonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023512C779CDA002F0494 /* Le_BaluchonTests.swift */; };
-		B820235C2C779CDB002F0494 /* Le_BaluchonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820235B2C779CDB002F0494 /* Le_BaluchonUITests.swift */; };
-		B820235E2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820235D2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift */; };
 		B820236B2C779E44002F0494 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820236A2C779E44002F0494 /* CurrencyViewModel.swift */; };
 		B820236D2C779E58002F0494 /* CurrencyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820236C2C779E58002F0494 /* CurrencyAPIService.swift */; };
-		B820236F2C779E76002F0494 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820236E2C779E76002F0494 /* MockURLProtocol.swift */; };
+		EDFF42E22C78D02A000C0060 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820236E2C779E76002F0494 /* MockURLProtocol.swift */; };
+		EDFF42EA2C78D2AB000C0060 /* CurrencyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF42E92C78D2AB000C0060 /* CurrencyViewModelTests.swift */; };
+		EDFF42EC2C78D316000C0060 /* MockCurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF42EB2C78D316000C0060 /* MockCurrencyService.swift */; };
+		EDFF42EF2C78D563000C0060 /* RemoteCurrencyAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF42EE2C78D563000C0060 /* RemoteCurrencyAPIServiceTests.swift */; };
+		EDFF42F22C78D6ED000C0060 /* RemoteCurrencyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF42F02C78D6E8000C0060 /* RemoteCurrencyAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		B820234E2C779CDA002F0494 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B82023352C779CD8002F0494 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B820233C2C779CD8002F0494;
-			remoteInfo = "Le-Baluchon";
-		};
-		B82023582C779CDA002F0494 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B82023352C779CD8002F0494 /* Project object */;
 			proxyType = 1;
@@ -45,13 +39,13 @@
 		B82023442C779CDA002F0494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B82023472C779CDA002F0494 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B820234D2C779CDA002F0494 /* Le-BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le-BaluchonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B82023512C779CDA002F0494 /* Le_BaluchonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonTests.swift; sourceTree = "<group>"; };
-		B82023572C779CDA002F0494 /* Le-BaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le-BaluchonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B820235B2C779CDB002F0494 /* Le_BaluchonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonUITests.swift; sourceTree = "<group>"; };
-		B820235D2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B820236A2C779E44002F0494 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		B820236C2C779E58002F0494 /* CurrencyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPIService.swift; sourceTree = "<group>"; };
 		B820236E2C779E76002F0494 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		EDFF42E92C78D2AB000C0060 /* CurrencyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModelTests.swift; sourceTree = "<group>"; };
+		EDFF42EB2C78D316000C0060 /* MockCurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrencyService.swift; sourceTree = "<group>"; };
+		EDFF42EE2C78D563000C0060 /* RemoteCurrencyAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCurrencyAPIServiceTests.swift; sourceTree = "<group>"; };
+		EDFF42F02C78D6E8000C0060 /* RemoteCurrencyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCurrencyAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,23 +63,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B82023542C779CDA002F0494 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		B82023342C779CD8002F0494 = {
 			isa = PBXGroup;
 			children = (
-				B820233F2C779CD8002F0494 /* Le-Baluchon */,
-				B82023502C779CDA002F0494 /* Le-BaluchonTests */,
-				B820235A2C779CDA002F0494 /* Le-BaluchonUITests */,
 				B820233E2C779CD8002F0494 /* Products */,
+				EDFF42E32C78D085000C0060 /* Resources */,
+				B820233F2C779CD8002F0494 /* Sources */,
+				B82023502C779CDA002F0494 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,24 +81,18 @@
 			children = (
 				B820233D2C779CD8002F0494 /* Le-Baluchon.app */,
 				B820234D2C779CDA002F0494 /* Le-BaluchonTests.xctest */,
-				B82023572C779CDA002F0494 /* Le-BaluchonUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B820233F2C779CD8002F0494 /* Le-Baluchon */ = {
+		B820233F2C779CD8002F0494 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EDFF42E42C78D0C0000C0060 /* Features */,
 				B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */,
-				B82023422C779CD8002F0494 /* CurrencyView.swift */,
-				B8000E0F2C782D5A0006106D /* CurrenciesDropDownView.swift */,
-				B820236A2C779E44002F0494 /* CurrencyViewModel.swift */,
-				B820236C2C779E58002F0494 /* CurrencyAPIService.swift */,
-				B820236E2C779E76002F0494 /* MockURLProtocol.swift */,
-				B82023442C779CDA002F0494 /* Assets.xcassets */,
-				B82023462C779CDA002F0494 /* Preview Content */,
+				EDFF42E62C78D0D9000C0060 /* Services */,
 			);
-			path = "Le-Baluchon";
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		B82023462C779CDA002F0494 /* Preview Content */ = {
@@ -122,21 +103,75 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B82023502C779CDA002F0494 /* Le-BaluchonTests */ = {
+		B82023502C779CDA002F0494 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				B82023512C779CDA002F0494 /* Le_BaluchonTests.swift */,
+				EDFF42E72C78D289000C0060 /* Features */,
+				EDFF42EB2C78D316000C0060 /* MockCurrencyService.swift */,
+				B820236E2C779E76002F0494 /* MockURLProtocol.swift */,
+				EDFF42ED2C78D555000C0060 /* Services */,
 			);
-			path = "Le-BaluchonTests";
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		B820235A2C779CDA002F0494 /* Le-BaluchonUITests */ = {
+		EDFF42E32C78D085000C0060 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B820235B2C779CDB002F0494 /* Le_BaluchonUITests.swift */,
-				B820235D2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift */,
+				B82023442C779CDA002F0494 /* Assets.xcassets */,
+				B82023462C779CDA002F0494 /* Preview Content */,
 			);
-			path = "Le-BaluchonUITests";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EDFF42E42C78D0C0000C0060 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				EDFF42E52C78D0C7000C0060 /* Currency */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		EDFF42E52C78D0C7000C0060 /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				B8000E0F2C782D5A0006106D /* CurrenciesDropDownView.swift */,
+				B82023422C779CD8002F0494 /* CurrencyView.swift */,
+				B820236A2C779E44002F0494 /* CurrencyViewModel.swift */,
+			);
+			path = Currency;
+			sourceTree = "<group>";
+		};
+		EDFF42E62C78D0D9000C0060 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B820236C2C779E58002F0494 /* CurrencyAPIService.swift */,
+				EDFF42F02C78D6E8000C0060 /* RemoteCurrencyAPIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EDFF42E72C78D289000C0060 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				EDFF42E82C78D294000C0060 /* Currency */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		EDFF42E82C78D294000C0060 /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				EDFF42E92C78D2AB000C0060 /* CurrencyViewModelTests.swift */,
+			);
+			path = Currency;
+			sourceTree = "<group>";
+		};
+		EDFF42ED2C78D555000C0060 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EDFF42EE2C78D563000C0060 /* RemoteCurrencyAPIServiceTests.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,24 +212,6 @@
 			productReference = B820234D2C779CDA002F0494 /* Le-BaluchonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B82023562C779CDA002F0494 /* Le-BaluchonUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B82023672C779CDB002F0494 /* Build configuration list for PBXNativeTarget "Le-BaluchonUITests" */;
-			buildPhases = (
-				B82023532C779CDA002F0494 /* Sources */,
-				B82023542C779CDA002F0494 /* Frameworks */,
-				B82023552C779CDA002F0494 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B82023592C779CDA002F0494 /* PBXTargetDependency */,
-			);
-			name = "Le-BaluchonUITests";
-			productName = "Le-BaluchonUITests";
-			productReference = B82023572C779CDA002F0494 /* Le-BaluchonUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -209,10 +226,6 @@
 						CreatedOnToolsVersion = 15.1;
 					};
 					B820234C2C779CDA002F0494 = {
-						CreatedOnToolsVersion = 15.1;
-						TestTargetID = B820233C2C779CD8002F0494;
-					};
-					B82023562C779CDA002F0494 = {
 						CreatedOnToolsVersion = 15.1;
 						TestTargetID = B820233C2C779CD8002F0494;
 					};
@@ -233,7 +246,6 @@
 			targets = (
 				B820233C2C779CD8002F0494 /* Le-Baluchon */,
 				B820234C2C779CDA002F0494 /* Le-BaluchonTests */,
-				B82023562C779CDA002F0494 /* Le-BaluchonUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -255,13 +267,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B82023552C779CDA002F0494 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -272,7 +277,7 @@
 				B82023432C779CD8002F0494 /* CurrencyView.swift in Sources */,
 				B820236D2C779E58002F0494 /* CurrencyAPIService.swift in Sources */,
 				B8000E102C782D5A0006106D /* CurrenciesDropDownView.swift in Sources */,
-				B820236F2C779E76002F0494 /* MockURLProtocol.swift in Sources */,
+				EDFF42F22C78D6ED000C0060 /* RemoteCurrencyAPIService.swift in Sources */,
 				B820236B2C779E44002F0494 /* CurrencyViewModel.swift in Sources */,
 				B82023412C779CD8002F0494 /* Le_BaluchonApp.swift in Sources */,
 			);
@@ -282,16 +287,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B82023522C779CDA002F0494 /* Le_BaluchonTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B82023532C779CDA002F0494 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B820235C2C779CDB002F0494 /* Le_BaluchonUITests.swift in Sources */,
-				B820235E2C779CDB002F0494 /* Le_BaluchonUITestsLaunchTests.swift in Sources */,
+				EDFF42EF2C78D563000C0060 /* RemoteCurrencyAPIServiceTests.swift in Sources */,
+				EDFF42E22C78D02A000C0060 /* MockURLProtocol.swift in Sources */,
+				EDFF42EC2C78D316000C0060 /* MockCurrencyService.swift in Sources */,
+				EDFF42EA2C78D2AB000C0060 /* CurrencyViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,11 +301,6 @@
 			isa = PBXTargetDependency;
 			target = B820233C2C779CD8002F0494 /* Le-Baluchon */;
 			targetProxy = B820234E2C779CDA002F0494 /* PBXContainerItemProxy */;
-		};
-		B82023592C779CDA002F0494 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B820233C2C779CD8002F0494 /* Le-Baluchon */;
-			targetProxy = B82023582C779CDA002F0494 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -437,7 +431,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Le-Baluchon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = CJ4U3HXF7J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -466,7 +460,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Le-Baluchon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = CJ4U3HXF7J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -528,42 +522,6 @@
 			};
 			name = Release;
 		};
-		B82023682C779CDB002F0494 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CJ4U3HXF7J;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fr.RedouaneAmour.Le-BaluchonUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Le-Baluchon";
-			};
-			name = Debug;
-		};
-		B82023692C779CDB002F0494 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CJ4U3HXF7J;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fr.RedouaneAmour.Le-BaluchonUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Le-Baluchon";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -590,15 +548,6 @@
 			buildConfigurations = (
 				B82023652C779CDB002F0494 /* Debug */,
 				B82023662C779CDB002F0494 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B82023672C779CDB002F0494 /* Build configuration list for PBXNativeTarget "Le-BaluchonUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B82023682C779CDB002F0494 /* Debug */,
-				B82023692C779CDB002F0494 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

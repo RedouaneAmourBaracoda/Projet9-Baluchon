@@ -1,31 +1,35 @@
 //
-//  Le_BaluchonTests.swift
+//  CurrencyAPIServiceTests.swift
 //  Le-BaluchonTests
 //
-//  Created by Redouane on 22/08/2024.
+//  Created by Damien Rivet on 23/08/2024.
 //
 
-import XCTest
 @testable import Le_Baluchon
+import XCTest
 
-final class Le_BaluchonTests: XCTestCase {
+final class RemoteCurrencyAPIServiceTests: XCTestCase {
+
+    // MARK: - Properties
+
     var session: URLSession!
-    var apiService: CurrencyApiService!
-    
+    var apiService: RemoteCurrencyAPIService!
+
+    // MARK: - Functions
+
     override func setUpWithError() throws {
-        
-        // Given.
-        
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [MockURLProtocol.self]
+
         session = URLSession(configuration: configuration)
-        apiService = .init(session: session)
+        
+        apiService = RemoteCurrencyAPIService(urlSession: session)
     }
-    
+
+    // MARK: - Tests
+
     func testNetworkCallSuccess() async throws {
-        
-        // When.
-        
+        // When
         MockURLProtocol.requestHandler = { request in
             XCTAssertNotNil(request.url)
             let mockResponse = HTTPURLResponse(
@@ -34,7 +38,7 @@ final class Le_BaluchonTests: XCTestCase {
                 httpVersion: nil,
                 headerFields: nil
             )!
-            
+
             let mockData = """
                 {
                   "data": {
@@ -48,10 +52,9 @@ final class Le_BaluchonTests: XCTestCase {
                 """.data(using: .utf8)!
             return (mockResponse, mockData)
         }
-        
-        // Then.
-        
-        let result = try await apiService.fetchCurrency()
+
+        // Then
+        let result = try await apiService.fetchCurrency(baseCurrency: "EUR", convertToCurrency: "USD")
         XCTAssert(result.data.count == 5)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockURLProtocol: URLProtocol {
+final class MockURLProtocol: URLProtocol {
 
     static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data))?
 
@@ -21,6 +21,7 @@ class MockURLProtocol: URLProtocol {
 
     override func startLoading() {
         guard let requestHandler = MockURLProtocol.requestHandler else { return }
+
         do {
             let (response, data) = try requestHandler(request)
             client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
@@ -31,10 +32,7 @@ class MockURLProtocol: URLProtocol {
         }
     }
 
-    override func stopLoading() { }
+    override func stopLoading() {
 
-    static func startInterceptingRequests() { URLProtocol.registerClass(MockURLProtocol.self) }
-
-    static func stopInterceptingRequests() { URLProtocol.unregisterClass(MockURLProtocol.self) }
+    }
 }
-

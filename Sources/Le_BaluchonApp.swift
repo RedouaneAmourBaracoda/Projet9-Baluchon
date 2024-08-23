@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct Le_BaluchonApp: App {
+    
     var body: some Scene {
         WindowGroup {
             CurrencyView()
