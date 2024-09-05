@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Flag_of_Australia.svg.png",
+      "filename" : "australia.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Flag_of_Australia.svg@2x.png",
+      "filename" : "australia@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Flag_of_Australia.svg@3x.png",
+      "filename" : "australia@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Flag_of_the_United_Kingdom_(3-5).svg.png",
+      "filename" : "united-states.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Flag_of_the_United_Kingdom_(3-5).svg@2x.png",
+      "filename" : "united-states@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Flag_of_the_United_Kingdom_(3-5).svg@3x.png",
+      "filename" : "united-states@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct ExpectedCurrency: Codable {
-    let data: [String: Float]
+    let data: [String: Double]
 }
 
 final class CurrencyApiService {
@@ -46,21 +46,21 @@ final class CurrencyApiService {
         guard let httpURLResponse = urlResponse as? HTTPURLResponse else { return .failure(.invalidRequest) }
         let statusCode = httpURLResponse.statusCode
         switch statusCode {
-        case 200 : return .success(())
+            case 200 : return .success(())
 
-        case 401: return .failure(.invalidAuthenticationCredentials)
-            
-        case 403: return .failure(.invalidTrial)
-            
-        case 404: return .failure(.invalidEndpoint)
-            
-        case 422: return .failure(.validationError)
-            
-        case 429: return .failure(.exceededRequestsLimit)
-            
-        case 500: return .failure(.internalServorError)
+            case 401: return .failure(.invalidAuthenticationCredentials)
 
-        default: return .failure(.invalidRequest)
+            case 403: return .failure(.invalidTrial)
+
+            case 404: return .failure(.invalidEndpoint)
+
+            case 422: return .failure(.validationError)
+
+            case 429: return .failure(.exceededRequestsLimit)
+
+            case 500: return .failure(.internalServorError)
+
+            default: return .failure(.invalidRequest)
         }
     }
 }
