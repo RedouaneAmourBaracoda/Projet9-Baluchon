@@ -9,42 +9,36 @@ import SwiftUI
 
 struct CurrencyView: View {
     @ObservedObject private var currencyViewModel = CurrencyViewModel()
-    @State private var baseCurrency: CurrencyItem = .Euro
-    @State private var convertToCurrency: CurrencyItem = .USDollar
-    @State private var baseValue: Double = 1000.0
-    private let formatter: NumberFormatter = .valueFormatter
 
     var body: some View {
         VStack {
             baseCurrencyView()
-            Image(systemName: "arrowshape.down")
+            swapActionView()
             conversionCurrencyView()
             convertActionView()
         }
     }
 
     private func baseCurrencyView() -> some View {
-        CurrencyItemView(selectedCurrency: $baseCurrency) {
-            TextField("", value: $baseValue, formatter: formatter)
+        CurrencyItemView(selectedCurrency: $currencyViewModel.baseCurrency) {
+            TextField("", value: $currencyViewModel.baseValue, formatter: currencyViewModel.formatter)
                 .keyboardType(.decimalPad)
-                .valueStyle()
+                .valueStyle(fontWeight: .bold)
 
         }
     }
 
     private func conversionCurrencyView() -> some View {
-        CurrencyItemView(selectedCurrency: $convertToCurrency) {
-            if let value = formatter.string(from: NSNumber(value: currencyViewModel.outputValue)) {
-                Text(value)
-                    .valueStyle()
-            }
+        CurrencyItemView(selectedCurrency: $currencyViewModel.convertToCurrency) {
+            Text(currencyViewModel.outputString ?? "" )
+                    .valueStyle(fontWeight: .light)
         }
     }
 
     private func convertActionView() -> some View {
         Button(action: {
             Task {
-                await currencyViewModel.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation, baseValue: baseValue)
+                await currencyViewModel.fetchCurrency()
             }
         }, label: {
             Text("Convert")
@@ -52,30 +46,35 @@ struct CurrencyView: View {
         })
         .buttonStyle(.bordered)
     }
+
+    private func swapActionView() -> some View {
+        Button(action: {
+            currencyViewModel.swapCurrencies()
+        }, label: {
+            Image(uiImage: .init(resource: .init(name: "swap", bundle: .main)))
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+              .frame(width: 40, height: 40)
+              .padding()
+        })
+    }
 }
 
 private extension View {
-    func valueStyle() -> some View {
-        modifier(ValueModifier())
+    func valueStyle(fontWeight: Font.Weight) -> some View {
+        modifier(ValueModifier(fontWeight: fontWeight))
     }
 }
 
 private struct ValueModifier: ViewModifier {
+    let fontWeight: Font.Weight
+
     func body(content: Content) -> some View {
         content
             .font(.title3)
-            .fontWeight(.bold)
+            .fontWeight(fontWeight)
             .foregroundStyle(Color.black)
     }
-}
-
-private extension NumberFormatter {
-    static let valueFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 1
-        return formatter
-    }()
 }
 
 #Preview {
