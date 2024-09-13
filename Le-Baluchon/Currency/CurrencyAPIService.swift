@@ -8,13 +8,13 @@
 import Foundation
 
 struct ExpectedCurrency: Codable {
-    let data: [String: Double]
+    let rates: [String: Double]
 }
 
 final class CurrencyApiService {
-    private let apiKey = "apikey=fca_live_R11DyeLSP60BGObpEoPh1Clh8U7tlGQg3EG2cfAA"
+    private let appID = "b9fcd43d720d4b7a85a924cd61d64f8a"
 
-    private let urlString: String = "https://api.freecurrencyapi.com/v1/latest?"
+    private let urlString: String = "https://openexchangerates.org/api/latest.json?"
 
     // Injection de dépendance.
     private var session: URLSession = .shared
@@ -28,9 +28,8 @@ final class CurrencyApiService {
 
     private init() {}
 
-    func fetchCurrency(baseCurrency: String, convertToCurrency: String) async throws -> ExpectedCurrency {
-        let parameters = "&currencies=" + convertToCurrency + "&base_currency=" + baseCurrency
-        guard let url = URL(string: urlString + apiKey + parameters) else { throw HTTPError.invalidURL }
+    func fetchCurrency() async throws -> ExpectedCurrency {
+        guard let url = URL(string: urlString + "app_id=" + appID) else { throw HTTPError.invalidURL }
         let request = URLRequest(url: url)
 
         let (data, response) = try await session.data(for: request)

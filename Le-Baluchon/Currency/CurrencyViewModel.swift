@@ -42,17 +42,13 @@ final class CurrencyViewModel: ObservableObject {
         timer?.invalidate()
 
         do {
-            let currency = try await CurrencyApiService.shared.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation)
-            guard let safeRate = currency.data[convertToCurrency.abreviation], let safeString = formatter.string(from: NSNumber(value: baseValue * safeRate)) else { return }
-            outputString = safeString
-            saveDate()
+            let currency = try await CurrencyApiService.shared.fetchCurrency()
+            print(currency.rates)
         } catch let error as HTTPError {
             print(error.errorDescription ?? "An HTTP error occured but cannot be determined.")
         } catch {
             print(error.localizedDescription)
         }
-
-        launchTimer(initialTime: 0)
     }
 
     func swapCurrencies() {
@@ -64,29 +60,6 @@ final class CurrencyViewModel: ObservableObject {
     private func saveDate() {
         let timeIntervalInSeconds = Date.now.timeIntervalSince1970
         UserDefaults.standard.set(timeIntervalInSeconds, forKey: "LastDateInSeconds")
-    }
-
-    func updateCurrencyIfNeeded() {
-        let lastUpdateInSeconds = lastUpdateDateInSeconds ?? maxInterval
-        let timeInterval = Date.now.timeIntervalSince1970 - lastUpdateInSeconds
-
-        if timeInterval > maxInterval { Task { await fetchCurrency() } }
-        else {
-            launchTimer(initialTime: timeInterval)
-        }
-    }
-
-    func launchTimer(initialTime: Double) {
-        var timeInterval = initialTime
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            timeInterval += 1
-            if timeInterval > self.maxInterval {
-                Task {
-                    await self.fetchCurrency()
-                }
-            }
-        }
-        timer?.fire()
     }
 }
 
