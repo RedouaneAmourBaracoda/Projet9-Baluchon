@@ -11,8 +11,13 @@ import SwiftUI
 @MainActor
 final class CurrencyViewModel: ObservableObject {
 
-    // MARK: - Dependencies
-    @AppStorage("LastDateInSeconds") var lastDateInSeconds: TimeInterval?
+    private enum Keys {
+        static let lastUpdateDateInSeconds = "LastDateInSeconds"
+    }
+
+    // MARK: - Dependencies.
+
+    @AppStorage(Keys.lastUpdateDateInSeconds) var lastUpdateDateInSeconds: TimeInterval?
 
     // MARK: - State
     @Published var outputString: String?
@@ -23,13 +28,15 @@ final class CurrencyViewModel: ObservableObject {
 
     @Published var baseValue: Double = 1000.0
 
-    // MARK: - Properties
+    // MARK: - Properties.
 
     private var timer: Timer?
 
     private let maxInterval: Double = 60
 
     let formatter: NumberFormatter = .valueFormatter
+
+    // MARK: - Methods.
 
     func fetchCurrency() async {
         timer?.invalidate()
@@ -60,25 +67,19 @@ final class CurrencyViewModel: ObservableObject {
     }
 
     func updateCurrencyIfNeeded() {
-        let lastUpdateInSeconds = lastDateInSeconds ?? maxInterval
+        let lastUpdateInSeconds = lastUpdateDateInSeconds ?? maxInterval
         let timeInterval = Date.now.timeIntervalSince1970 - lastUpdateInSeconds
 
-        if timeInterval > maxInterval {
-            Task {
-                await fetchCurrency()
-            }
-        } else {
+        if timeInterval > maxInterval { Task { await fetchCurrency() } }
+        else {
             launchTimer(initialTime: timeInterval)
         }
     }
 
     func launchTimer(initialTime: Double) {
         var timeInterval = initialTime
-
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             timeInterval += 1
-
             if timeInterval > self.maxInterval {
                 Task {
                     await self.fetchCurrency()

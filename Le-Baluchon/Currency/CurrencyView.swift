@@ -20,6 +20,16 @@ struct CurrencyView: View {
         .onAppear {
             currencyViewModel.updateCurrencyIfNeeded()
         }
+        .onChange(of: currencyViewModel.baseCurrency) { oldValue, newValue in
+            Task {
+                await currencyViewModel.fetchCurrency()
+            }
+        }
+        .onChange(of: currencyViewModel.convertToCurrency) { oldValue, newValue in
+            Task {
+                await currencyViewModel.fetchCurrency()
+            }
+        }
     }
 
     private func baseCurrencyView() -> some View {

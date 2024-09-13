@@ -13,16 +13,19 @@ struct ExpectedCurrency: Codable {
 
 final class CurrencyApiService {
     private let apiKey = "apikey=fca_live_R11DyeLSP60BGObpEoPh1Clh8U7tlGQg3EG2cfAA"
+
     private let urlString: String = "https://api.freecurrencyapi.com/v1/latest?"
 
     // Injection de dépendance.
     private var session: URLSession = .shared
+
     init(session: URLSession) {
         self.session = session
     }
     
     // Singleton pattern.
     static let shared: CurrencyApiService = .init()
+
     private init() {}
 
     func fetchCurrency(baseCurrency: String, convertToCurrency: String) async throws -> ExpectedCurrency {
