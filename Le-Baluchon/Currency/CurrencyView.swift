@@ -17,6 +17,9 @@ struct CurrencyView: View {
             conversionCurrencyView()
             convertActionView()
         }
+        .onAppear {
+            currencyViewModel.updateCurrencyIfNeeded()
+        }
     }
 
     private func baseCurrencyView() -> some View {
