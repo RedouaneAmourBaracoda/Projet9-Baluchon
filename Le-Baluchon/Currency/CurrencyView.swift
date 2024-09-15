@@ -11,11 +11,23 @@ struct CurrencyView: View {
     @ObservedObject private var currencyViewModel = CurrencyViewModel()
 
     var body: some View {
-        VStack {
+        ScrollView {
             baseCurrencyView()
             swapActionView()
             conversionCurrencyView()
-            convertActionView()
+        }
+        .onChange(of: currencyViewModel.baseCurrency) {
+            Task {
+                await currencyViewModel.convert()
+            }
+        }
+        .onChange(of: currencyViewModel.convertToCurrency) {
+            Task {
+                await currencyViewModel.convert()
+            }
+        }
+        .refreshable {
+            await currencyViewModel.convert()
         }
         .onAppear {
             Task {
@@ -38,18 +50,6 @@ struct CurrencyView: View {
             Text(currencyViewModel.outputString ?? "" )
                     .valueStyle(fontWeight: .light)
         }
-    }
-
-    private func convertActionView() -> some View {
-        Button(action: {
-            Task {
-                await currencyViewModel.convert()
-            }
-        }, label: {
-            Text("Convert")
-                .font(.title)
-        })
-        .buttonStyle(.bordered)
     }
 
     private func swapActionView() -> some View {

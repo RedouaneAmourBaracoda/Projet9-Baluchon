@@ -34,7 +34,7 @@ final class CurrencyViewModel: ObservableObject {
 
     // MARK: - Properties.
 
-    private let maxInterval: Double = 60
+    private let maxInterval: Double = 3600
 
     let formatter: NumberFormatter = .valueFormatter
 
