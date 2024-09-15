@@ -40,9 +40,19 @@ final class CurrencyViewModel: ObservableObject {
 
     // MARK: - Methods.
 
-    func fetchCurrency() async {
-        guard isUpdateNeeded() else { return }
+    func convert() async {
+        if shouldUpdate() { await fetchCurrency() }
 
+        guard
+            let lastRates,
+            let decodedRates = try? JSONDecoder().decode([String: Double].self, from: lastRates),
+            let baseRateInUSD = decodedRates[baseCurrency.abreviation],
+            let desiredRateInUSD = decodedRates[convertToCurrency.abreviation]
+        else { return }
+
+        outputString = formatter.string(from: NSNumber(value: baseValue * (desiredRateInUSD / baseRateInUSD)))
+    }
+    private func fetchCurrency() async {
         do {
             let result = try await CurrencyApiService.shared.fetchCurrency()
             save(result)
@@ -53,8 +63,8 @@ final class CurrencyViewModel: ObservableObject {
         }
     }
 
-    private func isUpdateNeeded() -> Bool {
-        guard let lastRates, let lastDate = lastUpdateDateInSeconds else { return true }
+    private func shouldUpdate() -> Bool {
+        guard let _ = lastRates, let lastDate = lastUpdateDateInSeconds else { return true }
         return Date.now.timeIntervalSince1970 - lastDate > maxInterval
     }
 

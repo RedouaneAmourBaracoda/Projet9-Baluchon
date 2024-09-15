@@ -19,7 +19,7 @@ struct CurrencyView: View {
         }
         .onAppear {
             Task {
-                await currencyViewModel.fetchCurrency()
+                await currencyViewModel.convert()
             }
         }
     }
@@ -43,7 +43,7 @@ struct CurrencyView: View {
     private func convertActionView() -> some View {
         Button(action: {
             Task {
-                await currencyViewModel.fetchCurrency()
+                await currencyViewModel.convert()
             }
         }, label: {
             Text("Convert")
