@@ -17,6 +17,11 @@ struct CurrencyView: View {
             conversionCurrencyView()
             convertActionView()
         }
+        .onAppear {
+            Task {
+                await currencyViewModel.fetchCurrency()
+            }
+        }
     }
 
     private func baseCurrencyView() -> some View {

@@ -16,11 +16,14 @@ final class CurrencyViewModel: ObservableObject {
         static let lastUpdateDateInSeconds = "LastDateInSeconds"
     }
 
-    // MARK: - Dependencies.
+    // MARK: - AppStorage.
 
     @AppStorage(Keys.lastUpdateDateInSeconds) var lastUpdateDateInSeconds: TimeInterval?
 
+    @AppStorage(Keys.lastUpdatedRates) var lastRates: Data?
+
     // MARK: - State
+
     @Published var outputString: String?
 
     @Published var baseCurrency: CurrencyItem = .Euro
@@ -38,10 +41,7 @@ final class CurrencyViewModel: ObservableObject {
     // MARK: - Methods.
 
     func fetchCurrency() async {
-        guard isUpdateNeeded() else {
-            print("No update needed")
-            return
-        }
+        guard isUpdateNeeded() else { return }
 
         do {
             let result = try await CurrencyApiService.shared.fetchCurrency()
@@ -54,17 +54,13 @@ final class CurrencyViewModel: ObservableObject {
     }
 
     private func isUpdateNeeded() -> Bool {
-        guard 
-            let _ = UserDefaults.standard.dictionary(forKey: Keys.lastUpdatedRates) as? [String: Double],
-            let lastDate = lastUpdateDateInSeconds
-        else { return true }
-
+        guard let lastRates, let lastDate = lastUpdateDateInSeconds else { return true }
         return Date.now.timeIntervalSince1970 - lastDate > maxInterval
     }
 
     private func save(_ result: ExpectedRates) {
         lastUpdateDateInSeconds = Date.now.timeIntervalSince1970
-        UserDefaults.standard.setValue(result.rates, forKey: Keys.lastUpdatedRates)
+        lastRates = try? JSONEncoder().encode(result.rates)
     }
 
     func swapCurrencies() {
