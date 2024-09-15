@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExpectedCurrency: Codable {
+struct ExpectedRates: Codable {
     let rates: [String: Double]
 }
 
@@ -28,7 +28,7 @@ final class CurrencyApiService {
 
     private init() {}
 
-    func fetchCurrency() async throws -> ExpectedCurrency {
+    func fetchCurrency() async throws -> ExpectedRates {
         guard let url = URL(string: urlString + "app_id=" + appID) else { throw HTTPError.invalidURL }
         let request = URLRequest(url: url)
 
@@ -38,7 +38,7 @@ final class CurrencyApiService {
 
         switch result {
         case .success():
-            return try JSONDecoder().decode(ExpectedCurrency.self, from: data)
+            return try JSONDecoder().decode(ExpectedRates.self, from: data)
         case let .failure(failure):
             throw failure
         }

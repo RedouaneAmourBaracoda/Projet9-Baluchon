@@ -12,6 +12,7 @@ import SwiftUI
 final class CurrencyViewModel: ObservableObject {
 
     private enum Keys {
+        static let lastUpdatedRates = "lastUpdatedRates"
         static let lastUpdateDateInSeconds = "LastDateInSeconds"
     }
 
@@ -30,8 +31,6 @@ final class CurrencyViewModel: ObservableObject {
 
     // MARK: - Properties.
 
-    private var timer: Timer?
-
     private let maxInterval: Double = 60
 
     let formatter: NumberFormatter = .valueFormatter
@@ -39,11 +38,14 @@ final class CurrencyViewModel: ObservableObject {
     // MARK: - Methods.
 
     func fetchCurrency() async {
-        timer?.invalidate()
+        guard isUpdateNeeded() else {
+            print("No update needed")
+            return
+        }
 
         do {
-            let currency = try await CurrencyApiService.shared.fetchCurrency()
-            print(currency.rates)
+            let result = try await CurrencyApiService.shared.fetchCurrency()
+            save(result)
         } catch let error as HTTPError {
             print(error.errorDescription ?? "An HTTP error occured but cannot be determined.")
         } catch {
@@ -51,15 +53,24 @@ final class CurrencyViewModel: ObservableObject {
         }
     }
 
+    private func isUpdateNeeded() -> Bool {
+        guard 
+            let _ = UserDefaults.standard.dictionary(forKey: Keys.lastUpdatedRates) as? [String: Double],
+            let lastDate = lastUpdateDateInSeconds
+        else { return true }
+
+        return Date.now.timeIntervalSince1970 - lastDate > maxInterval
+    }
+
+    private func save(_ result: ExpectedRates) {
+        lastUpdateDateInSeconds = Date.now.timeIntervalSince1970
+        UserDefaults.standard.setValue(result.rates, forKey: Keys.lastUpdatedRates)
+    }
+
     func swapCurrencies() {
         let initialBaseCurrency = baseCurrency
         baseCurrency = convertToCurrency
         convertToCurrency = initialBaseCurrency
-    }
-
-    private func saveDate() {
-        let timeIntervalInSeconds = Date.now.timeIntervalSince1970
-        UserDefaults.standard.set(timeIntervalInSeconds, forKey: "LastDateInSeconds")
     }
 }
 
