@@ -17,9 +17,9 @@ final class CurrencyViewModel: ObservableObject {
 
     // MARK: - AppStorage.
 
-    @AppStorage(Keys.lastUpdateDateInSeconds) var lastUpdateDateInSeconds: TimeInterval?
+    @AppStorage(Keys.lastUpdateDateInSeconds) private var lastUpdateDateInSeconds: TimeInterval?
 
-    @AppStorage(Keys.lastUpdatedRates) var lastRates: Data?
+    @AppStorage(Keys.lastUpdatedRates) private var lastRates: Data?
 
     // MARK: - State
 
@@ -27,7 +27,7 @@ final class CurrencyViewModel: ObservableObject {
 
     @Published var baseCurrency: CurrencyItem = .Euro
 
-    @Published var convertToCurrency: CurrencyItem = .USDollar
+    @Published var targetCurrency: CurrencyItem = .USDollar
 
     @Published var baseValue: Double = 1000.0
 
@@ -46,10 +46,10 @@ final class CurrencyViewModel: ObservableObject {
             let lastRates,
             let decodedRates = try? JSONDecoder().decode([String: Double].self, from: lastRates),
             let baseRateInUSD = decodedRates[baseCurrency.abreviation],
-            let desiredRateInUSD = decodedRates[convertToCurrency.abreviation]
+            let targetRateInUSD = decodedRates[targetCurrency.abreviation]
         else { return }
 
-        outputString = formatter.string(from: NSNumber(value: baseValue * (desiredRateInUSD / baseRateInUSD)))
+        outputString = formatter.string(from: NSNumber(value: baseValue * (targetRateInUSD / baseRateInUSD)))
     }
     private func fetchCurrency() async {
         do {
@@ -74,8 +74,8 @@ final class CurrencyViewModel: ObservableObject {
 
     func swapCurrencies() {
         let initialBaseCurrency = baseCurrency
-        baseCurrency = convertToCurrency
-        convertToCurrency = initialBaseCurrency
+        baseCurrency = targetCurrency
+        targetCurrency = initialBaseCurrency
     }
 }
 

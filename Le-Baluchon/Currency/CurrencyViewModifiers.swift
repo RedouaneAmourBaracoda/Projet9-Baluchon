@@ -45,7 +45,7 @@ struct RefreshableModifier: ViewModifier {
                     await currencyViewModel.convert()
                 }
             }
-            .onChange(of: currencyViewModel.convertToCurrency) {
+            .onChange(of: currencyViewModel.targetCurrency) {
                 Task {
                     await currencyViewModel.convert()
                 }

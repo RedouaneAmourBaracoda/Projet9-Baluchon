@@ -16,7 +16,7 @@ struct CurrencyView: View {
                 VStack {
                     baseCurrencyView()
                     swapActionView()
-                    conversionCurrencyView()
+                    targetCurrencyView()
                     Spacer()
                     pullToRefreshView()
 
@@ -48,8 +48,8 @@ struct CurrencyView: View {
         })
     }
 
-    private func conversionCurrencyView() -> some View {
-        CurrencyItemView(selectedCurrency: $currencyViewModel.convertToCurrency) {
+    private func targetCurrencyView() -> some View {
+        CurrencyItemView(selectedCurrency: $currencyViewModel.targetCurrency) {
             Text(currencyViewModel.outputString ?? "" )
                     .valueStyle(fontWeight: .light)
         }

@@ -46,21 +46,21 @@ final class CurrencyApiService {
 
     private func checkStatusCode(urlResponse: URLResponse) -> Result<Void, HTTPError> {
         guard let httpURLResponse = urlResponse as? HTTPURLResponse else { return .failure(.invalidRequest) }
+
         let statusCode = httpURLResponse.statusCode
+
         switch statusCode {
             case 200 : return .success(())
 
-            case 401: return .failure(.invalidAuthenticationCredentials)
+            case 400: return .failure(.invalid_base)
 
-            case 403: return .failure(.invalidTrial)
+            case 401: return .failure(.invalid_app_id)
 
-            case 404: return .failure(.invalidEndpoint)
+            case 403: return .failure(.access_restricted)
 
-            case 422: return .failure(.validationError)
+            case 404: return .failure(.not_found)
 
-            case 429: return .failure(.exceededRequestsLimit)
-
-            case 500: return .failure(.internalServorError)
+            case 429: return .failure(.not_allowed)
 
             default: return .failure(.invalidRequest)
         }
@@ -69,33 +69,31 @@ final class CurrencyApiService {
 
 enum HTTPError: LocalizedError {
     case invalidURL
+    case invalid_base
+    case invalid_app_id
+    case access_restricted
+    case not_found
+    case not_allowed
     case invalidRequest
-    case invalidAuthenticationCredentials
-    case invalidTrial
-    case invalidEndpoint
-    case validationError
-    case exceededRequestsLimit
-    case internalServorError
+
 
     var errorDescription: String? {
         switch self {
-        case .invalidRequest:
-            return NSLocalizedString("Invalid request", comment: "")
-        case .invalidAuthenticationCredentials:
-            return NSLocalizedString("Invalid authentication credentials", comment: "")
-        case .invalidTrial:
-            return NSLocalizedString("You are not allowed to use this endpoint, please upgrade your plan", comment: "")
-        case .invalidEndpoint:
-            return NSLocalizedString("The requested endpoint does not exist", comment: "")
-        case .validationError:
-            return NSLocalizedString("Validation error, please check the list of validation errors", comment: "")
-        case .exceededRequestsLimit:
-            return NSLocalizedString("Invalid authentication credentials", comment: "")
-        case .internalServorError:
-            return NSLocalizedString("Invalid authentication credentials", comment: "")
         case .invalidURL:
             return NSLocalizedString("Invalid URL", comment: "")
+        case .invalid_base:
+            return NSLocalizedString("Client requested rates for an unsupported base currency", comment: "")
+        case .invalid_app_id:
+            return NSLocalizedString("Client provided an invalid App ID", comment: "")
+        case .access_restricted:
+            return NSLocalizedString(" Access restricted for repeated over-use (status: 429), or other reason given in ‘description’ (403)", comment: "")
+        case .not_found:
+            return NSLocalizedString("Client requested a non-existent resource/route", comment: "")
+
+        case .not_allowed:
+            return NSLocalizedString("Client doesn’t have permission to access requested route/feature", comment: "")
+        case .invalidRequest:
+            return NSLocalizedString("Invalid request", comment: "")
         }
     }
 }
-

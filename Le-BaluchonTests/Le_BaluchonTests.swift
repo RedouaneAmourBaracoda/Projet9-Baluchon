@@ -19,12 +19,39 @@ final class Le_BaluchonTests: XCTestCase {
         apiService = .init(session: session)
     }
 
-    func testNetworkCallFailsWhenStatusCodeIs401() async throws {
+    func testNetworkCallFailsWhenStatusCodeIs400() async throws {
 
         // Given.
 
-        let baseCurrency: CurrencyItem = .USDollar
-        let convertToCurrency: CurrencyItem = .Euro
+        // When.
+
+        MockURLProtocol.requestHandler = { request in
+            XCTAssertNotNil(request.url)
+            let mockResponse = HTTPURLResponse(
+                url: request.url!,
+                statusCode: 400,
+                httpVersion: nil,
+                headerFields: nil
+            )!
+
+            let mockData = """
+                """.data(using: .utf8)!
+            return (mockResponse, mockData)
+        }
+
+        // Then.
+
+        do {
+            let _ = try await apiService.fetchCurrency()
+        } catch let error as HTTPError {
+            XCTAssert(error == .invalid_base)
+            XCTAssert(error.errorDescription == HTTPError.invalid_base.errorDescription)
+        }
+    }
+
+    func testNetworkCallFailsWhenStatusCodeIs401() async throws {
+
+        // Given.
 
         // When.
 
@@ -45,19 +72,16 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let result = try await apiService.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation)
+            let _ = try await apiService.fetchCurrency()
         } catch let error as HTTPError {
-            XCTAssert(error == .invalidAuthenticationCredentials)
-            XCTAssert(error.errorDescription == HTTPError.invalidAuthenticationCredentials.errorDescription)
+            XCTAssert(error == .invalid_app_id)
+            XCTAssert(error.errorDescription == HTTPError.invalid_app_id.errorDescription)
         }
     }
 
     func testNetworkCallFailsWhenStatusCodeIs403() async throws {
 
         // Given.
-
-        let baseCurrency: CurrencyItem = .USDollar
-        let convertToCurrency: CurrencyItem = .Euro
 
         // When.
 
@@ -78,19 +102,16 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let result = try await apiService.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation)
+            let _ = try await apiService.fetchCurrency()
         } catch let error as HTTPError {
-            XCTAssert(error == .invalidTrial)
-            XCTAssert(error.errorDescription == HTTPError.invalidTrial.errorDescription)
+            XCTAssert(error == .access_restricted)
+            XCTAssert(error.errorDescription == HTTPError.access_restricted.errorDescription)
         }
     }
 
     func testNetworkCallFailsWhenStatusCodeIs404() async throws {
 
         // Given.
-
-        let baseCurrency: CurrencyItem = .USDollar
-        let convertToCurrency: CurrencyItem = .Euro
 
         // When.
 
@@ -111,52 +132,16 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let result = try await apiService.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation)
+            let _ = try await apiService.fetchCurrency()
         } catch let error as HTTPError {
-            XCTAssert(error == .invalidEndpoint)
-            XCTAssert(error.errorDescription == HTTPError.invalidEndpoint.errorDescription)
-        }
-    }
-
-    func testNetworkCallFailsWhenStatusCodeIs422() async throws {
-
-        // Given.
-
-        let baseCurrency: CurrencyItem = .USDollar
-        let convertToCurrency: CurrencyItem = .Euro
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 422,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = """
-                """.data(using: .utf8)!
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            let result = try await apiService.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation)
-        } catch let error as HTTPError {
-            XCTAssert(error == .validationError)
-            XCTAssert(error.errorDescription == HTTPError.validationError.errorDescription)
+            XCTAssert(error == .not_found)
+            XCTAssert(error.errorDescription == HTTPError.not_found.errorDescription)
         }
     }
 
     func testNetworkCallFailsWhenStatusCodeIs429() async throws {
 
         // Given.
-
-        let baseCurrency: CurrencyItem = .USDollar
-        let convertToCurrency: CurrencyItem = .Euro
 
         // When.
 
@@ -177,43 +162,10 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let result = try await apiService.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation)
+            let _ = try await apiService.fetchCurrency()
         } catch let error as HTTPError {
-            XCTAssert(error == .exceededRequestsLimit)
-            XCTAssert(error.errorDescription == HTTPError.exceededRequestsLimit.errorDescription)
-        }
-    }
-
-    func testNetworkCallFailsWhenStatusCodeIs500() async throws {
-
-        // Given.
-
-        let baseCurrency: CurrencyItem = .USDollar
-        let convertToCurrency: CurrencyItem = .Euro
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 500,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = """
-                """.data(using: .utf8)!
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            let result = try await apiService.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation)
-        } catch let error as HTTPError {
-            XCTAssert(error == .internalServorError)
-            XCTAssert(error.errorDescription == HTTPError.internalServorError.errorDescription)
+            XCTAssert(error == .not_allowed)
+            XCTAssert(error.errorDescription == HTTPError.not_allowed.errorDescription)
         }
     }
 
@@ -221,16 +173,13 @@ final class Le_BaluchonTests: XCTestCase {
 
         // Given.
 
-        let baseCurrency: CurrencyItem = .USDollar
-        let convertToCurrency: CurrencyItem = .Euro
-
         // When.
 
         MockURLProtocol.requestHandler = { request in
             XCTAssertNotNil(request.url)
             let mockResponse = HTTPURLResponse(
                 url: request.url!,
-                statusCode: 1000,
+                statusCode: Set(-1000...1000).subtracting(Set([400, 401, 403, 404, 429])).randomElement() ?? 0,
                 httpVersion: nil,
                 headerFields: nil
             )!
@@ -243,19 +192,18 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let result = try await apiService.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation)
+            let _ = try await apiService.fetchCurrency()
         } catch let error as HTTPError {
             XCTAssert(error == .invalidRequest)
             XCTAssert(error.errorDescription == HTTPError.invalidRequest.errorDescription)
         }
     }
 
-    func testNetworkCallSuccess() async {
+    func testNetworkCallSuccess() async throws {
 
         // Given.
 
-        let baseCurrency: CurrencyItem = .USDollar
-        let convertToCurrency: CurrencyItem = .Euro
+        let targetCurrency: CurrencyItem = .Euro
 
         // When.
         
@@ -270,7 +218,7 @@ final class Le_BaluchonTests: XCTestCase {
             
             let mockData = """
                 {
-                    "data": {
+                    "rates": {
                         "EUR": 1.1083277687
                     }
                 }
@@ -279,10 +227,11 @@ final class Le_BaluchonTests: XCTestCase {
         }
         
         // Then.
+
         do {
-            let result = try await apiService.fetchCurrency(baseCurrency: baseCurrency.abreviation, convertToCurrency: convertToCurrency.abreviation)
-            XCTAssertTrue(result.data.keys.contains(where: { $0 == convertToCurrency.abreviation }))
-            XCTAssertTrue(result.data.values.contains(where: { $0 == 1.1083277687 }))
+            let result = try await apiService.fetchCurrency()
+            XCTAssertTrue(result.rates.keys.contains(where: { $0 == targetCurrency.abreviation }))
+            XCTAssertTrue(result.rates.values.contains(where: { $0 == 1.1083277687 }))
         } catch {
             XCTAssertNil(error)
         }
