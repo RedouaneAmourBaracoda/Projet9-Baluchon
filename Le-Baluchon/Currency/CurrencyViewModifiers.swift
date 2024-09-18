@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 extension View {
     func valueStyle(fontWeight: Font.Weight) -> some View {
         modifier(ValueModifier(fontWeight: fontWeight))

@@ -33,7 +33,7 @@ struct CurrencyItemView<Value: View>: View {
     }
 
     private func resizableImageView() -> some View {
-        Image(uiImage: selectedCurrency.flag)
+        Image(uiImage: UIImage(resource: .init(name: selectedCurrency.flag, bundle: .main)))
           .resizable()
           .aspectRatio(contentMode: .fit)
           .frame(width: 50, height: 50)

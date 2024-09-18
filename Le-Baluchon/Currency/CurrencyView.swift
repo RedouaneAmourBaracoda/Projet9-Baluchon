@@ -55,7 +55,6 @@ struct CurrencyView: View {
         }
     }
 
-
     private func pullToRefreshView() -> some View {
         Image(uiImage: UIImage(resource: .init(name: "pull-to-refresh", bundle: .main))).opacity(0.1)
     }

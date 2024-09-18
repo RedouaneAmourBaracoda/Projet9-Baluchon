@@ -5,7 +5,6 @@
 //  Created by Redouane on 05/09/2024.
 //
 
-import UIKit
 import Foundation
 
 enum CurrencyItem: String, CaseIterable {
@@ -35,17 +34,18 @@ enum CurrencyItem: String, CaseIterable {
         }
     }
 
-    var flag: UIImage {
+    var flag: String {
         switch self {
-        case .USDollar: return UIImage(resource: .init(name: "US-flag", bundle: .main))
+        case .USDollar:
+            "US-flag"
         case .Euro:
-            return UIImage(resource: .init(name: "UE-flag", bundle: .main))
-        case .CanadianDollar:
-            return UIImage(resource: .init(name: "Canadian-flag", bundle: .main))
+            "UE-flag"
+        case .CanadianDollar: 
+            "Canadian-flag"
         case .BritishPound:
-            return UIImage(resource: .init(name: "GB-flag", bundle: .main))
+           "GB-flag"
         case .AustralianDollar:
-            return UIImage(resource: .init(name: "Australian-flag", bundle: .main))
+            "Australian-flag"
         }
     }
 }
