@@ -19,6 +19,7 @@
 		B820236D2C779E58002F0494 /* CurrencyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820236C2C779E58002F0494 /* CurrencyAPIService.swift */; };
 		B8BCA1442C89368100DEAB92 /* CurrencyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCA1432C89368100DEAB92 /* CurrencyItem.swift */; };
 		B8BCA1462C8936AA00DEAB92 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B820236E2C779E76002F0494 /* MockURLProtocol.swift */; };
+		B8D1339A2C9AA3AA00983170 /* CurrencyViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D133992C9AA3AA00983170 /* CurrencyViewModifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		B820236C2C779E58002F0494 /* CurrencyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPIService.swift; sourceTree = "<group>"; };
 		B820236E2C779E76002F0494 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		B8BCA1432C89368100DEAB92 /* CurrencyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyItem.swift; sourceTree = "<group>"; };
+		B8D133992C9AA3AA00983170 /* CurrencyViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				B82023422C779CD8002F0494 /* CurrencyView.swift */,
+				B8D133992C9AA3AA00983170 /* CurrencyViewModifiers.swift */,
 				B820236A2C779E44002F0494 /* CurrencyViewModel.swift */,
 				B820236C2C779E58002F0494 /* CurrencyAPIService.swift */,
 				B8BCA1432C89368100DEAB92 /* CurrencyItem.swift */,
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8BCA1442C89368100DEAB92 /* CurrencyItem.swift in Sources */,
+				B8D1339A2C9AA3AA00983170 /* CurrencyViewModifiers.swift in Sources */,
 				B82023432C779CD8002F0494 /* CurrencyView.swift in Sources */,
 				B820236D2C779E58002F0494 /* CurrencyAPIService.swift in Sources */,
 				B8000E102C782D5A0006106D /* CurrencyItemView.swift in Sources */,

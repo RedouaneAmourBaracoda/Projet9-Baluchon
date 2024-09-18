@@ -11,28 +11,19 @@ struct CurrencyView: View {
     @ObservedObject private var currencyViewModel = CurrencyViewModel()
 
     var body: some View {
-        ScrollView {
-            baseCurrencyView()
-            swapActionView()
-            conversionCurrencyView()
-        }
-        .onChange(of: currencyViewModel.baseCurrency) {
-            Task {
-                await currencyViewModel.convert()
+        GeometryReader { geometry in
+            ScrollView {
+                VStack {
+                    baseCurrencyView()
+                    swapActionView()
+                    conversionCurrencyView()
+                    Spacer()
+                    pullToRefreshView()
+
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height)
             }
-        }
-        .onChange(of: currencyViewModel.convertToCurrency) {
-            Task {
-                await currencyViewModel.convert()
-            }
-        }
-        .refreshable {
-            await currencyViewModel.convert()
-        }
-        .onAppear {
-            Task {
-                await currencyViewModel.convert()
-            }
+            .refresh(currencyViewModel: currencyViewModel)
         }
     }
 
@@ -42,13 +33,6 @@ struct CurrencyView: View {
                 .keyboardType(.decimalPad)
                 .valueStyle(fontWeight: .bold)
 
-        }
-    }
-
-    private func conversionCurrencyView() -> some View {
-        CurrencyItemView(selectedCurrency: $currencyViewModel.convertToCurrency) {
-            Text(currencyViewModel.outputString ?? "" )
-                    .valueStyle(fontWeight: .light)
         }
     }
 
@@ -63,22 +47,17 @@ struct CurrencyView: View {
               .padding()
         })
     }
-}
 
-private extension View {
-    func valueStyle(fontWeight: Font.Weight) -> some View {
-        modifier(ValueModifier(fontWeight: fontWeight))
+    private func conversionCurrencyView() -> some View {
+        CurrencyItemView(selectedCurrency: $currencyViewModel.convertToCurrency) {
+            Text(currencyViewModel.outputString ?? "" )
+                    .valueStyle(fontWeight: .light)
+        }
     }
-}
 
-private struct ValueModifier: ViewModifier {
-    let fontWeight: Font.Weight
 
-    func body(content: Content) -> some View {
-        content
-            .font(.title3)
-            .fontWeight(fontWeight)
-            .foregroundStyle(Color.black)
+    private func pullToRefreshView() -> some View {
+        Image(uiImage: UIImage(resource: .init(name: "pull-to-refresh", bundle: .main))).opacity(0.1)
     }
 }
 
