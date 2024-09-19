@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 final class CurrencyViewModel: ObservableObject {
 
     // MARK: - State
@@ -18,6 +19,10 @@ final class CurrencyViewModel: ObservableObject {
     @Published var targetCurrency: CurrencyItem = .USDollar
 
     @Published var baseValue: Double = 1000.0
+
+    @Published var shouldPresentAlert = false
+
+    var error: Error?
 
     // MARK: - Services.
 
@@ -40,7 +45,6 @@ final class CurrencyViewModel: ObservableObject {
 
     // MARK: - Methods.
 
-    @MainActor
     func convert() async {
 
         if shouldUpdateRates() { await getCurrency() }
@@ -60,7 +64,7 @@ final class CurrencyViewModel: ObservableObject {
 
         let lastDate = dataStoreService.retrieveDate()
 
-        guard let lastRates, let lastDate else { return true }
+        guard let _ = lastRates, let lastDate else { return true }
 
         return Date.now.timeIntervalSince1970 - lastDate > maxInterval
     }
@@ -69,10 +73,9 @@ final class CurrencyViewModel: ObservableObject {
         do {
             let result = try await currencyApiService.fetchCurrency()
             dataStoreService.save(Date.now.timeIntervalSince1970, rates: result.rates)
-        } catch let error as HTTPError {
-            print(error.errorDescription ?? "An HTTP error occured but cannot be determined.")
         } catch {
-            print(error.localizedDescription)
+            self.error = error
+            shouldPresentAlert = true
         }
     }
 
@@ -86,6 +89,10 @@ final class CurrencyViewModel: ObservableObject {
 extension CurrencyViewModel {
     func testShouldUpdateRates() -> Bool {
         self.shouldUpdateRates()
+    }
+
+    func testGetCurrency() async {
+        await self.getCurrency()
     }
 }
 

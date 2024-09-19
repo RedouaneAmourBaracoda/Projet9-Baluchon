@@ -15,12 +15,12 @@ final class MockCurrencyAPIService: CurrencyAPIService {
 
     var ratesToReturn: ExpectedRates?
 
-    var callsCounter: Int = 0
-
     var error: Error?
 
+    var fetchCurrencyCallsCounter: Int = 0
+
     func fetchCurrency() async throws -> ExpectedRates {
-        callsCounter += 1
+        fetchCurrencyCallsCounter += 1
 
         guard let error else { return ratesToReturn ?? .init(rates: [:]) }
 
@@ -89,7 +89,7 @@ struct ExpectedRates: Codable {
     let rates: [String: Double]
 }
 
-enum HTTPError: LocalizedError {
+enum HTTPError: LocalizedError, CaseIterable {
     case invalidURL
     case invalid_base
     case invalid_app_id
@@ -98,8 +98,7 @@ enum HTTPError: LocalizedError {
     case not_allowed
     case invalidRequest
 
-
-    var errorDescription: String? {
+    var localizedDescription: String? {
         switch self {
         case .invalidURL:
             return NSLocalizedString("Invalid URL", comment: "")

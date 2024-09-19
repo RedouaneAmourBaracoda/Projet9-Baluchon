@@ -8,6 +8,7 @@
 @testable import Le_Baluchon
 import XCTest
 
+@MainActor 
 final class CurrencyViewModelTests: XCTestCase {
 
     var currencyViewModel: CurrencyViewModel!
@@ -39,6 +40,10 @@ final class CurrencyViewModelTests: XCTestCase {
 
         // Then
 
+        XCTAssertEqual(dataStoreService.retrieveDateCallsCounter, 1)
+
+        XCTAssertEqual(dataStoreService.retrieveRatesCallsCounter, 1)
+
         XCTAssertTrue(shouldUpdateRates)
     }
 
@@ -55,6 +60,9 @@ final class CurrencyViewModelTests: XCTestCase {
         let shouldUpdateRates = currencyViewModel.testShouldUpdateRates()
 
         // Then
+        XCTAssertEqual(dataStoreService.retrieveDateCallsCounter, 1)
+
+        XCTAssertEqual(dataStoreService.retrieveRatesCallsCounter, 1)
 
         XCTAssertTrue(shouldUpdateRates)
     }
@@ -64,6 +72,7 @@ final class CurrencyViewModelTests: XCTestCase {
         // Given.
 
         dataStoreService.persistedDate = Date.now.advanced(by: -3500).timeIntervalSince1970
+
         dataStoreService.persistedRates = .init()
 
         // When.
@@ -71,6 +80,9 @@ final class CurrencyViewModelTests: XCTestCase {
         let shouldUpdateRates = currencyViewModel.testShouldUpdateRates()
 
         // Then
+        XCTAssertEqual(dataStoreService.retrieveDateCallsCounter, 1)
+
+        XCTAssertEqual(dataStoreService.retrieveRatesCallsCounter, 1)
 
         XCTAssertFalse(shouldUpdateRates)
     }
