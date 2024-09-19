@@ -8,15 +8,15 @@
 import XCTest
 @testable import Le_Baluchon
 
-final class Le_BaluchonTests: XCTestCase {
-    var session: URLSession!
-    var apiService: CurrencyApiService!
-    
+final class RealCurrencyAPIServiceTests: XCTestCase {
+
+    var currencyApiService: RealCurrencyApiService!
+
     override func setUpWithError() throws {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [MockURLProtocol.self]
-        session = URLSession(configuration: configuration)
-        apiService = .init(session: session)
+        let sessionMock = URLSession(configuration: configuration)
+        currencyApiService = .init(session: sessionMock)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs400() async throws {
@@ -42,7 +42,7 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await apiService.fetchCurrency()
+            let _ = try await currencyApiService.fetchCurrency()
         } catch let error as HTTPError {
             XCTAssert(error == .invalid_base)
             XCTAssert(error.errorDescription == HTTPError.invalid_base.errorDescription)
@@ -72,7 +72,7 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await apiService.fetchCurrency()
+            let _ = try await currencyApiService.fetchCurrency()
         } catch let error as HTTPError {
             XCTAssert(error == .invalid_app_id)
             XCTAssert(error.errorDescription == HTTPError.invalid_app_id.errorDescription)
@@ -102,7 +102,7 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await apiService.fetchCurrency()
+            let _ = try await currencyApiService.fetchCurrency()
         } catch let error as HTTPError {
             XCTAssert(error == .access_restricted)
             XCTAssert(error.errorDescription == HTTPError.access_restricted.errorDescription)
@@ -132,7 +132,7 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await apiService.fetchCurrency()
+            let _ = try await currencyApiService.fetchCurrency()
         } catch let error as HTTPError {
             XCTAssert(error == .not_found)
             XCTAssert(error.errorDescription == HTTPError.not_found.errorDescription)
@@ -162,7 +162,7 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await apiService.fetchCurrency()
+            let _ = try await currencyApiService.fetchCurrency()
         } catch let error as HTTPError {
             XCTAssert(error == .not_allowed)
             XCTAssert(error.errorDescription == HTTPError.not_allowed.errorDescription)
@@ -192,7 +192,7 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await apiService.fetchCurrency()
+            let _ = try await currencyApiService.fetchCurrency()
         } catch let error as HTTPError {
             XCTAssert(error == .invalidRequest)
             XCTAssert(error.errorDescription == HTTPError.invalidRequest.errorDescription)
@@ -229,7 +229,7 @@ final class Le_BaluchonTests: XCTestCase {
         // Then.
 
         do {
-            let result = try await apiService.fetchCurrency()
+            let result = try await currencyApiService.fetchCurrency()
             XCTAssertTrue(result.rates.keys.contains(where: { $0 == targetCurrency.abreviation }))
             XCTAssertTrue(result.rates.values.contains(where: { $0 == 1.1083277687 }))
         } catch {

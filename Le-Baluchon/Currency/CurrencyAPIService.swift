@@ -7,11 +7,29 @@
 
 import Foundation
 
-struct ExpectedRates: Codable {
-    let rates: [String: Double]
+protocol CurrencyAPIService {
+    func fetchCurrency() async throws -> ExpectedRates
 }
 
-final class CurrencyApiService {
+final class MockCurrencyAPIService: CurrencyAPIService {
+
+    var ratesToReturn: ExpectedRates?
+
+    var callsCounter: Int = 0
+
+    var error: Error?
+
+    func fetchCurrency() async throws -> ExpectedRates {
+        callsCounter += 1
+
+        guard let error else { return ratesToReturn ?? .init(rates: [:]) }
+
+        throw error
+    }
+}
+
+final class RealCurrencyApiService: CurrencyAPIService {
+
     private let appID = "b9fcd43d720d4b7a85a924cd61d64f8a"
 
     private let urlString: String = "https://openexchangerates.org/api/latest.json?"
@@ -24,7 +42,7 @@ final class CurrencyApiService {
     }
     
     // Singleton pattern.
-    static let shared: CurrencyApiService = .init()
+    static let shared: RealCurrencyApiService = .init()
 
     private init() {}
 
@@ -65,6 +83,10 @@ final class CurrencyApiService {
             default: return .failure(.invalidRequest)
         }
     }
+}
+
+struct ExpectedRates: Codable {
+    let rates: [String: Double]
 }
 
 enum HTTPError: LocalizedError {

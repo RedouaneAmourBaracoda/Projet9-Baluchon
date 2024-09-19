@@ -7,19 +7,7 @@
 
 import SwiftUI
 
-@MainActor
 final class CurrencyViewModel: ObservableObject {
-
-    private enum Keys {
-        static let lastUpdatedRates = "lastUpdatedRates"
-        static let lastUpdateDateInSeconds = "LastDateInSeconds"
-    }
-
-    // MARK: - AppStorage.
-
-    @AppStorage(Keys.lastUpdateDateInSeconds) private var lastUpdateDateInSeconds: TimeInterval?
-
-    @AppStorage(Keys.lastUpdatedRates) private var lastRates: Data?
 
     // MARK: - State
 
@@ -31,30 +19,56 @@ final class CurrencyViewModel: ObservableObject {
 
     @Published var baseValue: Double = 1000.0
 
+    // MARK: - Services.
+
+    private let currencyApiService: CurrencyAPIService
+
+    private let dataStoreService: DataStoreService
+
     // MARK: - Properties.
 
     private let maxInterval: Double = 3600
 
     let formatter: NumberFormatter = .valueFormatter
 
+    // MARK: - Initializer.
+
+    init(currencyApiService: CurrencyAPIService, dataStoreService: DataStoreService) {
+        self.currencyApiService = currencyApiService
+        self.dataStoreService = dataStoreService
+    }
+
     // MARK: - Methods.
 
+    @MainActor
     func convert() async {
-        if shouldUpdate() { await fetchCurrency() }
+
+        if shouldUpdateRates() { await getCurrency() }
 
         guard
-            let lastRates,
-            let decodedRates = try? JSONDecoder().decode([String: Double].self, from: lastRates),
-            let baseRateInUSD = decodedRates[baseCurrency.abreviation],
-            let targetRateInUSD = decodedRates[targetCurrency.abreviation]
+            let lastRates = dataStoreService.retrieveRates(),
+            let baseRateInUSD = lastRates[baseCurrency.abreviation],
+            let targetRateInUSD = lastRates[targetCurrency.abreviation]
         else { return }
 
         outputString = formatter.string(from: NSNumber(value: baseValue * (targetRateInUSD / baseRateInUSD)))
     }
-    private func fetchCurrency() async {
+
+    private func shouldUpdateRates() -> Bool {
+
+        let lastRates = dataStoreService.retrieveRates()
+
+        let lastDate = dataStoreService.retrieveDate()
+
+        guard let lastRates, let lastDate else { return true }
+
+        return Date.now.timeIntervalSince1970 - lastDate > maxInterval
+    }
+
+    private func getCurrency() async {
         do {
-            let result = try await CurrencyApiService.shared.fetchCurrency()
-            save(result)
+            let result = try await currencyApiService.fetchCurrency()
+            dataStoreService.save(Date.now.timeIntervalSince1970, rates: result.rates)
         } catch let error as HTTPError {
             print(error.errorDescription ?? "An HTTP error occured but cannot be determined.")
         } catch {
@@ -62,20 +76,16 @@ final class CurrencyViewModel: ObservableObject {
         }
     }
 
-    private func shouldUpdate() -> Bool {
-        guard let _ = lastRates, let lastDate = lastUpdateDateInSeconds else { return true }
-        return Date.now.timeIntervalSince1970 - lastDate > maxInterval
-    }
-
-    private func save(_ result: ExpectedRates) {
-        lastUpdateDateInSeconds = Date.now.timeIntervalSince1970
-        lastRates = try? JSONEncoder().encode(result.rates)
-    }
-
     func swapCurrencies() {
         let initialBaseCurrency = baseCurrency
         baseCurrency = targetCurrency
         targetCurrency = initialBaseCurrency
+    }
+}
+
+extension CurrencyViewModel {
+    func testShouldUpdateRates() -> Bool {
+        self.shouldUpdateRates()
     }
 }
 

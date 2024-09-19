@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct CurrencyView: View {
-    @ObservedObject private var currencyViewModel = CurrencyViewModel()
+    @ObservedObject private var currencyViewModel = CurrencyViewModel(
+        currencyApiService: RealCurrencyApiService.shared,
+        dataStoreService: RealDataStoreService()
+    )
 
     var body: some View {
         GeometryReader { geometry in
