@@ -19,6 +19,22 @@ final class RealCurrencyAPIServiceTests: XCTestCase {
         currencyApiService = .init(session: sessionMock)
     }
 
+    func testNetworkCallFailsWhenInvalidURL() async throws {
+
+        // Given.
+
+        currencyApiService.urlString = ""
+
+        // Then.
+
+        do {
+            let _ = try await currencyApiService.fetchCurrency()
+        } catch let error as HTTPError {
+            XCTAssert(error == .invalidURL)
+            XCTAssert(error.errorDescription == HTTPError.invalidURL.errorDescription)
+        }
+    }
+
     func testNetworkCallFailsWhenStatusCodeIs400() async throws {
 
         // Given.

@@ -30,9 +30,7 @@ final class MockCurrencyAPIService: CurrencyAPIService {
 
 final class RealCurrencyApiService: CurrencyAPIService {
 
-    private let appID = "b9fcd43d720d4b7a85a924cd61d64f8a"
-
-    private let urlString: String = "https://openexchangerates.org/api/latest.json?"
+    var urlString: String = APIInfos.endpointString
 
     // Injection de dépendance.
     private var session: URLSession = .shared
@@ -47,7 +45,7 @@ final class RealCurrencyApiService: CurrencyAPIService {
     private init() {}
 
     func fetchCurrency() async throws -> ExpectedRates {
-        guard let url = URL(string: urlString + "app_id=" + appID) else { throw HTTPError.invalidURL }
+        guard let url = URL(string: urlString) else { throw HTTPError.invalidURL }
         let request = URLRequest(url: url)
 
         let (data, response) = try await session.data(for: request)
@@ -98,7 +96,7 @@ enum HTTPError: LocalizedError, CaseIterable {
     case not_allowed
     case invalidRequest
 
-    var localizedDescription: String? {
+    var errorDescription: String? {
         switch self {
         case .invalidURL:
             return NSLocalizedString("Invalid URL", comment: "")
@@ -117,4 +115,13 @@ enum HTTPError: LocalizedError, CaseIterable {
             return NSLocalizedString("Invalid request", comment: "")
         }
     }
+}
+
+enum APIInfos {
+
+    static let urlString: String = "https://openexchangerates.org/api/latest.json?"
+
+    static let appID = "b9fcd43d720d4b7a85a924cd61d64f8a"
+
+    static var endpointString = urlString + "app_id=" + appID
 }

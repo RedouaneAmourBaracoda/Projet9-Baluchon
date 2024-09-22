@@ -29,7 +29,7 @@ struct CurrencyView: View {
             .refresh(currencyViewModel: currencyViewModel)
         }
         .alert(isPresented: $currencyViewModel.shouldPresentAlert) {
-            Alert(title: Text("Error"), message: Text(currencyViewModel.error?.localizedDescription ?? "Internal error occured and cannot be determined."))
+            Alert(title: Text("Error"), message: Text(currencyViewModel.errorMessage))
         }
     }
 

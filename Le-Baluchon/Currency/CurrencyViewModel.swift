@@ -22,7 +22,7 @@ final class CurrencyViewModel: ObservableObject {
 
     @Published var shouldPresentAlert = false
 
-    var error: Error?
+    var errorMessage: String = ""
 
     // MARK: - Services.
 
@@ -55,10 +55,13 @@ final class CurrencyViewModel: ObservableObject {
             let targetRateInUSD = lastRates[targetCurrency.abreviation]
         else { return }
 
+        print("baseRateInUSD :\(baseRateInUSD)")
+        print("targetRateInUSD :\(targetRateInUSD)")
+
         outputString = formatter.string(from: NSNumber(value: baseValue * (targetRateInUSD / baseRateInUSD)))
     }
 
-    private func shouldUpdateRates() -> Bool {
+    func shouldUpdateRates() -> Bool {
 
         let lastRates = dataStoreService.retrieveRates()
 
@@ -69,12 +72,16 @@ final class CurrencyViewModel: ObservableObject {
         return Date.now.timeIntervalSince1970 - lastDate > maxInterval
     }
 
-    private func getCurrency() async {
+    func getCurrency() async {
         do {
             let result = try await currencyApiService.fetchCurrency()
             dataStoreService.save(Date.now.timeIntervalSince1970, rates: result.rates)
         } catch {
-            self.error = error
+            if let httpError = error as? HTTPError {
+                errorMessage = httpError.errorDescription ?? httpError.localizedDescription
+            } else {
+                errorMessage = .undeterminedErrorDescription
+            }
             shouldPresentAlert = true
         }
     }
@@ -86,21 +93,15 @@ final class CurrencyViewModel: ObservableObject {
     }
 }
 
-extension CurrencyViewModel {
-    func testShouldUpdateRates() -> Bool {
-        self.shouldUpdateRates()
-    }
-
-    func testGetCurrency() async {
-        await self.getCurrency()
-    }
-}
-
-private extension NumberFormatter {
+extension NumberFormatter {
     static let valueFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 1
+        formatter.maximumFractionDigits = 2
         return formatter
     }()
+}
+
+extension String {
+    static let undeterminedErrorDescription = "A non determined error occured. Please try again later"
 }
