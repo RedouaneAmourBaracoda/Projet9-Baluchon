@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B8000E102C782D5A0006106D /* CurrencyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8000E0F2C782D5A0006106D /* CurrencyItemView.swift */; };
+		B808338F2CA0D3F100B43E6D /* LanguageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B808338E2CA0D3F100B43E6D /* LanguageItem.swift */; };
+		B80833942CA0D56300B43E6D /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80833932CA0D56300B43E6D /* TranslationView.swift */; };
 		B82023412C779CD8002F0494 /* Le_BaluchonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */; };
 		B82023432C779CD8002F0494 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023422C779CD8002F0494 /* CurrencyView.swift */; };
 		B82023452C779CDA002F0494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82023442C779CDA002F0494 /* Assets.xcassets */; };
@@ -22,6 +24,9 @@
 		B8D1339A2C9AA3AA00983170 /* CurrencyViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D133992C9AA3AA00983170 /* CurrencyViewModifiers.swift */; };
 		B8F44D102C9AF2D500485418 /* CurrencyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F44D0F2C9AF2D500485418 /* CurrencyViewModelTests.swift */; };
 		B8F44D122C9B674700485418 /* DataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F44D112C9B674700485418 /* DataStoreService.swift */; };
+		B8FA60FD2CA17D320034046D /* BackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA60FC2CA17D320034046D /* BackgroundModifier.swift */; };
+		B8FA60FF2CA1895E0034046D /* TranslationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA60FE2CA1895E0034046D /* TranslationViewModel.swift */; };
+		B8FA61012CA1A6E10034046D /* TranslationAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA61002CA1A6E10034046D /* TranslationAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		B8000E0F2C782D5A0006106D /* CurrencyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyItemView.swift; sourceTree = "<group>"; };
+		B808338E2CA0D3F100B43E6D /* LanguageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageItem.swift; sourceTree = "<group>"; };
+		B80833932CA0D56300B43E6D /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		B820233D2C779CD8002F0494 /* Le-Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le-Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonApp.swift; sourceTree = "<group>"; };
 		B82023422C779CD8002F0494 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
@@ -60,6 +67,9 @@
 		B8D133992C9AA3AA00983170 /* CurrencyViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModifiers.swift; sourceTree = "<group>"; };
 		B8F44D0F2C9AF2D500485418 /* CurrencyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModelTests.swift; sourceTree = "<group>"; };
 		B8F44D112C9B674700485418 /* DataStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreService.swift; sourceTree = "<group>"; };
+		B8FA60FC2CA17D320034046D /* BackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModifier.swift; sourceTree = "<group>"; };
+		B8FA60FE2CA1895E0034046D /* TranslationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewModel.swift; sourceTree = "<group>"; };
+		B8FA61002CA1A6E10034046D /* TranslationAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +97,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B808338D2CA0D01D00B43E6D /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				B80833922CA0D55800B43E6D /* View */,
+				B80833912CA0D53F00B43E6D /* ViewModel */,
+				B80833902CA0D53600B43E6D /* Model */,
+			);
+			path = Translation;
+			sourceTree = "<group>";
+		};
+		B80833902CA0D53600B43E6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B808338E2CA0D3F100B43E6D /* LanguageItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B80833912CA0D53F00B43E6D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B8FA60FE2CA1895E0034046D /* TranslationViewModel.swift */,
+				B8FA61002CA1A6E10034046D /* TranslationAPIService.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B80833922CA0D55800B43E6D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B80833932CA0D56300B43E6D /* TranslationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B82023342C779CD8002F0494 = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */,
+				B8FA60FC2CA17D320034046D /* BackgroundModifier.swift */,
 				B8BCA1452C89368D00DEAB92 /* Currency */,
+				B808338D2CA0D01D00B43E6D /* Translation */,
 				B8BCA1472C8936B400DEAB92 /* Ressources */,
 				B82023462C779CDA002F0494 /* Preview Content */,
 			);
@@ -333,8 +380,13 @@
 				B8F44D122C9B674700485418 /* DataStoreService.swift in Sources */,
 				B8D1339A2C9AA3AA00983170 /* CurrencyViewModifiers.swift in Sources */,
 				B82023432C779CD8002F0494 /* CurrencyView.swift in Sources */,
+				B80833942CA0D56300B43E6D /* TranslationView.swift in Sources */,
 				B820236D2C779E58002F0494 /* CurrencyAPIService.swift in Sources */,
+				B8FA61012CA1A6E10034046D /* TranslationAPIService.swift in Sources */,
 				B8000E102C782D5A0006106D /* CurrencyItemView.swift in Sources */,
+				B808338F2CA0D3F100B43E6D /* LanguageItem.swift in Sources */,
+				B8FA60FF2CA1895E0034046D /* TranslationViewModel.swift in Sources */,
+				B8FA60FD2CA17D320034046D /* BackgroundModifier.swift in Sources */,
 				B820236B2C779E44002F0494 /* CurrencyViewModel.swift in Sources */,
 				B82023412C779CD8002F0494 /* Le_BaluchonApp.swift in Sources */,
 			);

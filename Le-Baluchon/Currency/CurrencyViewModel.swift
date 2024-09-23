@@ -55,9 +55,6 @@ final class CurrencyViewModel: ObservableObject {
             let targetRateInUSD = lastRates[targetCurrency.abreviation]
         else { return }
 
-        print("baseRateInUSD :\(baseRateInUSD)")
-        print("targetRateInUSD :\(targetRateInUSD)")
-
         outputString = formatter.string(from: NSNumber(value: baseValue * (targetRateInUSD / baseRateInUSD)))
     }
 
@@ -77,8 +74,8 @@ final class CurrencyViewModel: ObservableObject {
             let result = try await currencyApiService.fetchCurrency()
             dataStoreService.save(Date.now.timeIntervalSince1970, rates: result.rates)
         } catch {
-            if let httpError = error as? HTTPError {
-                errorMessage = httpError.errorDescription ?? httpError.localizedDescription
+            if let currencyAPIError = error as? CurrencyAPIError {
+                errorMessage = currencyAPIError.errorDescription ?? .undeterminedErrorDescription
             } else {
                 errorMessage = .undeterminedErrorDescription
             }
@@ -103,5 +100,5 @@ extension NumberFormatter {
 }
 
 extension String {
-    static let undeterminedErrorDescription = "A non determined error occured. Please try again later"
+    static let undeterminedErrorDescription = "A non-determined error occured. Please try again later"
 }

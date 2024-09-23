@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CurrencyView: View {
     @ObservedObject private var currencyViewModel = CurrencyViewModel(
-        currencyApiService: RealCurrencyApiService.shared,
+        currencyApiService: RealCurrencyAPIService.shared,
         dataStoreService: RealDataStoreService()
     )
 

@@ -10,28 +10,28 @@ import XCTest
 
 final class RealCurrencyAPIServiceTests: XCTestCase {
 
-    var currencyApiService: RealCurrencyApiService!
+    var currencyAPIService: RealCurrencyAPIService!
 
     override func setUpWithError() throws {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [MockURLProtocol.self]
         let sessionMock = URLSession(configuration: configuration)
-        currencyApiService = .init(session: sessionMock)
+        currencyAPIService = .init(session: sessionMock)
     }
 
     func testNetworkCallFailsWhenInvalidURL() async throws {
 
         // Given.
 
-        currencyApiService.urlString = ""
+        currencyAPIService.urlString = ""
 
         // Then.
 
         do {
-            let _ = try await currencyApiService.fetchCurrency()
-        } catch let error as HTTPError {
+            let _ = try await currencyAPIService.fetchCurrency()
+        } catch let error as CurrencyAPIError {
             XCTAssert(error == .invalidURL)
-            XCTAssert(error.errorDescription == HTTPError.invalidURL.errorDescription)
+            XCTAssert(error.errorDescription == CurrencyAPIError.invalidURL.errorDescription)
         }
     }
 
@@ -58,10 +58,10 @@ final class RealCurrencyAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await currencyApiService.fetchCurrency()
-        } catch let error as HTTPError {
+            let _ = try await currencyAPIService.fetchCurrency()
+        } catch let error as CurrencyAPIError {
             XCTAssert(error == .invalid_base)
-            XCTAssert(error.errorDescription == HTTPError.invalid_base.errorDescription)
+            XCTAssert(error.errorDescription == CurrencyAPIError.invalid_base.errorDescription)
         }
     }
 
@@ -88,10 +88,10 @@ final class RealCurrencyAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await currencyApiService.fetchCurrency()
-        } catch let error as HTTPError {
+            let _ = try await currencyAPIService.fetchCurrency()
+        } catch let error as CurrencyAPIError {
             XCTAssert(error == .invalid_app_id)
-            XCTAssert(error.errorDescription == HTTPError.invalid_app_id.errorDescription)
+            XCTAssert(error.errorDescription == CurrencyAPIError.invalid_app_id.errorDescription)
         }
     }
 
@@ -118,10 +118,10 @@ final class RealCurrencyAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await currencyApiService.fetchCurrency()
-        } catch let error as HTTPError {
+            let _ = try await currencyAPIService.fetchCurrency()
+        } catch let error as CurrencyAPIError {
             XCTAssert(error == .access_restricted)
-            XCTAssert(error.errorDescription == HTTPError.access_restricted.errorDescription)
+            XCTAssert(error.errorDescription == CurrencyAPIError.access_restricted.errorDescription)
         }
     }
 
@@ -148,10 +148,10 @@ final class RealCurrencyAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await currencyApiService.fetchCurrency()
-        } catch let error as HTTPError {
+            let _ = try await currencyAPIService.fetchCurrency()
+        } catch let error as CurrencyAPIError {
             XCTAssert(error == .not_found)
-            XCTAssert(error.errorDescription == HTTPError.not_found.errorDescription)
+            XCTAssert(error.errorDescription == CurrencyAPIError.not_found.errorDescription)
         }
     }
 
@@ -178,10 +178,10 @@ final class RealCurrencyAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await currencyApiService.fetchCurrency()
-        } catch let error as HTTPError {
+            let _ = try await currencyAPIService.fetchCurrency()
+        } catch let error as CurrencyAPIError {
             XCTAssert(error == .not_allowed)
-            XCTAssert(error.errorDescription == HTTPError.not_allowed.errorDescription)
+            XCTAssert(error.errorDescription == CurrencyAPIError.not_allowed.errorDescription)
         }
     }
 
@@ -208,10 +208,10 @@ final class RealCurrencyAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await currencyApiService.fetchCurrency()
-        } catch let error as HTTPError {
+            let _ = try await currencyAPIService.fetchCurrency()
+        } catch let error as CurrencyAPIError {
             XCTAssert(error == .invalidRequest)
-            XCTAssert(error.errorDescription == HTTPError.invalidRequest.errorDescription)
+            XCTAssert(error.errorDescription == CurrencyAPIError.invalidRequest.errorDescription)
         }
     }
 
@@ -245,7 +245,7 @@ final class RealCurrencyAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let result = try await currencyApiService.fetchCurrency()
+            let result = try await currencyAPIService.fetchCurrency()
             XCTAssertTrue(result.rates.keys.contains(where: { $0 == targetCurrency.abreviation }))
             XCTAssertTrue(result.rates.values.contains(where: { $0 == 1.1083277687 }))
         } catch {

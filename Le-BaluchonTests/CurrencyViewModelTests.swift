@@ -89,12 +89,12 @@ final class CurrencyViewModelTests: XCTestCase {
         XCTAssertFalse(shouldUpdateRates)
     }
 
-    // Testing no data is saved when the API service returns an http error.
-    func testGetCurrencyWhenAPIReturnsHTTPError() async {
+    // Testing no data is saved when the currency API service returns an error.
+    func testGetCurrencyWhenAPIReturnsError() async {
 
         // Given.
 
-        let error: HTTPError? = .allCases.randomElement()
+        let error: CurrencyAPIError? = .allCases.randomElement()
 
         currencyAPIService.error = error
 
@@ -317,9 +317,13 @@ final class CurrencyViewModelTests: XCTestCase {
 
         // Given.
 
-        currencyViewModel.baseCurrency = .BritishPound
+        let initialBaseCurrency = CurrencyItem.allCases.randomElement() ?? .BritishPound
 
-        currencyViewModel.targetCurrency = .Euro
+        let initialTargetCurrency = CurrencyItem.allCases.randomElement() ?? .Euro
+
+        currencyViewModel.baseCurrency = initialBaseCurrency
+
+        currencyViewModel.targetCurrency = initialTargetCurrency
 
         // When.
 
@@ -327,8 +331,8 @@ final class CurrencyViewModelTests: XCTestCase {
 
         // Then.
 
-        XCTAssertEqual(currencyViewModel.baseCurrency, .Euro)
+        XCTAssertEqual(currencyViewModel.baseCurrency, initialTargetCurrency)
 
-        XCTAssertEqual(currencyViewModel.targetCurrency, .BritishPound)
+        XCTAssertEqual(currencyViewModel.targetCurrency, initialBaseCurrency)
     }
 }

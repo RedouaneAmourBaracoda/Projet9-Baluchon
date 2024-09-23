@@ -1,5 +1,5 @@
 //
-//  CurrencyApiService.swift
+//  TranslationAPIService.swift
 //  Baluchon
 //
 //  Created by Redouane on 22/08/2024.
@@ -7,50 +7,45 @@
 
 import Foundation
 
-protocol CurrencyAPIService {
-    func fetchCurrency() async throws -> CurrencyAPIResponse
+protocol TranslationAPIService {
+    func fetchTranslation(q: String, source: String, target: String, format: String ) async throws -> GoogleAPIResponse
 }
 
-final class MockCurrencyAPIService: CurrencyAPIService {
+//final class MockTranslationAPIService: TranslationAPIService {
+//
+//    var translationToReturn: GoogleAPIResponse?
+//
+//    var error: Error?
+//
+//    var fetchTranslationCallsCounter: Int = 0
+//
+//    func fetchTranslation(q: String, source: String, target: String, format: String ) async throws -> GoogleAPIResponse {
+//        fetchTranslationCallsCounter += 1
+//
+//        guard let error else { return translationToReturn ?? .init(translations: [:]) }
+//
+//        throw error
+//    }
+//}
 
-    var ratesToReturn: CurrencyAPIResponse?
-
-    var error: Error?
-
-    var fetchCurrencyCallsCounter: Int = 0
-
-    func fetchCurrency() async throws -> CurrencyAPIResponse {
-        fetchCurrencyCallsCounter += 1
-
-        guard let error else { return ratesToReturn ?? .init(rates: [:]) }
-
-        throw error
-    }
-}
-
-final class RealCurrencyAPIService: CurrencyAPIService {
+final class RealTranslationAPIService: TranslationAPIService {
 
     // MARK: - API infos.
 
     private enum APIInfos {
-
-        static let urlString: String = "https://openexchangerates.org/api/latest.json?"
-
-        static let appID = "b9fcd43d720d4b7a85a924cd61d64f8a"
-
-        static var endpointString = urlString + "app_id=" + appID
+        static let googleAPIURL = "https://translation.googleapis.com/language/translate/v2?"
+        static let googleAPIKey = "AIzaSyD2PKuGzRMcreo6MJu9c7SvTF5PsPR1fso"
     }
-
-
-    // MARK: - Singleton pattern.
-
-    static let shared: RealCurrencyAPIService = .init()
-
-    private init() {}
 
     // MARK: - Properties.
 
-    var urlString: String = APIInfos.endpointString
+    var urlString: String = APIInfos.googleAPIURL + APIInfos.googleAPIKey
+
+    // MARK: - Singleton pattern.
+
+    static let shared: RealTranslationAPIService = .init()
+
+    private init() {}
 
     // MARK: - Dependency injection.
 
@@ -62,23 +57,37 @@ final class RealCurrencyAPIService: CurrencyAPIService {
 
     // MARK: - Methods.
 
-    func fetchCurrency() async throws -> CurrencyAPIResponse {
-        guard let url = URL(string: urlString) else { throw CurrencyAPIError.invalidURL }
-        let request = URLRequest(url: url)
+    func fetchTranslation(q: String, source: String, target: String, format: String ) async throws -> GoogleAPIResponse {
+
+        let parameters = "&q=" + q
+        + "&source=" + source
+        + "&target=" + target
+        + "&format=" + format 
+        + "&key=" + APIInfos.googleAPIKey
+
+        guard let url = URL(string: urlString + parameters) else { throw GoogleAPIError.invalidURL }
+
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "POST"
 
         let (data, response) = try await session.data(for: request)
 
         let result = checkStatusCode(urlResponse: response)
 
         switch result {
+
         case .success():
-            return try JSONDecoder().decode(CurrencyAPIResponse.self, from: data)
+
+            return try JSONDecoder().decode(GoogleAPIResponse.self, from: data)
+
         case let .failure(failure):
+
             throw failure
         }
     }
 
-    private func checkStatusCode(urlResponse: URLResponse) -> Result<Void, CurrencyAPIError> {
+    private func checkStatusCode(urlResponse: URLResponse) -> Result<Void, GoogleAPIError> {
         guard let httpURLResponse = urlResponse as? HTTPURLResponse else { return .failure(.invalidRequest) }
 
         let statusCode = httpURLResponse.statusCode
@@ -101,11 +110,21 @@ final class RealCurrencyAPIService: CurrencyAPIService {
     }
 }
 
-struct CurrencyAPIResponse: Codable {
-    let rates: [String: Double]
+struct GoogleAPIResponse: Codable {
+    let data: GoogleAPITranslations
 }
 
-enum CurrencyAPIError: LocalizedError, CaseIterable {
+struct GoogleAPITranslations : Codable {
+    let translations : [GoogleAPITranslationText]
+}
+
+struct GoogleAPITranslationText : Codable {
+    let translatedText : String
+}
+
+
+
+enum GoogleAPIError: LocalizedError, CaseIterable {
     case invalidURL
     case invalid_base
     case invalid_app_id
