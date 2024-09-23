@@ -22,5 +22,16 @@ enum LanguageItem: String, CaseIterable {
             "es"
         }
     }
+
+    var defaultWord: String {
+        switch self {
+        case .anglais:
+            "Hello !"
+        case .français:
+            "Bonjour !"
+        case .espagnol:
+            "¡Holà!"
+        }
+    }
 }
 

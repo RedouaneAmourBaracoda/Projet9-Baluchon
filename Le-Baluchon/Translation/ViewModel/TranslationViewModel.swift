@@ -56,4 +56,10 @@ final class TranslationViewModel: ObservableObject {
         inputText = ""
         outputText = ""
     }
+
+    func swapLanguages() {
+        let initialBaseLanguage = baseLanguageItem
+        baseLanguageItem = targetLanguageItem
+        targetLanguageItem = initialBaseLanguage
+    }
 }

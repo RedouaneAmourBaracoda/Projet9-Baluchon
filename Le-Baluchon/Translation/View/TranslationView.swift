@@ -14,44 +14,80 @@ struct TranslationView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(translationViewModel.baseLanguageItem.rawValue)
+                dropDownView(selectedItem: $translationViewModel.baseLanguageItem)
                     .padding()
                     .withBackground()
 
-                Image(systemName: "arrow.triangle.swap")
-                    .rotationEffect(.degrees(90))
+                Button(action: {
+                    translationViewModel.swapLanguages()
+                }, label: {
+                    Image(systemName: "arrow.triangle.swap")
+                        .rotationEffect(.degrees(90))
+                })
 
-                Text(translationViewModel.targetLanguageItem.rawValue)
+                dropDownView(selectedItem: $translationViewModel.targetLanguageItem)
                     .padding()
                     .withBackground()
             }
 
             VStack(alignment: .leading, spacing: 0) {
                 Text(translationViewModel.baseLanguageItem.rawValue)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.black)
 
-                TextField("Type text", text: $translationViewModel.inputText, axis: .vertical)
-                    .lineLimit(7, reservesSpace: true)
-                    .fontWeight(.thin)
-                    .onSubmit {
-                        Task {
-                            await translationViewModel.translate()
-                        }
+                TextField(
+                    translationViewModel.baseLanguageItem.defaultWord,
+                    text: $translationViewModel.inputText,
+                    axis: .vertical
+                )
+                .lineLimit(7, reservesSpace: true)
+                .fontWeight(.ultraLight)
+
+                .onSubmit {
+                    Task {
+                        await translationViewModel.translate()
                     }
+                }
             }
             .padding()
             .withBackground()
 
             VStack(alignment: .leading, spacing: 0) {
                 Text(translationViewModel.targetLanguageItem.rawValue)
-                Text(translationViewModel.outputText)
-                    .lineLimit(7)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .fontWeight(.thin)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.black)
+
+                Text(translationViewModel.outputText.isEmpty ?
+                     translationViewModel.targetLanguageItem.defaultWord
+                     : translationViewModel.outputText
+                )
+                .lineLimit(7)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .fontWeight(.ultraLight)
+                .opacity(translationViewModel.outputText.isEmpty ? 0.25 : 1.0)
             }
             .padding()
             .withBackground()
 
             Spacer()
+        }
+    }
+
+    private func dropDownView(selectedItem: Binding<LanguageItem>) -> some View {
+        VStack(alignment: .leading){
+            HStack {
+                Menu(selectedItem.wrappedValue.rawValue) {
+                    ForEach(LanguageItem.allCases, id: \.self) { languageItem in
+                        Button(action: {
+                            selectedItem.wrappedValue = languageItem
+                        }, label: {
+                            Text(languageItem.rawValue)
+                        })
+                    }
+                }
+                .font(.subheadline)
+                .foregroundStyle(Color.black)
+            }
         }
     }
 }
