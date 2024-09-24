@@ -76,8 +76,11 @@ struct TranslationView: View {
                     Text("Clear")
                 }
                 .padding()
+
             }
             .withBackground()
+
+            Spacer()
         }
     }
 

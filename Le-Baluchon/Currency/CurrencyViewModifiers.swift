@@ -17,8 +17,12 @@ extension View {
     }
 }
 
-struct ValueModifier: ViewModifier {
-    let fontWeight: Font.Weight
+private struct ValueModifier: ViewModifier {
+    private let fontWeight: Font.Weight
+
+    init(fontWeight: Font.Weight) {
+        self.fontWeight = fontWeight
+    }
 
     func body(content: Content) -> some View {
         content
@@ -28,7 +32,7 @@ struct ValueModifier: ViewModifier {
     }
 }
 
-struct RefreshableModifier: ViewModifier {
+private struct RefreshableModifier: ViewModifier {
     @ObservedObject private var currencyViewModel: CurrencyViewModel
 
     init(currencyViewModel: CurrencyViewModel) {
@@ -40,25 +44,9 @@ struct RefreshableModifier: ViewModifier {
             .refreshable {
                 await currencyViewModel.convert()
             }
-            .onChange(of: currencyViewModel.baseCurrency) {
-                Task {
-                    await currencyViewModel.convert()
-                }
-            }
-            .onChange(of: currencyViewModel.targetCurrency) {
-                Task {
-                    await currencyViewModel.convert()
-                }
-            }
-            .onChange(of: currencyViewModel.baseValue) {
-                Task {
-                    await currencyViewModel.convert()
-                }
-            }
-            .onAppear {
-                Task {
-                    await currencyViewModel.convert()
-                }
-            }
+            .task { await currencyViewModel.convert() }
+            .task(id: currencyViewModel.baseCurrency) { await currencyViewModel.convert() }
+            .task(id: currencyViewModel.targetCurrency) { await currencyViewModel.convert() }
+            .task(id: currencyViewModel.baseValue) { await currencyViewModel.convert() }
     }
 }

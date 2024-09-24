@@ -11,7 +11,13 @@ import SwiftUI
 struct Le_BaluchonApp: App {
     var body: some Scene {
         WindowGroup {
-            TranslationView()
+            TabView {
+                CurrencyView()
+                    .tabItem { Image(systemName: "dollarsign") }
+
+                TranslationView()
+                    .tabItem { Image(systemName: "textformat") }
+            }
         }
     }
 }

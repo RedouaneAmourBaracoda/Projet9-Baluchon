@@ -22,7 +22,7 @@ struct CurrencyView: View {
                     targetCurrencyView()
                     Spacer()
                     pullToRefreshView()
-
+                    Spacer()
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)
             }
