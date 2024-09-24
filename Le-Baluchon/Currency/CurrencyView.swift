@@ -27,6 +27,7 @@ struct CurrencyView: View {
                 .frame(width: geometry.size.width, height: geometry.size.height)
             }
             .refresh(currencyViewModel: currencyViewModel)
+            .safeAreaPadding(.vertical)
         }
         .alert(isPresented: $currencyViewModel.shouldPresentAlert) {
             Alert(title: Text("Error"), message: Text(currencyViewModel.errorMessage))
@@ -62,7 +63,11 @@ struct CurrencyView: View {
     }
 
     private func pullToRefreshView() -> some View {
-        Image(uiImage: UIImage(resource: .init(name: "pull-to-refresh", bundle: .main))).opacity(0.1)
+        Image(uiImage: UIImage(resource: .init(name: "pull-to-refresh", bundle: .main)))
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(maxWidth: 150, maxHeight: 150)
+            .opacity(0.1)
     }
 }
 

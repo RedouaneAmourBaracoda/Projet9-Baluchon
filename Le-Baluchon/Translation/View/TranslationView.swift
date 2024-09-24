@@ -40,7 +40,7 @@ struct TranslationView: View {
                     text: $translationViewModel.inputText,
                     axis: .vertical
                 )
-                .lineLimit(7, reservesSpace: true)
+                .lineLimit(5, reservesSpace: true)
                 .fontWeight(.ultraLight)
 
                 .onSubmit {
@@ -56,20 +56,28 @@ struct TranslationView: View {
                 Text(translationViewModel.targetLanguageItem.rawValue)
                     .font(.subheadline)
                     .foregroundStyle(Color.black)
+                    .padding([.horizontal, .top])
 
                 Text(translationViewModel.outputText.isEmpty ?
                      translationViewModel.targetLanguageItem.defaultWord
                      : translationViewModel.outputText
                 )
-                .lineLimit(7)
+                .lineLimit(5)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fontWeight(.ultraLight)
                 .opacity(translationViewModel.outputText.isEmpty ? 0.25 : 1.0)
-            }
-            .padding()
-            .withBackground()
+                .padding([.horizontal, .bottom])
 
-            Spacer()
+                Divider()
+
+                Button {
+                    translationViewModel.clear()
+                } label: {
+                    Text("Clear")
+                }
+                .padding()
+            }
+            .withBackground()
         }
     }
 
