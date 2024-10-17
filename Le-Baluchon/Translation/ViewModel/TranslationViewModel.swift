@@ -35,10 +35,17 @@ final class TranslationViewModel: ObservableObject {
     // MARK: - Methods.
 
     func translate() async {
+
         guard !inputText.isEmpty else {
             clear()
             return
         }
+
+        guard baseLanguageItem != targetLanguageItem else {
+            outputText = inputText
+            return
+        }
+
         do {
             let result = try await translationAPIService.fetchTranslation(
                 q: inputText,
