@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TranslationAPIService {
-    func fetchTranslation(q: String, source: String, target: String, format: String ) async throws -> GoogleAPIResponse
+    func fetchTranslation(q: String, source: String, target: String, format: String) async throws -> GoogleAPIResponse
 }
 
 //final class MockTranslationAPIService: TranslationAPIService {
@@ -33,13 +33,14 @@ final class RealTranslationAPIService: TranslationAPIService {
     // MARK: - API infos.
 
     private enum APIInfos {
-        static let googleAPIURL = "https://translation.googleapis.com/language/translate/v2?"
-        static let googleAPIKey = "AIzaSyD2PKuGzRMcreo6MJu9c7SvTF5PsPR1fso"
+        static let ressource = "https://translation.googleapis.com/language/translate/v2?"
+        static let key = "AIzaSyD2PKuGzRMcreo6MJu9c7SvTF5PsPR1fso"
+        static var url = ressource + "key=" + key
     }
 
     // MARK: - Properties.
 
-    var urlString: String = APIInfos.googleAPIURL + APIInfos.googleAPIKey
+    var urlString: String = APIInfos.url
 
     // MARK: - Singleton pattern.
 
@@ -57,19 +58,20 @@ final class RealTranslationAPIService: TranslationAPIService {
 
     // MARK: - Methods.
 
-    func fetchTranslation(q: String, source: String, target: String, format: String ) async throws -> GoogleAPIResponse {
+    func fetchTranslation(q: String, source: String, target: String, format: String) async throws -> GoogleAPIResponse {
 
-        let parameters = "&q=" + q
-        + "&source=" + source
-        + "&target=" + target
-        + "&format=" + format 
-        + "&key=" + APIInfos.googleAPIKey
-
-        guard let url = URL(string: urlString + parameters) else { throw GoogleAPIError.invalidURL }
+        guard let url = URL(string: urlString) else { throw GoogleAPIError.invalidURL }
 
         var request = URLRequest(url: url)
 
+        // HTTP Method.
         request.httpMethod = "POST"
+
+        // HTTP Headers.
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        // HTTP Body.
+        request.httpBody = try? JSONSerialization.data(withJSONObject: ["q": q, "source": source, "target": target, "format": format])
 
         let (data, response) = try await session.data(for: request)
 
@@ -92,20 +94,22 @@ final class RealTranslationAPIService: TranslationAPIService {
 
         let statusCode = httpURLResponse.statusCode
 
-        print("STATUS CODE: \(statusCode)")
-
         switch statusCode {
-            case 200 : return .success(())
+            case 200: return .success(())
 
-            case 400: return .failure(.invalid_base)
+            case 400: return .failure(.bad_request)
 
-            case 401: return .failure(.invalid_app_id)
+            case 401: return .failure(.unauthorized)
 
-            case 403: return .failure(.access_restricted)
+            case 402: return .failure(.payment_required)
+
+            case 403: return .failure(.forbidden)
 
             case 404: return .failure(.not_found)
 
-            case 429: return .failure(.not_allowed)
+            case 405: return .failure(.not_allowed)
+
+            case 429: return .failure(.too_many_requests)
 
             default: return .failure(.invalidRequest)
         }
@@ -124,32 +128,35 @@ struct GoogleAPITranslationText : Codable {
     let translatedText : String
 }
 
-
-
 enum GoogleAPIError: LocalizedError, CaseIterable {
     case invalidURL
-    case invalid_base
-    case invalid_app_id
-    case access_restricted
+    case bad_request
+    case unauthorized
+    case payment_required
+    case forbidden
     case not_found
     case not_allowed
+    case too_many_requests
     case invalidRequest
 
     var errorDescription: String? {
         switch self {
         case .invalidURL:
             return NSLocalizedString("Invalid URL", comment: "")
-        case .invalid_base:
-            return NSLocalizedString("Client requested rates for an unsupported base currency", comment: "")
-        case .invalid_app_id:
-            return NSLocalizedString("Client provided an invalid App ID", comment: "")
-        case .access_restricted:
-            return NSLocalizedString(" Access restricted for repeated over-use (status: 429), or other reason given in ‘description’ (403)", comment: "")
+        case .bad_request:
+            return NSLocalizedString("The client provided invalid query parameters for the request. It can be invalid fields, invalid values, or invalid api key.", comment: "")
+        case .unauthorized:
+            return NSLocalizedString("The client provided invalid credentials or the session has expired.", comment: "")
+        case .payment_required:
+            return NSLocalizedString("The client has exceeded the limit of daily requests and must upgrade the plan.", comment: "")
+        case .forbidden:
+            return NSLocalizedString("The requested operation is not allowed. It can be due to wrong access configuration, restricted access or exceeded limit of quotas for repeated over-use.", comment: "")
         case .not_found:
-            return NSLocalizedString("Client requested a non-existent resource/route", comment: "")
-
+            return NSLocalizedString("The client requested a non-existent resource/route", comment: "")
         case .not_allowed:
-            return NSLocalizedString("Client doesn’t have permission to access requested route/feature", comment: "")
+            return NSLocalizedString("The http method for this request is not allowed. The client doesn’t have permission to access requested route/feature", comment: "")
+        case .too_many_requests:
+            return NSLocalizedString("The client has exceeded the limit of requests.", comment: "")
         case .invalidRequest:
             return NSLocalizedString("Invalid request", comment: "")
         }

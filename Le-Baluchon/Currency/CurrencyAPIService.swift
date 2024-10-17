@@ -34,11 +34,11 @@ final class RealCurrencyAPIService: CurrencyAPIService {
 
     private enum APIInfos {
 
-        static let urlString: String = "https://openexchangerates.org/api/latest.json?"
+        static let ressource: String = "https://openexchangerates.org/api/latest.json?"
 
         static let appID = "b9fcd43d720d4b7a85a924cd61d64f8a"
 
-        static var endpointString = urlString + "app_id=" + appID
+        static var url = ressource + "app_id=" + appID
     }
 
 
@@ -50,7 +50,7 @@ final class RealCurrencyAPIService: CurrencyAPIService {
 
     // MARK: - Properties.
 
-    var urlString: String = APIInfos.endpointString
+    var urlString: String = APIInfos.url
 
     // MARK: - Dependency injection.
 
@@ -64,6 +64,7 @@ final class RealCurrencyAPIService: CurrencyAPIService {
 
     func fetchCurrency() async throws -> CurrencyAPIResponse {
         guard let url = URL(string: urlString) else { throw CurrencyAPIError.invalidURL }
+
         let request = URLRequest(url: url)
 
         let (data, response) = try await session.data(for: request)
@@ -71,9 +72,13 @@ final class RealCurrencyAPIService: CurrencyAPIService {
         let result = checkStatusCode(urlResponse: response)
 
         switch result {
+
         case .success():
+
             return try JSONDecoder().decode(CurrencyAPIResponse.self, from: data)
+
         case let .failure(failure):
+
             throw failure
         }
     }
@@ -84,7 +89,7 @@ final class RealCurrencyAPIService: CurrencyAPIService {
         let statusCode = httpURLResponse.statusCode
 
         switch statusCode {
-            case 200 : return .success(())
+            case 200: return .success(())
 
             case 400: return .failure(.invalid_base)
 
