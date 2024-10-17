@@ -11,30 +11,33 @@ protocol TranslationAPIService {
     func fetchTranslation(q: String, source: String, target: String, format: String) async throws -> GoogleAPIResponse
 }
 
-//final class MockTranslationAPIService: TranslationAPIService {
-//
-//    var translationToReturn: GoogleAPIResponse?
-//
-//    var error: Error?
-//
-//    var fetchTranslationCallsCounter: Int = 0
-//
-//    func fetchTranslation(q: String, source: String, target: String, format: String ) async throws -> GoogleAPIResponse {
-//        fetchTranslationCallsCounter += 1
-//
-//        guard let error else { return translationToReturn ?? .init(translations: [:]) }
-//
-//        throw error
-//    }
-//}
+final class MockTranslationAPIService: TranslationAPIService {
+
+    var translationToReturn: GoogleAPIResponse?
+
+    var error: Error?
+
+    var fetchTranslationCallsCounter: Int = 0
+
+    func fetchTranslation(q: String, source: String, target: String, format: String ) async throws -> GoogleAPIResponse {
+        fetchTranslationCallsCounter += 1
+
+        guard let error else { return translationToReturn ?? .init(data: .init(translations: []))}
+
+        throw error
+    }
+}
 
 final class RealTranslationAPIService: TranslationAPIService {
 
     // MARK: - API infos.
 
     private enum APIInfos {
+
         static let ressource = "https://translation.googleapis.com/language/translate/v2?"
+
         static let key = "AIzaSyD2PKuGzRMcreo6MJu9c7SvTF5PsPR1fso"
+
         static var url = ressource + "key=" + key
     }
 

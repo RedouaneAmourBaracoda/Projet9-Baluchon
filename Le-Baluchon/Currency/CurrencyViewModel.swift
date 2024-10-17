@@ -98,7 +98,3 @@ extension NumberFormatter {
         return formatter
     }()
 }
-
-extension String {
-    static let undeterminedErrorDescription = "A non-determined error occured. Please try again later"
-}
