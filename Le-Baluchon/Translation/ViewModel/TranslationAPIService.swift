@@ -92,6 +92,8 @@ final class RealTranslationAPIService: TranslationAPIService {
 
         let statusCode = httpURLResponse.statusCode
 
+        print("STATUS CODE: \(statusCode)")
+
         switch statusCode {
             case 200 : return .success(())
 

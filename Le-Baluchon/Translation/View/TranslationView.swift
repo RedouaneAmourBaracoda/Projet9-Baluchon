@@ -22,6 +22,9 @@ struct TranslationView: View {
 
             Spacer()
         }
+        .alert(isPresented: $translationViewModel.shouldPresentAlert) {
+            Alert(title: Text("Error"), message: Text(translationViewModel.errorMessage))
+        }
     }
 
     private func selectableLanguagesView() -> some View {

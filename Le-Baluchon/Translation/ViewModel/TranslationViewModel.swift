@@ -20,6 +20,8 @@ final class TranslationViewModel: ObservableObject {
 
     @Published var outputText: String = ""
 
+    @Published var shouldPresentAlert = false
+
     var errorMessage: String = ""
 
     // MARK: - Services.
@@ -53,9 +55,14 @@ final class TranslationViewModel: ObservableObject {
                 target: targetLanguageItem.codeISO,
                 format: "text"
             )
-            outputText = result.data.translations.first?.translatedText ?? "Error."
+            outputText = result.data.translations.first?.translatedText ?? ""
         } catch {
-            print(error)
+            if let translationAPIError = error as? GoogleAPIError {
+                errorMessage = translationAPIError.errorDescription ?? .undeterminedErrorDescription
+            } else {
+                errorMessage = .undeterminedErrorDescription
+            }
+            shouldPresentAlert = true
         }
     }
 
