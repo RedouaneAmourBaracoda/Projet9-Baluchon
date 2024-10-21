@@ -8,43 +8,43 @@
 import Foundation
 
 enum CurrencyItem: String, CaseIterable {
-    case USDollar = "US Dollar"
-    case Euro = "Euro"
-    case CanadianDollar = "Canadian Dollar"
-    case BritishPound = "British Pound"
-    case AustralianDollar = "Australian Dollar"
+    case usDollar = "US Dollar"
+    case euro = "Euro"
+    case canadianDollar = "Canadian Dollar"
+    case britishPound = "British Pound"
+    case australianDollar = "Australian Dollar"
 
     var symbol: String {
         switch self {
-        case .USDollar: return "$"
-        case .Euro: return "€"
-        case .CanadianDollar: return "$"
-        case .BritishPound: return "£"
-        case .AustralianDollar: return "$"
+        case .usDollar: return "$"
+        case .euro: return "€"
+        case .canadianDollar: return "$"
+        case .britishPound: return "£"
+        case .australianDollar: return "$"
         }
     }
 
     var abreviation: String {
         switch self {
-        case .USDollar: return "USD"
-        case .Euro: return "EUR"
-        case .CanadianDollar: return "CAD"
-        case .BritishPound: return "GBP"
-        case .AustralianDollar: return "AUD"
+        case .usDollar: return "USD"
+        case .euro: return "EUR"
+        case .canadianDollar: return "CAD"
+        case .britishPound: return "GBP"
+        case .australianDollar: return "AUD"
         }
     }
 
     var flag: String {
         switch self {
-        case .USDollar:
+        case .usDollar:
             "US-flag"
-        case .Euro:
+        case .euro:
             "UE-flag"
-        case .CanadianDollar: 
+        case .canadianDollar:
             "Canadian-flag"
-        case .BritishPound:
+        case .britishPound:
            "GB-flag"
-        case .AustralianDollar:
+        case .australianDollar:
             "Australian-flag"
         }
     }

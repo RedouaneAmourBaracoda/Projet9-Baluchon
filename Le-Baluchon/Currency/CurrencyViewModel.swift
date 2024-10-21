@@ -14,9 +14,9 @@ final class CurrencyViewModel: ObservableObject {
 
     @Published var outputString: String?
 
-    @Published var baseCurrency: CurrencyItem = .Euro
+    @Published var baseCurrency: CurrencyItem = .euro
 
-    @Published var targetCurrency: CurrencyItem = .USDollar
+    @Published var targetCurrency: CurrencyItem = .usDollar
 
     @Published var baseValue: Double = 1000.0
 
@@ -26,21 +26,26 @@ final class CurrencyViewModel: ObservableObject {
 
     // MARK: - Services.
 
-    private let currencyApiService: CurrencyAPIService
+    private let currencyApiService: CurrencyAPIServiceType
 
-    private let dataStoreService: DataStoreService
+    private let dataStoreService: DataStoreServiceType
+
+    private let formatter: NumberFormatter
 
     // MARK: - Properties.
 
     private let maxInterval: Double = 3600
 
-    let formatter: NumberFormatter = .valueFormatter
-
     // MARK: - Initializer.
 
-    init(currencyApiService: CurrencyAPIService, dataStoreService: DataStoreService) {
+    init(
+        currencyApiService: CurrencyAPIServiceType = OpenExchangeAPIService(),
+        dataStoreService: DataStoreServiceType = UserDefaultsService(),
+        formatter: NumberFormatter = .valueFormatter
+    ) {
         self.currencyApiService = currencyApiService
         self.dataStoreService = dataStoreService
+        self.formatter = formatter
     }
 
     // MARK: - Methods.
@@ -71,13 +76,13 @@ final class CurrencyViewModel: ObservableObject {
 
     func getCurrency() async {
         do {
-            let result = try await currencyApiService.fetchCurrency()
-            dataStoreService.save(Date.now.timeIntervalSince1970, rates: result.rates)
+            let rates = try await currencyApiService.fetchCurrency()
+            dataStoreService.save(Date.now.timeIntervalSince1970, rates: rates)
         } catch {
-            if let currencyAPIError = error as? CurrencyAPIError {
-                errorMessage = currencyAPIError.errorDescription ?? .undeterminedErrorDescription
+            if let currencyAPIError = error as? LocalizedError {
+                errorMessage = currencyAPIError.errorDescription ?? .currencyUndeterminedErrorDescription
             } else {
-                errorMessage = .undeterminedErrorDescription
+                errorMessage = .currencyUndeterminedErrorDescription
             }
             shouldPresentAlert = true
         }
@@ -88,13 +93,4 @@ final class CurrencyViewModel: ObservableObject {
         baseCurrency = targetCurrency
         targetCurrency = initialBaseCurrency
     }
-}
-
-extension NumberFormatter {
-    static let valueFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 2
-        return formatter
-    }()
 }

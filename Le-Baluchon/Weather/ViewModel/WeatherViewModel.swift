@@ -14,9 +14,7 @@ final class WeatherViewModel: ObservableObject {
 
     @Published var inputCityName: String = ""
 
-    @Published var temperature: Double?
-
-    @Published var weatherDescription: String?
+    @Published var weatherModel: WeatherModel?
 
     @Published var shouldPresentAlert = false
 
@@ -24,11 +22,11 @@ final class WeatherViewModel: ObservableObject {
 
     // MARK: - Services.
 
-    private let weatherAPIService: WeatherAPIService
+    private let weatherAPIService: WeatherAPIServiceType
 
     // MARK: - Initializer.
 
-    init(weatherAPIService: WeatherAPIService) {
+    init(weatherAPIService: WeatherAPIServiceType = OpenWeatherAPIService()) {
         self.weatherAPIService = weatherAPIService
     }
 
@@ -36,15 +34,12 @@ final class WeatherViewModel: ObservableObject {
 
     func getWeather() async {
         do {
-            let result = try await weatherAPIService.fetchWeather(cityName: inputCityName)
-            let weatherModel: WeatherModel = .init(weatherAPIResponse: result)
-            temperature = weatherModel.temperature
-            weatherDescription = weatherModel.weatherDescription?.rawValue
+            weatherModel = try await weatherAPIService.fetchWeather(cityName: inputCityName)
         } catch {
-            if let weatherAPIError = error as? WeatherAPIError {
-                errorMessage = weatherAPIError.errorDescription ?? .undeterminedErrorDescription
+            if let weatherAPIError = error as? LocalizedError {
+                errorMessage = weatherAPIError.errorDescription ?? ""
             } else {
-                errorMessage = .undeterminedErrorDescription
+                errorMessage = ""
             }
             shouldPresentAlert = true
         }

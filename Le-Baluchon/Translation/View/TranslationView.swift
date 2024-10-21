@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TranslationView: View {
 
-    @ObservedObject private var translationViewModel = TranslationViewModel(translationAPIService: RealTranslationAPIService.shared)
+    @ObservedObject private var translationViewModel = TranslationViewModel()
 
     var body: some View {
         VStack {

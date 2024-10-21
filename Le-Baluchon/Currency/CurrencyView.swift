@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct CurrencyView: View {
-    @ObservedObject private var currencyViewModel = CurrencyViewModel(
-        currencyApiService: RealCurrencyAPIService.shared,
-        dataStoreService: RealDataStoreService()
-    )
+    @ObservedObject private var currencyViewModel = CurrencyViewModel()
 
     var body: some View {
         GeometryReader { geometry in
@@ -36,7 +33,7 @@ struct CurrencyView: View {
 
     private func baseCurrencyView() -> some View {
         CurrencyItemView(selectedCurrency: $currencyViewModel.baseCurrency) {
-            TextField("", value: $currencyViewModel.baseValue, formatter: currencyViewModel.formatter)
+            TextField("", value: $currencyViewModel.baseValue, formatter: NumberFormatter.valueFormatter)
                 .keyboardType(.decimalPad)
                 .valueStyle(fontWeight: .bold)
 

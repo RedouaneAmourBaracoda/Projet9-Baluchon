@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @ObservedObject private var weatherViewModel = WeatherViewModel(
-        weatherAPIService: RealWeatherAPIService.shared
-    )
+    @ObservedObject private var weatherViewModel = WeatherViewModel()
 
     var body: some View {
         VStack {
@@ -27,8 +25,8 @@ struct WeatherView: View {
                 }
             }
 
-            Text("Temperature: \(weatherViewModel.temperature ?? 0.0) °C")
-            Text("Weather: \(weatherViewModel.weatherDescription ?? "")")
+            Text("Temperature: \(weatherViewModel.weatherModel?.temperature ?? 0.0) °C")
+            Text("Weather: \(weatherViewModel.weatherModel?.description ?? "")")
         }
         .alert(isPresented: $weatherViewModel.shouldPresentAlert) {
             Alert(title: Text("Error"), message: Text(weatherViewModel.errorMessage))

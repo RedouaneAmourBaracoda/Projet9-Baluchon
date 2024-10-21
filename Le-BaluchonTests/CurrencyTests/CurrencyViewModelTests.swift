@@ -28,12 +28,6 @@ final class CurrencyViewModelTests: XCTestCase {
 
     func testUpdateIsNeededWhenNoDataSaved() {
 
-        // Given.
-
-        dataStoreService.persistedDate = nil
-
-        dataStoreService.persistedRates = nil
-
         // When.
 
         let shouldUpdateRates = currencyViewModel.shouldUpdateRates()
@@ -53,7 +47,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         dataStoreService.persistedDate = Date.now.advanced(by: -3700).timeIntervalSince1970
 
-        dataStoreService.persistedRates = .init()
+        dataStoreService.persistedRates = [:]
 
         // When.
 
@@ -74,7 +68,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         dataStoreService.persistedDate = Date.now.advanced(by: -3500).timeIntervalSince1970
 
-        dataStoreService.persistedRates = .init()
+        dataStoreService.persistedRates = [:]
 
         // When.
 
@@ -89,16 +83,14 @@ final class CurrencyViewModelTests: XCTestCase {
         XCTAssertFalse(shouldUpdateRates)
     }
 
-    // Testing no data is saved when the currency API service returns an error.
-    func testGetCurrencyWhenAPIReturnsError() async {
+    // Testing no data is saved when the OpenExchange API service returns an error.
+    func testGetCurrencyWhenOpenExchangeAPIReturnsError() async {
 
         // Given.
 
-        let error: CurrencyAPIError? = .allCases.randomElement()
+        let error = OpenExchangeAPIError.allCases.randomElement()
 
         currencyAPIService.error = error
-
-        currencyAPIService.ratesToReturn = nil
 
         // When.
 
@@ -119,16 +111,14 @@ final class CurrencyViewModelTests: XCTestCase {
         XCTAssertEqual(currencyViewModel.errorMessage, error?.errorDescription)
     }
 
-    // Testing no data was saved when the API service returns a random error.
-    func testGetCurrencyWhenAPIReturnsOtherError() async {
+    // Testing no data was saved when an API service returns a random error.
+    func testGetCurrencyWhenOpenExchangeAPIReturnsOtherError() async {
 
         // Given.
 
         let error: Error = NSError()
 
         currencyAPIService.error = error
-
-        currencyAPIService.ratesToReturn = nil
 
         // When.
 
@@ -146,23 +136,17 @@ final class CurrencyViewModelTests: XCTestCase {
 
         XCTAssertTrue(currencyViewModel.shouldPresentAlert)
 
-        XCTAssertEqual(currencyViewModel.errorMessage, .undeterminedErrorDescription)
+        XCTAssertEqual(currencyViewModel.errorMessage, .currencyUndeterminedErrorDescription)
     }
 
 
 
-    // Testing data was saved when the API service returns a value.
+    // Testing data was saved when an API service returns a value.
     func testGetCurrencyWhenAPIReturnsValue() async {
 
         // Given.
 
-        currencyAPIService.error = nil
-
-        currencyAPIService.ratesToReturn = .init(rates: [:])
-
-        dataStoreService.persistedDate = nil
-
-        dataStoreService.persistedRates = nil
+        currencyAPIService.ratesToReturn = [:]
 
         // When.
 
@@ -187,17 +171,13 @@ final class CurrencyViewModelTests: XCTestCase {
 
         // Given.
 
-        dataStoreService.persistedDate = nil
-
-        dataStoreService.persistedRates = nil
-
-        currencyViewModel.baseCurrency = .Euro
+        currencyViewModel.baseCurrency = .euro
 
         currencyViewModel.baseValue = 1000
 
-        currencyViewModel.targetCurrency = .BritishPound
+        currencyViewModel.targetCurrency = .britishPound
 
-        currencyAPIService.ratesToReturn = .init(rates: ["AUD": 1.470805, "CAD": 1.35835, "EUR": 0.895215, "GBP": 0.75061])
+        currencyAPIService.ratesToReturn = ["AUD": 1.470805, "CAD": 1.35835, "EUR": 0.895215, "GBP": 0.75061]
 
         // When.
 
@@ -214,7 +194,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         XCTAssertEqual(dataStoreService.saveCallsCounter, 1)
 
-        XCTAssertEqual(currencyAPIService.ratesToReturn?.rates, dataStoreService.retrieveRates())
+        XCTAssertEqual(currencyAPIService.ratesToReturn, dataStoreService.retrieveRates())
 
         XCTAssertNotNil(dataStoreService.retrieveDate())
 
@@ -237,11 +217,11 @@ final class CurrencyViewModelTests: XCTestCase {
 
         dataStoreService.persistedRates = ["AUD": 1.470805, "CAD": 1.35835, "EUR": 0.895215, "GBP": 0.75061]
 
-        currencyViewModel.baseCurrency = .Euro
+        currencyViewModel.baseCurrency = .euro
 
         currencyViewModel.baseValue = 1000
 
-        currencyViewModel.targetCurrency = .BritishPound
+        currencyViewModel.targetCurrency = .britishPound
 
         // When.
 
@@ -279,13 +259,13 @@ final class CurrencyViewModelTests: XCTestCase {
         dataStoreService.persistedRates = ["AUD": 1.470805, "CAD": 1.35835, "EUR": 0.895215, "GBP": 0.75061]
 
         // New rates.
-        currencyAPIService.ratesToReturn = .init(rates: ["AUD": 1.52175, "CAD": 1.23841, "EUR": 0.915235, "GBP": 0.70001])
+        currencyAPIService.ratesToReturn = ["AUD": 1.52175, "CAD": 1.23841, "EUR": 0.915235, "GBP": 0.70001]
 
-        currencyViewModel.baseCurrency = .AustralianDollar
+        currencyViewModel.baseCurrency = .australianDollar
 
         currencyViewModel.baseValue = 1000
 
-        currencyViewModel.targetCurrency = .CanadianDollar
+        currencyViewModel.targetCurrency = .canadianDollar
 
         // When.
 
@@ -317,9 +297,9 @@ final class CurrencyViewModelTests: XCTestCase {
 
         // Given.
 
-        let initialBaseCurrency = CurrencyItem.allCases.randomElement() ?? .BritishPound
+        let initialBaseCurrency = CurrencyItem.allCases.randomElement() ?? .britishPound
 
-        let initialTargetCurrency = CurrencyItem.allCases.randomElement() ?? .Euro
+        let initialTargetCurrency = CurrencyItem.allCases.randomElement() ?? .euro
 
         currencyViewModel.baseCurrency = initialBaseCurrency
 

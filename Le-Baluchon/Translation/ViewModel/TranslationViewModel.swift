@@ -26,11 +26,11 @@ final class TranslationViewModel: ObservableObject {
 
     // MARK: - Services.
 
-    private let translationAPIService: TranslationAPIService
+    private let translationAPIService: TranslationAPIServiceType
 
     // MARK: - Initializer.
 
-    init(translationAPIService: TranslationAPIService) {
+    init(translationAPIService: TranslationAPIServiceType = GoogleTranslationAPIService()) {
         self.translationAPIService = translationAPIService
     }
 
@@ -49,18 +49,17 @@ final class TranslationViewModel: ObservableObject {
         }
 
         do {
-            let result = try await translationAPIService.fetchTranslation(
+            outputText = try await translationAPIService.fetchTranslation(
                 q: inputText,
                 source: baseLanguageItem.codeISO,
                 target: targetLanguageItem.codeISO,
                 format: "text"
             )
-            outputText = result.data.translations.first?.translatedText ?? ""
         } catch {
-            if let translationAPIError = error as? GoogleAPIError {
-                errorMessage = translationAPIError.errorDescription ?? .undeterminedErrorDescription
+            if let translationAPIError = error as? LocalizedError {
+                errorMessage = translationAPIError.errorDescription ?? .translationUndeterminedErrorDescription
             } else {
-                errorMessage = .undeterminedErrorDescription
+                errorMessage = .translationUndeterminedErrorDescription
             }
             shouldPresentAlert = true
         }

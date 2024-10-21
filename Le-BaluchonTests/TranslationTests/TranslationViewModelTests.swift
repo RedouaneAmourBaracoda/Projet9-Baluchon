@@ -30,10 +30,6 @@ final class TranslationViewModelTests: XCTestCase {
 
         translationViewModel.outputText = LanguageItem.français.defaultWord
 
-        XCTAssertFalse(translationViewModel.inputText.isEmpty)
-
-        XCTAssertFalse(translationViewModel.outputText.isEmpty)
-
         // When.
 
         translationViewModel.clear()
@@ -66,10 +62,6 @@ final class TranslationViewModelTests: XCTestCase {
 
     // Testing no fetch when input string is empty.
     func testTranslateWhenInputStringIsEmpty() async {
-
-        // Given.
-
-        translationViewModel.inputText = ""
 
         // When.
 
@@ -106,15 +98,13 @@ final class TranslationViewModelTests: XCTestCase {
         XCTAssertEqual(translationViewModel.outputText, translationViewModel.inputText)
     }
 
-    func testTranslateWhenAPIReturnsError() async {
+    func testTranslateWhenTranslationAPIReturnsGoogleTranslationAPIError() async {
 
         // Given.
 
-        let error: GoogleAPIError? = .allCases.randomElement()
+        let error = GoogleTranslationAPIError.allCases.randomElement()
 
         translationAPIService.error = error
-
-        translationAPIService.translationToReturn = nil
 
         translationViewModel.baseLanguageItem = .anglais
 
@@ -137,16 +127,14 @@ final class TranslationViewModelTests: XCTestCase {
         XCTAssertTrue(translationViewModel.outputText.isEmpty)
     }
 
-    // Testing when the API service returns a random error.
-    func testTranslateWhenAPIReturnsOtherError() async {
+    // Testing when the TranslationAPI returns a random error.
+    func testTranslateWhenTranslationAPIReturnsOtherError() async {
 
         // Given.
 
         let error = NSError()
 
         translationAPIService.error = error
-
-        translationAPIService.translationToReturn = nil
 
         translationViewModel.baseLanguageItem = .anglais
 
@@ -164,7 +152,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         XCTAssertTrue(translationViewModel.shouldPresentAlert)
 
-        XCTAssertEqual(translationViewModel.errorMessage, .undeterminedErrorDescription)
+        XCTAssertEqual(translationViewModel.errorMessage, .translationUndeterminedErrorDescription)
     }
 
     func testTranslateIsSuccessWhenNoErrors() async {
@@ -181,7 +169,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         translationViewModel.inputText = baseLanguageItem.defaultWord
 
-        translationAPIService.translationToReturn = .init(data: .init(translations: [.init(translatedText: targetLanguageItem.defaultWord)]))
+        translationAPIService.translationToReturn = targetLanguageItem.defaultWord
 
         // When.
 

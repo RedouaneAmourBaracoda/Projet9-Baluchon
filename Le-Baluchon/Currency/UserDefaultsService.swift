@@ -7,45 +7,7 @@
 
 import SwiftUI
 
-protocol DataStoreService {
-
-    func save(_ date: TimeInterval, rates: [String : Double])
-
-    func retrieveDate() -> (TimeInterval?)
-
-    func retrieveRates() -> [String : Double]?
-}
-
-final class MockDataStoreService: DataStoreService {
-
-    var persistedDate: TimeInterval?
-
-    var persistedRates: [String : Double]?
-
-    var saveCallsCounter = 0
-
-    var retrieveDateCallsCounter = 0
-
-    var retrieveRatesCallsCounter = 0
-
-    func save(_ date: TimeInterval, rates: [String : Double]) {
-        saveCallsCounter += 1
-        persistedDate = date
-        persistedRates = rates
-    }
-
-    func retrieveDate() -> (TimeInterval)? {
-        retrieveDateCallsCounter += 1
-        return persistedDate
-    }
-
-    func retrieveRates() -> [String: Double]? {
-        retrieveRatesCallsCounter += 1
-        return persistedRates
-    }
-}
-
-final class RealDataStoreService: DataStoreService {
+final class UserDefaultsService: DataStoreServiceType {
 
     // MARK: - AppStorage.
 
