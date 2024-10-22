@@ -18,12 +18,16 @@ struct WeatherView: View {
             )
             .fontWeight(.thin)
             .padding()
-
             .onSubmit {
                 Task {
                     await weatherViewModel.getWeather()
                 }
             }
+//
+//            Image(uiImage: UIImage(resource: .init(name: weatherViewModel.weatherModel?.weatherKind.imageName ?? "", bundle: .main)))
+//              .resizable()
+//              .aspectRatio(contentMode: .fill)
+//              .ignoresSafeArea()
 
             Text("Temperature: \(weatherViewModel.weatherModel?.temperature ?? 0.0) °C")
             Text("Weather: \(weatherViewModel.weatherModel?.description ?? "")")
@@ -33,6 +37,8 @@ struct WeatherView: View {
         }
     }
 }
+
+
 
 #Preview {
     CurrencyView()

@@ -19,8 +19,17 @@ struct CurrencyItemView<Value: View>: View {
     var body: some View {
         HStack {
             selectableCurrencyView()
+                .fixedSize()
             Spacer()
-            valueView()
+            Text(selectedCurrency.symbol)
+            ViewThatFits(in: .horizontal) {
+                value
+                    .fixedSize()
+                    .padding(.trailing)
+
+                value
+                    .padding(.trailing)
+            }
         }
         .withBackground()
     }
@@ -43,12 +52,12 @@ struct CurrencyItemView<Value: View>: View {
     private func dropDownView() -> some View {
         VStack(alignment: .leading){
             HStack {
-                Menu(selectedCurrency.abreviation) {
+                Menu(selectedCurrency.identifier) {
                     ForEach(CurrencyItem.allCases, id: \.self) { currency in
                         Button(action: {
                             selectedCurrency = currency
                         }, label: {
-                            Text(currency.abreviation)
+                            Text(currency.identifier)
                         })
                     }
                 }
@@ -62,15 +71,6 @@ struct CurrencyItemView<Value: View>: View {
             Text(selectedCurrency.rawValue)
                 .font(.subheadline)
                 .foregroundStyle(Color.gray)
-        }
-    }
-
-    private func valueView() -> some View {
-        HStack {
-            Text(selectedCurrency.symbol)
-            value
-                .fixedSize()
-                .padding(.trailing)
         }
     }
 }

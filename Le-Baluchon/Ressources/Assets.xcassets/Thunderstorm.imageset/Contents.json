@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "left-right.png",
+      "filename" : "183588-1080x1920-mobile-1080p-thunder-background-photo.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "left-right@2x.png",
+      "filename" : "183588-1080x1920-mobile-1080p-thunder-background-photo@2x.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "left-right@3x.png",
+      "filename" : "183588-1080x1920-mobile-1080p-thunder-background-photo@3x.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -26,6 +26,54 @@ final class CurrencyViewModelTests: XCTestCase {
         currencyViewModel = .init(currencyApiService: currencyAPIService, dataStoreService: dataStoreService)
     }
 
+    func testNoConversionWhenInputBaseIsEmpty() async {
+
+        // Given.
+
+        currencyViewModel.inputString = ""
+
+        // When.
+
+        await currencyViewModel.convert()
+
+        // Then
+
+        XCTAssertEqual(dataStoreService.retrieveDateCallsCounter, 0)
+
+        XCTAssertEqual(dataStoreService.retrieveRatesCallsCounter, 0)
+
+        guard let outputString = currencyViewModel.outputString else {
+            XCTFail()
+            return
+        }
+
+        XCTAssertTrue(outputString.isEmpty)
+    }
+
+
+    func testNoConversionWhenInputBaseIsInvalid() async {
+
+        // Given.
+
+        currencyViewModel.inputString = "100A1"
+
+        // When.
+
+        await currencyViewModel.convert()
+
+        // Then
+
+        XCTAssertEqual(currencyViewModel.errorMessage, "Invalid number.")
+
+        XCTAssertTrue(currencyViewModel.shouldPresentAlert)
+
+        XCTAssertEqual(dataStoreService.retrieveDateCallsCounter, 0)
+
+        XCTAssertEqual(dataStoreService.retrieveRatesCallsCounter, 0)
+
+        XCTAssertNil(currencyViewModel.outputString)
+    }
+
     func testUpdateIsNeededWhenNoDataSaved() {
 
         // When.
@@ -173,7 +221,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         currencyViewModel.baseCurrency = .euro
 
-        currencyViewModel.baseValue = 1000
+        currencyViewModel.inputString = "1000"
 
         currencyViewModel.targetCurrency = .britishPound
 
@@ -204,7 +252,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         let expectedValue = 1000 * (0.75061 / 0.895215)
 
-        let expectedOutput = NumberFormatter.valueFormatter.string(from: NSNumber(value: expectedValue))
+        let expectedOutput = NumberFormatter.currencyFormatter.string(from: NSNumber(value: expectedValue))
 
         XCTAssertEqual(expectedOutput, currencyViewModel.outputString)
     }
@@ -219,7 +267,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         currencyViewModel.baseCurrency = .euro
 
-        currencyViewModel.baseValue = 1000
+        currencyViewModel.inputString = "1000"
 
         currencyViewModel.targetCurrency = .britishPound
 
@@ -244,7 +292,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         let expectedValue = 1000 * (0.75061 / 0.895215)
 
-        let expectedOutput = NumberFormatter.valueFormatter.string(from: NSNumber(value: expectedValue))
+        let expectedOutput = NumberFormatter.currencyFormatter.string(from: NSNumber(value: expectedValue))
 
         XCTAssertEqual(expectedOutput, currencyViewModel.outputString)
     }
@@ -263,7 +311,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         currencyViewModel.baseCurrency = .australianDollar
 
-        currencyViewModel.baseValue = 1000
+        currencyViewModel.inputString = "1000"
 
         currencyViewModel.targetCurrency = .canadianDollar
 
@@ -288,7 +336,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         let expectedValue = 1000 * (1.23841 / 1.52175)
 
-        let expectedOutput = NumberFormatter.valueFormatter.string(from: NSNumber(value: expectedValue))
+        let expectedOutput = NumberFormatter.currencyFormatter.string(from: NSNumber(value: expectedValue))
 
         XCTAssertEqual(expectedOutput, currencyViewModel.outputString)
     }

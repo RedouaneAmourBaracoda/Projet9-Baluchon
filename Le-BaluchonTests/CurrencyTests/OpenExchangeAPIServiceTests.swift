@@ -246,7 +246,7 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
 
         do {
             let rates = try await currencyAPIService.fetchCurrency()
-            XCTAssertTrue(rates.keys.contains(where: { $0 == targetCurrency.abreviation }))
+            XCTAssertTrue(rates.keys.contains(where: { $0 == targetCurrency.identifier }))
             XCTAssertTrue(rates.values.contains(where: { $0 == 1.1083277687 }))
         } catch {
             XCTAssertNil(error)

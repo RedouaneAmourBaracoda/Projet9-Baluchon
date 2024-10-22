@@ -23,9 +23,7 @@ struct TranslationView: View {
             Spacer()
         }
         .alert(isPresented: $translationViewModel.shouldPresentAlert) {
-            Alert(title: Text("Error"), message: Text(translationViewModel.errorMessage), dismissButton: .default(Text("Understood"), action: {
-                translationViewModel.clear()
-            }))
+            Alert(title: Text("Error"), message: Text(translationViewModel.errorMessage))
         }
     }
 

@@ -47,6 +47,5 @@ private struct RefreshableModifier: ViewModifier {
             .task { await currencyViewModel.convert() }
             .task(id: currencyViewModel.baseCurrency) { await currencyViewModel.convert() }
             .task(id: currencyViewModel.targetCurrency) { await currencyViewModel.convert() }
-            .task(id: currencyViewModel.baseValue) { await currencyViewModel.convert() }
     }
 }

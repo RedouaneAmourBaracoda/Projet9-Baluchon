@@ -8,10 +8,10 @@
 import Foundation
 
 extension NumberFormatter {
-    static let valueFormatter = {
+    static let currencyFormatter = {
         let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 2
+        formatter.maximumFractionDigits = 3
+        formatter.decimalSeparator = Locale.current.decimalSeparator
         return formatter
     }()
 }

@@ -24,7 +24,7 @@ enum CurrencyItem: String, CaseIterable {
         }
     }
 
-    var abreviation: String {
+    var identifier: String {
         switch self {
         case .usDollar: return "USD"
         case .euro: return "EUR"

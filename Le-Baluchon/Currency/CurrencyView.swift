@@ -33,10 +33,14 @@ struct CurrencyView: View {
 
     private func baseCurrencyView() -> some View {
         CurrencyItemView(selectedCurrency: $currencyViewModel.baseCurrency) {
-            TextField("", value: $currencyViewModel.baseValue, formatter: NumberFormatter.valueFormatter)
+            TextField("", text: $currencyViewModel.inputString, axis: .horizontal)
                 .keyboardType(.decimalPad)
-                .valueStyle(fontWeight: .bold)
-
+                .valueStyle(fontWeight: .light)
+                .onSubmit {
+                    Task {
+                        await currencyViewModel.convert()
+                    }
+                }
         }
     }
 
@@ -54,8 +58,9 @@ struct CurrencyView: View {
 
     private func targetCurrencyView() -> some View {
         CurrencyItemView(selectedCurrency: $currencyViewModel.targetCurrency) {
-            Text(currencyViewModel.outputString ?? "" )
+            Text(currencyViewModel.outputString ?? "No data available" )
                     .valueStyle(fontWeight: .light)
+                    .lineLimit(1)
         }
     }
 

@@ -30,4 +30,26 @@ enum WeatherKind: String, CaseIterable {
     case clear
     case clouds
     case undetermined
+
+    var imageName: String {
+        switch self {
+        case .thunderstorm:
+            return "cloud.bolt.rain.fill"
+        case .drizzle:
+            return "cloud.drizzle.fill"
+        case .rain:
+            return "cloud.heavyrain.fill"
+        case .snow:
+            return "cloud.snow.fill"
+        case .atmosphere:
+            return "cloud.fog.fill"
+        case .clear:
+            return "sun.max.fill"
+        case .clouds:
+            return "cloud.circle.fill"
+        case .undetermined:
+            return "questionmark"
+
+        }
+    }
 }

@@ -12,13 +12,13 @@ final class CurrencyViewModel: ObservableObject {
 
     // MARK: - State
 
+    @Published var inputString: String = "1000"
+
     @Published var outputString: String?
 
-    @Published var baseCurrency: CurrencyItem = .euro
+    @Published var baseCurrency: CurrencyItem
 
-    @Published var targetCurrency: CurrencyItem = .usDollar
-
-    @Published var baseValue: Double = 1000.0
+    @Published var targetCurrency: CurrencyItem
 
     @Published var shouldPresentAlert = false
 
@@ -41,10 +41,21 @@ final class CurrencyViewModel: ObservableObject {
     init(
         currencyApiService: CurrencyAPIServiceType = OpenExchangeAPIService(),
         dataStoreService: DataStoreServiceType = UserDefaultsService(),
-        formatter: NumberFormatter = .valueFormatter
+        formatter: NumberFormatter = .currencyFormatter
     ) {
+        let localeCurrency = CurrencyItem.allCases.first {
+            $0.identifier == Locale.current.currency?.identifier
+            && $0.symbol == Locale.current.currencySymbol
+        } ?? .usDollar
+
+        baseCurrency = localeCurrency
+
+        targetCurrency = localeCurrency == .usDollar ? .euro : .usDollar
+
         self.currencyApiService = currencyApiService
+
         self.dataStoreService = dataStoreService
+
         self.formatter = formatter
     }
 
@@ -52,15 +63,26 @@ final class CurrencyViewModel: ObservableObject {
 
     func convert() async {
 
+        guard !inputString.isEmpty else {
+            outputString = ""
+            return
+        }
+
+        guard let inputBaseNumber = formatter.number(from: inputString) else {
+            errorMessage = "Invalid number."
+            shouldPresentAlert = true
+            return
+        }
+
         if shouldUpdateRates() { await getCurrency() }
 
         guard
             let lastRates = dataStoreService.retrieveRates(),
-            let baseRateInUSD = lastRates[baseCurrency.abreviation],
-            let targetRateInUSD = lastRates[targetCurrency.abreviation]
+            let baseRateInUSD = lastRates[baseCurrency.identifier],
+            let targetRateInUSD = lastRates[targetCurrency.identifier]
         else { return }
 
-        outputString = formatter.string(from: NSNumber(value: baseValue * (targetRateInUSD / baseRateInUSD)))
+        outputString = formatter.string(from: NSNumber(value: Double(truncating: inputBaseNumber) * (targetRateInUSD / baseRateInUSD)))
     }
 
     func shouldUpdateRates() -> Bool {

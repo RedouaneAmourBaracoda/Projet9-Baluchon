@@ -61,6 +61,7 @@ final class TranslationViewModel: ObservableObject {
             } else {
                 errorMessage = .translationUndeterminedErrorDescription
             }
+            clear()
             shouldPresentAlert = true
         }
     }
