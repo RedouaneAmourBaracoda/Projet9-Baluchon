@@ -8,38 +8,63 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @ObservedObject private var weatherViewModel = WeatherViewModel()
+    @ObservedObject private var weatherViewModel: WeatherViewModel
+
+    @State private var onEditingChanged = false
+
+    init(weatherViewModel: WeatherViewModel) {
+        self.weatherViewModel = weatherViewModel
+    }
 
     var body: some View {
         VStack {
-            TextField(
-                "Type a city",
-                text: $weatherViewModel.inputCityName
-            )
-            .fontWeight(.thin)
-            .padding()
-            .onSubmit {
-                Task {
-                    await weatherViewModel.getWeather()
-                }
-            }
-//
-//            Image(uiImage: UIImage(resource: .init(name: weatherViewModel.weatherModel?.weatherKind.imageName ?? "", bundle: .main)))
-//              .resizable()
-//              .aspectRatio(contentMode: .fill)
-//              .ignoresSafeArea()
-
-            Text("Temperature: \(weatherViewModel.weatherModel?.temperature ?? 0.0) °C")
-            Text("Weather: \(weatherViewModel.weatherModel?.description ?? "")")
+            citySearchView()
+            Spacer()
+            cityWeatherInfoView()
         }
         .alert(isPresented: $weatherViewModel.shouldPresentAlert) {
             Alert(title: Text("Error"), message: Text(weatherViewModel.errorMessage))
         }
     }
+
+    private func citySearchView() -> some View {
+            HStack {
+                Image(systemName: "magnifyingglass")
+
+                TextField("City", text: $weatherViewModel.inputCityName, onEditingChanged: { onEditingChanged = $0
+                })
+                .fontWeight(.bold)
+                .autocorrectionDisabled()
+                .onSubmit {
+                    Task {
+                        await weatherViewModel.getWeather()
+                    }
+                }
+
+                if onEditingChanged {
+                    Button(action: {
+                        weatherViewModel.clear()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .padding(.trailing)
+                            .foregroundStyle(.black)
+                    })
+                }
+            }
+            .padding()
+            .withBackground()
+    }
+
+    @ViewBuilder private func cityWeatherInfoView() -> some View {
+        if let weatherModel = weatherViewModel.weatherModel {
+            VStack {
+                WeatherInfoView(weatherModel: weatherModel)
+                Spacer()
+            }
+        }
+    }
 }
 
-
-
 #Preview {
-    CurrencyView()
+    WeatherView(weatherViewModel: WeatherViewModel(weatherModel: WeatherModel.forPreview))
 }

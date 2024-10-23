@@ -5,19 +5,19 @@
 //  Created by Redouane on 18/10/2024.
 //
 
-import Foundation
+import SwiftUI
 
 struct WeatherModel {
     let city: String
     let lon: Double
     let lat: Double
-    let temperature: Double
-    let temperatureFelt: Double
-    let temperatureMin: Double
-    let temperatureMax: Double
+    let temperature: Int
+    let temperatureFelt: Int
+    let temperatureMin: Int
+    let temperatureMax: Int
     let humidity: Int
     let pressure: Int
-    let description: String?
+    let description: String
     let weatherKind: WeatherKind
 }
 
@@ -31,25 +31,24 @@ enum WeatherKind: String, CaseIterable {
     case clouds
     case undetermined
 
-    var imageName: String {
+    var image: Image {
         switch self {
         case .thunderstorm:
-            return "cloud.bolt.rain.fill"
+            return Image(systemName: "cloud.bolt.rain")
         case .drizzle:
-            return "cloud.drizzle.fill"
+            return Image(systemName: "cloud.drizzle")
         case .rain:
-            return "cloud.heavyrain.fill"
+            return Image(systemName: "cloud.heavyrain")
         case .snow:
-            return "cloud.snow.fill"
+            return Image(systemName: "cloud.snow")
         case .atmosphere:
-            return "cloud.fog.fill"
+            return Image(systemName: "cloud.fog")
         case .clear:
-            return "sun.max.fill"
+            return Image(systemName: "sun.max")
         case .clouds:
-            return "cloud.circle.fill"
+            return Image(systemName: "cloud")
         case .undetermined:
-            return "questionmark"
-
+            return Image(systemName: "questionmark")
         }
     }
 }

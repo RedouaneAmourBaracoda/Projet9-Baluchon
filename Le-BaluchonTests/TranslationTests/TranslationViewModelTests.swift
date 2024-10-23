@@ -169,7 +169,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         translationViewModel.inputText = baseLanguageItem.defaultWord
 
-        translationAPIService.translationToReturn = targetLanguageItem.defaultWord
+        translationAPIService.textToReturn = targetLanguageItem.defaultWord
 
         // When.
 

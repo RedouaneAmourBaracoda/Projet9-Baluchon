@@ -26,8 +26,9 @@ final class WeatherViewModel: ObservableObject {
 
     // MARK: - Initializer.
 
-    init(weatherAPIService: WeatherAPIServiceType = OpenWeatherAPIService()) {
+    init(weatherAPIService: WeatherAPIServiceType = OpenWeatherAPIService(), weatherModel: WeatherModel? = nil) {
         self.weatherAPIService = weatherAPIService
+        self.weatherModel = weatherModel
     }
 
     // MARK: - Methods.
@@ -37,11 +38,19 @@ final class WeatherViewModel: ObservableObject {
             weatherModel = try await weatherAPIService.fetchWeather(cityName: inputCityName)
         } catch {
             if let weatherAPIError = error as? LocalizedError {
-                errorMessage = weatherAPIError.errorDescription ?? ""
+                errorMessage = weatherAPIError.errorDescription ?? .weatherUndeterminedErrorDescription
             } else {
-                errorMessage = ""
+                errorMessage = .weatherUndeterminedErrorDescription
             }
             shouldPresentAlert = true
         }
     }
+
+    func clear() {
+        inputCityName.removeAll()
+    }
+}
+
+extension String {
+    static let weatherUndeterminedErrorDescription = "A non-determined error with weather services occured. Please try again later"
 }

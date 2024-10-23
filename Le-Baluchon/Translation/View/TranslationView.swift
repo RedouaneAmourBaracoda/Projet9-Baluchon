@@ -39,6 +39,7 @@ struct TranslationView: View {
                 Image(systemName: "arrow.triangle.swap")
                     .rotationEffect(.degrees(90))
             })
+            .disabled(translationViewModel.baseLanguageItem == .autoDetection)
 
             dropDownView(selectedItem: $translationViewModel.targetLanguageItem, languages: LanguageItem.allCases.filter({ $0 != .autoDetection }))
                 .padding()
@@ -62,6 +63,7 @@ struct TranslationView: View {
                 }
                 .font(.subheadline)
                 .foregroundStyle(Color.black)
+                .padding(.horizontal)
             }
         }
     }

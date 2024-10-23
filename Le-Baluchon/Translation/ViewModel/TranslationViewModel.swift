@@ -67,8 +67,8 @@ final class TranslationViewModel: ObservableObject {
     }
 
     func clear() {
-        inputText = ""
-        outputText = ""
+        inputText.removeAll()
+        outputText.removeAll()
     }
 
     func swapLanguages() {

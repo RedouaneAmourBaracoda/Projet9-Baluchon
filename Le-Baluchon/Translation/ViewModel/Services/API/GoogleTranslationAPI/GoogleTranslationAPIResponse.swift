@@ -8,13 +8,17 @@
 import Foundation
 
 struct GoogleTranslationAPIResponse: Codable {
-    let data: Translations
+    private let data: Translations
+
+    var toString: String {
+        data.translations.first?.translatedText ?? "No translation available."
+    }
 }
 
-struct Translations : Codable {
+private struct Translations : Codable {
     let translations : [TranslatedText]
 }
 
-struct TranslatedText : Codable {
+private struct TranslatedText : Codable {
     let translatedText : String
 }

@@ -59,10 +59,8 @@ struct GoogleTranslationAPIService: TranslationAPIServiceType {
 
             return try JSONDecoder()
                 .decode(GoogleTranslationAPIResponse.self, from: data)
-                .data
-                .translations
-                .first?
-                .translatedText ?? .translationUndeterminedErrorDescription
+                .toString
+
 
         case let .failure(failure):
 

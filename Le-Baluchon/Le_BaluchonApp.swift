@@ -18,7 +18,7 @@ struct Le_BaluchonApp: App {
                 TranslationView()
                     .tabItem { Image(systemName: "textformat") }
 
-                WeatherView()
+                WeatherView(weatherViewModel: .init())
                     .tabItem { Image(systemName: "sun.min") }
             }
         }

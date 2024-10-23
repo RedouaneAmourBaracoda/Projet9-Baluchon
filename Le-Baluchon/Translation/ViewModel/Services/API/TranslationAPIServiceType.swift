@@ -13,7 +13,7 @@ protocol TranslationAPIServiceType {
 
 final class MockTranslationAPIService: TranslationAPIServiceType {
 
-    var translationToReturn: String!
+    var textToReturn: String!
 
     var error: Error?
 
@@ -22,7 +22,7 @@ final class MockTranslationAPIService: TranslationAPIServiceType {
     func fetchTranslation(q: String, source: String, target: String, format: String ) async throws -> String {
         fetchTranslationCallsCounter += 1
 
-        guard let error else { return translationToReturn}
+        guard let error else { return textToReturn }
 
         throw error
     }
