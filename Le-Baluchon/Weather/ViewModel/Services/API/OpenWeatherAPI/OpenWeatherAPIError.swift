@@ -11,11 +11,9 @@ enum OpenWeatherAPIError: LocalizedError, CaseIterable {
     case invalidURL
     case bad_request
     case unauthorized
-    case payment_required
-    case forbidden
     case not_found
-    case not_allowed
     case too_many_requests
+    case internalError
     case invalidRequest
 
     var errorDescription: String? {
@@ -23,19 +21,15 @@ enum OpenWeatherAPIError: LocalizedError, CaseIterable {
         case .invalidURL:
             return NSLocalizedString("Invalid URL", comment: "")
         case .bad_request:
-            return NSLocalizedString("The client provided invalid query parameters for the request. It can be invalid fields, invalid values, or invalid api key.", comment: "")
+            return NSLocalizedString("Some mandatory parameters in the request are missing or some of request parameters have incorrect format or values out of allowed range.", comment: "")
         case .unauthorized:
-            return NSLocalizedString("The client provided invalid credentials or the session has expired.", comment: "")
-        case .payment_required:
-            return NSLocalizedString("The client has exceeded the limit of daily requests and must upgrade the plan.", comment: "")
-        case .forbidden:
-            return NSLocalizedString("The requested operation is not allowed. It can be due to wrong access configuration, restricted access or exceeded limit of quotas for repeated over-use.", comment: "")
+            return NSLocalizedString("API token did not providen in the request or in case API token provided in the request does not grant access to this API.", comment: "")
         case .not_found:
-            return NSLocalizedString("The client requested a non-existent resource/route", comment: "")
-        case .not_allowed:
-            return NSLocalizedString("The http method for this request is not allowed. The client doesn’t have permission to access requested route/feature", comment: "")
+            return NSLocalizedString("Data with requested parameters (lat, lon, date etc) does not exist in service database", comment: "")
         case .too_many_requests:
-            return NSLocalizedString("The client has exceeded the limit of requests.", comment: "")
+            return NSLocalizedString("Quota of requests to this API was exceeded. You may retry request after some time or after extending your key quota.", comment: "")
+        case .internalError:
+            return NSLocalizedString("Unexpected Error due to internal issues.", comment: "")
         case .invalidRequest:
             return NSLocalizedString("Invalid request", comment: "")
         }
@@ -46,8 +40,6 @@ enum OpenWeatherAPIError: LocalizedError, CaseIterable {
 
         let statusCode = httpURLResponse.statusCode
 
-        print("STATUS CODE : \(statusCode)")
-
         switch statusCode {
             case 200: return .success(())
 
@@ -55,15 +47,11 @@ enum OpenWeatherAPIError: LocalizedError, CaseIterable {
 
             case 401: return .failure(.unauthorized)
 
-            case 402: return .failure(.payment_required)
-
-            case 403: return .failure(.forbidden)
-
             case 404: return .failure(.not_found)
 
-            case 405: return .failure(.not_allowed)
-
             case 429: return .failure(.too_many_requests)
+
+            case 500...599: return .failure(.internalError)
 
             default: return .failure(.invalidRequest)
         }

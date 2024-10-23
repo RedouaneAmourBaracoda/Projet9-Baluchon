@@ -98,7 +98,7 @@ final class TranslationViewModelTests: XCTestCase {
         XCTAssertEqual(translationViewModel.outputText, translationViewModel.inputText)
     }
 
-    func testTranslateWhenTranslationAPIReturnsGoogleTranslationAPIError() async {
+    func testTranslateWhenGoogleTranslationAPIReturnsError() async {
 
         // Given.
 
@@ -163,13 +163,15 @@ final class TranslationViewModelTests: XCTestCase {
 
         let targetLanguageItem: LanguageItem = .espagnol
 
+        let randomTranslation: String = .random()
+
         translationViewModel.baseLanguageItem = baseLanguageItem
 
         translationViewModel.targetLanguageItem = targetLanguageItem
 
         translationViewModel.inputText = baseLanguageItem.defaultWord
 
-        translationAPIService.textToReturn = targetLanguageItem.defaultWord
+        translationAPIService.textToReturn = randomTranslation
 
         // When.
 
@@ -179,7 +181,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         XCTAssertEqual(translationAPIService.fetchTranslationCallsCounter, 1)
 
-        XCTAssertEqual(translationViewModel.outputText, targetLanguageItem.defaultWord)
+        XCTAssertEqual(translationViewModel.outputText, randomTranslation)
 
         XCTAssertTrue(translationViewModel.errorMessage.isEmpty)
 
