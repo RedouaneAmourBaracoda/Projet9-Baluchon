@@ -55,19 +55,20 @@ struct OpenWeatherAPIResponse: Codable {
     }
 }
 
-private struct Location : Codable {
+private struct Location: Codable {
     let lon: Double
     let lat: Double
 }
 
-private struct Weather : Codable {
-    let id : Int
+private struct Weather: Codable {
+    let id: Int
     let main: String
     let description: String
     let icon: String
 }
 
-private struct WeatherData : Codable {
+// swiftlint:disable identifier_name
+private struct WeatherData: Codable {
     let temp: Double
     let feels_like: Double
     let temp_min: Double
@@ -77,3 +78,4 @@ private struct WeatherData : Codable {
     let sea_level: Int
     let grnd_level: Int
 }
+// swiftlint:enable identifier_name

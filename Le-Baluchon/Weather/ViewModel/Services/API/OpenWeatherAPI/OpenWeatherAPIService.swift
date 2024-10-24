@@ -50,7 +50,7 @@ struct OpenWeatherAPIService: WeatherAPIServiceType {
 
         switch result {
 
-        case .success():
+        case .success:
 
             return try JSONDecoder()
                 .decode(OpenWeatherAPIResponse.self, from: data)

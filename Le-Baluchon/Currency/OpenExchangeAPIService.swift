@@ -45,7 +45,7 @@ struct OpenExchangeAPIService: CurrencyAPIServiceType {
 
         switch result {
 
-        case .success():
+        case .success:
 
             return try JSONDecoder()
                 .decode(OpenExchangeAPIResponse.self, from: data)

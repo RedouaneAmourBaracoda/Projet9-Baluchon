@@ -34,7 +34,7 @@ struct GoogleTranslationAPIService: TranslationAPIServiceType {
 
     // MARK: - Methods.
 
-    func fetchTranslation(q: String, source: String, target: String, format: String) async throws -> String {
+    func fetchTranslation(text: String, source: String, target: String, format: String) async throws -> String {
 
         guard let url = URL(string: urlString) else { throw GoogleTranslationAPIError.invalidURL }
 
@@ -47,7 +47,12 @@ struct GoogleTranslationAPIService: TranslationAPIServiceType {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         // HTTP Body.
-        request.httpBody = try? JSONSerialization.data(withJSONObject: ["q": q, "source": source, "target": target, "format": format])
+        request.httpBody = try? JSONSerialization.data(withJSONObject: [
+            "q": text,
+            "source": source,
+            "target": target,
+            "format": format
+        ])
 
         let (data, response) = try await session.data(for: request)
 
@@ -55,12 +60,11 @@ struct GoogleTranslationAPIService: TranslationAPIServiceType {
 
         switch result {
 
-        case .success():
+        case .success:
 
             return try JSONDecoder()
                 .decode(GoogleTranslationAPIResponse.self, from: data)
                 .toString
-
 
         case let .failure(failure):
 

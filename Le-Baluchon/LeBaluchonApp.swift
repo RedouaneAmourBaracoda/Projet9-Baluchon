@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Le_BaluchonApp: App {
+struct LeBaluchonApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {

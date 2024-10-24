@@ -65,6 +65,7 @@ final class WeatherViewModelTests: XCTestCase {
 
         // Given.
 
+        // swiftlint:disable:next discouraged_direct_init
         let error = NSError()
 
         weatherAPIService.error = error

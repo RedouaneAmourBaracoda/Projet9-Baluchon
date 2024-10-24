@@ -7,22 +7,7 @@
 
 import Foundation
 
-extension WeatherModel: Equatable {
-
-    public static func == (lhs: WeatherModel, rhs: WeatherModel) -> Bool {
-        lhs.city == rhs.city
-        && lhs.lat == rhs.lat
-        && lhs.lon == rhs.lon
-        && lhs.description == rhs.description
-        && lhs.temperature == rhs.temperature
-        && lhs.weatherKind == rhs.weatherKind
-        && lhs.humidity == rhs.humidity
-        && lhs.pressure == rhs.pressure
-        && lhs.temperatureFelt == rhs.temperatureFelt
-        && lhs.temperatureMin == rhs.temperatureMin
-        && lhs.temperatureMax == rhs.temperatureMax
-    }
-
+extension WeatherModel {
     static func random() -> WeatherModel {
         .init(
             city: .random(),

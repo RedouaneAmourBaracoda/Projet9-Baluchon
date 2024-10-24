@@ -15,10 +15,10 @@ struct GoogleTranslationAPIResponse: Codable {
     }
 }
 
-private struct Translations : Codable {
-    let translations : [TranslatedText]
+private struct Translations: Codable {
+    let translations: [TranslatedText]
 }
 
-private struct TranslatedText : Codable {
-    let translatedText : String
+private struct TranslatedText: Codable {
+    let translatedText: String
 }

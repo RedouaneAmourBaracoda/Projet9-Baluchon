@@ -52,5 +52,5 @@ final class WeatherViewModel: ObservableObject {
 }
 
 extension String {
-    static let weatherUndeterminedErrorDescription = "A non-determined error with weather services occured. Please try again later"
+    static let weatherUndeterminedErrorDescription = "A non-determined error with weather services occured."
 }

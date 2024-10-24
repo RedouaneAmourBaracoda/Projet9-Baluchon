@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TranslationAPIServiceType {
-    func fetchTranslation(q: String, source: String, target: String, format: String) async throws -> String
+    func fetchTranslation(text: String, source: String, target: String, format: String) async throws -> String
 }
 
 final class MockTranslationAPIService: TranslationAPIServiceType {
@@ -19,7 +19,7 @@ final class MockTranslationAPIService: TranslationAPIServiceType {
 
     var fetchTranslationCallsCounter = 0
 
-    func fetchTranslation(q: String, source: String, target: String, format: String ) async throws -> String {
+    func fetchTranslation(text: String, source: String, target: String, format: String ) async throws -> String {
         fetchTranslationCallsCounter += 1
 
         guard let error else { return textToReturn }

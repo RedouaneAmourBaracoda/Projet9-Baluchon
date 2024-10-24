@@ -50,7 +50,7 @@ final class TranslationViewModel: ObservableObject {
 
         do {
             outputText = try await translationAPIService.fetchTranslation(
-                q: inputText,
+                text: inputText,
                 source: baseLanguageItem.codeISO,
                 target: targetLanguageItem.codeISO,
                 format: "text"

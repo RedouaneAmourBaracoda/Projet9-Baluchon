@@ -28,7 +28,7 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
             XCTAssert(error == .invalidURL)
             XCTAssert(error.errorDescription == GoogleTranslationAPIError.invalidURL.errorDescription)
@@ -50,18 +50,17 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .bad_request)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.bad_request.errorDescription)
+            XCTAssert(error == .badRequest)
+            XCTAssert(error.errorDescription == GoogleTranslationAPIError.badRequest.errorDescription)
         }
     }
 
@@ -80,15 +79,14 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
             XCTAssert(error == .unauthorized)
             XCTAssert(error.errorDescription == GoogleTranslationAPIError.unauthorized.errorDescription)
@@ -110,18 +108,17 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .payment_required)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.payment_required.errorDescription)
+            XCTAssert(error == .paymentRequired)
+            XCTAssert(error.errorDescription == GoogleTranslationAPIError.paymentRequired.errorDescription)
         }
     }
 
@@ -140,15 +137,14 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
             XCTAssert(error == .forbidden)
             XCTAssert(error.errorDescription == GoogleTranslationAPIError.forbidden.errorDescription)
@@ -170,18 +166,17 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .not_found)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.not_found.errorDescription)
+            XCTAssert(error == .notFound)
+            XCTAssert(error.errorDescription == GoogleTranslationAPIError.notFound.errorDescription)
         }
     }
 
@@ -200,18 +195,17 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .not_allowed)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.not_allowed.errorDescription)
+            XCTAssert(error == .notAllowed)
+            XCTAssert(error.errorDescription == GoogleTranslationAPIError.notAllowed.errorDescription)
         }
     }
 
@@ -230,18 +224,17 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .too_many_requests)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.too_many_requests.errorDescription)
+            XCTAssert(error == .tooManyRequests)
+            XCTAssert(error.errorDescription == GoogleTranslationAPIError.tooManyRequests.errorDescription)
         }
     }
 
@@ -255,20 +248,22 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
             XCTAssertNotNil(request.url)
             let mockResponse = HTTPURLResponse(
                 url: request.url!,
-                statusCode: Set(-1000...1000).subtracting(Set([200, 400, 401, 402, 403, 404, 405, 429])).randomElement() ?? 0,
+                statusCode:
+                    Set(-1000...1000)
+                    .subtracting(Set([200, 400, 401, 402, 403, 404, 405, 429]))
+                    .randomElement() ?? 0,
                 httpVersion: nil,
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
             XCTAssert(error == .invalidRequest)
             XCTAssert(error.errorDescription == GoogleTranslationAPIError.invalidRequest.errorDescription)
@@ -290,7 +285,7 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
+            let mockData = Data("""
                 {
                     "data": {
                         "translations": [
@@ -300,14 +295,14 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
                         ]
                     }
                 }
-                """.data(using: .utf8)!
+                """.utf8)
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let result = try await translationAPIService.fetchTranslation(q: "", source: "", target: "", format: "")
+            let result = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
             XCTAssertEqual(result, "Bonsoir")
         } catch {
             XCTAssertNil(error)

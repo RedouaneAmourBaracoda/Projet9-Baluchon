@@ -88,7 +88,15 @@ struct TemperatureInfoView: View {
         .padding()
     }
 
-    private func textView(name: String, value: String?, symbol: String?, font: Font, weight: Font.Weight, color: Color) -> some View {
+    // swiftlint:disable:next function_parameter_count
+    private func textView(
+        name: String,
+        value: String?,
+        symbol: String?,
+        font: Font,
+        weight: Font.Weight,
+        color: Color
+    ) -> some View {
         Text("\(name) " + "\(value ?? "")"  + "\(symbol ?? "")")
             .font(font)
             .fontWeight(weight)

@@ -132,6 +132,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         // Given.
 
+        // swiftlint:disable:next discouraged_direct_init
         let error = NSError()
 
         translationAPIService.error = error

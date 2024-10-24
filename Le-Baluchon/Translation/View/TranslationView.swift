@@ -41,16 +41,19 @@ struct TranslationView: View {
             })
             .disabled(translationViewModel.baseLanguageItem == .autoDetection)
 
-            dropDownView(selectedItem: $translationViewModel.targetLanguageItem, languages: LanguageItem.allCases.filter({ $0 != .autoDetection }))
-                .padding()
-                .withBackground()
+            dropDownView(
+                selectedItem: $translationViewModel.targetLanguageItem,
+                languages: LanguageItem.allCases.filter({ $0 != .autoDetection })
+            )
+            .padding()
+            .withBackground()
         }
         .onChange(of: translationViewModel.baseLanguageItem) { translationViewModel.clear() }
         .onChange(of: translationViewModel.targetLanguageItem) { translationViewModel.clear() }
     }
 
     private func dropDownView(selectedItem: Binding<LanguageItem>, languages: [LanguageItem]) -> some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             HStack {
                 Menu(selectedItem.wrappedValue.rawValue) {
                     ForEach(languages, id: \.self) { languageItem in

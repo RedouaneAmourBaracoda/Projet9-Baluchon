@@ -28,7 +28,7 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await currencyAPIService.fetchCurrency()
+            _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
             XCTAssert(error == .invalidURL)
             XCTAssert(error.errorDescription == OpenExchangeAPIError.invalidURL.errorDescription)
@@ -50,18 +50,17 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await currencyAPIService.fetchCurrency()
+            _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .invalid_base)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.invalid_base.errorDescription)
+            XCTAssert(error == .invalidBase)
+            XCTAssert(error.errorDescription == OpenExchangeAPIError.invalidBase.errorDescription)
         }
     }
 
@@ -80,18 +79,17 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await currencyAPIService.fetchCurrency()
+            _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .invalid_app_id)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.invalid_app_id.errorDescription)
+            XCTAssert(error == .invalidAppId)
+            XCTAssert(error.errorDescription == OpenExchangeAPIError.invalidAppId.errorDescription)
         }
     }
 
@@ -110,18 +108,17 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await currencyAPIService.fetchCurrency()
+            _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .access_restricted)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.access_restricted.errorDescription)
+            XCTAssert(error == .accessRestricted)
+            XCTAssert(error.errorDescription == OpenExchangeAPIError.accessRestricted.errorDescription)
         }
     }
 
@@ -140,18 +137,17 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await currencyAPIService.fetchCurrency()
+            _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .not_found)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.not_found.errorDescription)
+            XCTAssert(error == .notFound)
+            XCTAssert(error.errorDescription == OpenExchangeAPIError.notFound.errorDescription)
         }
     }
 
@@ -170,18 +166,17 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await currencyAPIService.fetchCurrency()
+            _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .not_allowed)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.not_allowed.errorDescription)
+            XCTAssert(error == .notAllowed)
+            XCTAssert(error.errorDescription == OpenExchangeAPIError.notAllowed.errorDescription)
         }
     }
 
@@ -200,15 +195,14 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await currencyAPIService.fetchCurrency()
+            _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
             XCTAssert(error == .invalidRequest)
             XCTAssert(error.errorDescription == OpenExchangeAPIError.invalidRequest.errorDescription)
@@ -222,7 +216,7 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
         let targetCurrency: CurrencyItem = .euro
 
         // When.
-        
+
         MockURLProtocol.requestHandler = { request in
             XCTAssertNotNil(request.url)
             let mockResponse = HTTPURLResponse(
@@ -231,17 +225,17 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
                 httpVersion: nil,
                 headerFields: nil
             )!
-            
-            let mockData = """
+
+            let mockData = Data("""
                 {
                     "rates": {
                         "EUR": 1.1083277687
                     }
                 }
-                """.data(using: .utf8)!
+                """.utf8)
             return (mockResponse, mockData)
         }
-        
+
         // Then.
 
         do {

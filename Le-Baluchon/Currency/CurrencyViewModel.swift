@@ -82,7 +82,9 @@ final class CurrencyViewModel: ObservableObject {
             let targetRateInUSD = lastRates[targetCurrency.identifier]
         else { return }
 
-        outputString = formatter.string(from: NSNumber(value: Double(truncating: inputBaseNumber) * (targetRateInUSD / baseRateInUSD)))
+        let result = Double(truncating: inputBaseNumber) * (targetRateInUSD / baseRateInUSD)
+
+        outputString = formatter.string(from: NSNumber(value: result))
     }
 
     func shouldUpdateRates() -> Bool {
@@ -91,7 +93,7 @@ final class CurrencyViewModel: ObservableObject {
 
         let lastDate = dataStoreService.retrieveDate()
 
-        guard let _ = lastRates, let lastDate else { return true }
+        guard lastRates != nil, let lastDate else { return true }
 
         return Date.now.timeIntervalSince1970 - lastDate > maxInterval
     }

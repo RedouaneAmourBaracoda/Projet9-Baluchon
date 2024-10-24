@@ -28,7 +28,7 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
         // Then.
 
         do {
-            let _ = try await weatherAPIService.fetchWeather(cityName: "")
+            _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
             XCTAssert(error == .invalidURL)
             XCTAssert(error.errorDescription == OpenWeatherAPIError.invalidURL.errorDescription)
@@ -50,18 +50,17 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await weatherAPIService.fetchWeather(cityName: "")
+            _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .bad_request)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.bad_request.errorDescription)
+            XCTAssert(error == .badRequest)
+            XCTAssert(error.errorDescription == OpenWeatherAPIError.badRequest.errorDescription)
         }
     }
 
@@ -80,15 +79,14 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await weatherAPIService.fetchWeather(cityName: "")
+            _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
             XCTAssert(error == .unauthorized)
             XCTAssert(error.errorDescription == OpenWeatherAPIError.unauthorized.errorDescription)
@@ -110,18 +108,17 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await weatherAPIService.fetchWeather(cityName: "")
+            _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .not_found)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.not_found.errorDescription)
+            XCTAssert(error == .notFound)
+            XCTAssert(error.errorDescription == OpenWeatherAPIError.notFound.errorDescription)
         }
     }
 
@@ -140,18 +137,17 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await weatherAPIService.fetchWeather(cityName: "")
+            _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .too_many_requests)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.too_many_requests.errorDescription)
+            XCTAssert(error == .tooManyRequests)
+            XCTAssert(error.errorDescription == OpenWeatherAPIError.tooManyRequests.errorDescription)
         }
     }
 
@@ -170,15 +166,14 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await weatherAPIService.fetchWeather(cityName: "")
+            _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
             XCTAssert(error == .internalError)
             XCTAssert(error.errorDescription == OpenWeatherAPIError.internalError.errorDescription)
@@ -195,26 +190,30 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
             XCTAssertNotNil(request.url)
             let mockResponse = HTTPURLResponse(
                 url: request.url!,
-                statusCode: Set(-1000...1000).subtracting(Set([200, 400, 401, 403, 404, 429])).subtracting(Set(500...599)).randomElement() ?? 0,
+                statusCode:
+                    Set(-1000...1000)
+                    .subtracting(Set([200, 400, 401, 403, 404, 429]))
+                    .subtracting(Set(500...599))
+                    .randomElement() ?? 0,
                 httpVersion: nil,
                 headerFields: nil
             )!
 
-            let mockData = """
-                """.data(using: .utf8)!
+            let mockData = Data()
             return (mockResponse, mockData)
         }
 
         // Then.
 
         do {
-            let _ = try await weatherAPIService.fetchWeather(cityName: "")
+            _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
             XCTAssert(error == .invalidRequest)
             XCTAssert(error.errorDescription == OpenWeatherAPIError.invalidRequest.errorDescription)
         }
     }
 
+    // swiftlint:disable:next function_body_length
     func testNetworkCallSuccess() async throws {
 
         // Given.
@@ -232,7 +231,7 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
                 headerFields: nil
             )!
 
-            let mockData = """
+            let mockData = Data("""
                 {
                     "coord": {
                         "lon": -0.1257,
@@ -278,7 +277,7 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
                     "name": "Londres",
                     "cod": 200
                 }
-                """.data(using: .utf8)!
+                """.utf8)
             return (mockResponse, mockData)
         }
 

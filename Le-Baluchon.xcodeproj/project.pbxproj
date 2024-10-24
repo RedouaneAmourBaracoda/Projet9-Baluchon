@@ -10,7 +10,7 @@
 		B8000E102C782D5A0006106D /* CurrencyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8000E0F2C782D5A0006106D /* CurrencyItemView.swift */; };
 		B808338F2CA0D3F100B43E6D /* LanguageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B808338E2CA0D3F100B43E6D /* LanguageItem.swift */; };
 		B80833942CA0D56300B43E6D /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80833932CA0D56300B43E6D /* TranslationView.swift */; };
-		B82023412C779CD8002F0494 /* Le_BaluchonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */; };
+		B82023412C779CD8002F0494 /* LeBaluchonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023402C779CD8002F0494 /* LeBaluchonApp.swift */; };
 		B82023432C779CD8002F0494 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82023422C779CD8002F0494 /* CurrencyView.swift */; };
 		B82023452C779CDA002F0494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82023442C779CDA002F0494 /* Assets.xcassets */; };
 		B82023482C779CDA002F0494 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82023472C779CDA002F0494 /* Preview Assets.xcassets */; };
@@ -66,7 +66,7 @@
 		B808338E2CA0D3F100B43E6D /* LanguageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageItem.swift; sourceTree = "<group>"; };
 		B80833932CA0D56300B43E6D /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		B820233D2C779CD8002F0494 /* Le-Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le-Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonApp.swift; sourceTree = "<group>"; };
+		B82023402C779CD8002F0494 /* LeBaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeBaluchonApp.swift; sourceTree = "<group>"; };
 		B82023422C779CD8002F0494 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		B82023442C779CDA002F0494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B82023472C779CDA002F0494 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -84,6 +84,7 @@
 		B8D5C23F2CC98D5D00D89923 /* OpenWeatherAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAPIServiceTests.swift; sourceTree = "<group>"; };
 		B8D5C2422CC9AD4300D89923 /* WeatherViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelTests.swift; sourceTree = "<group>"; };
 		B8D5C2442CC9B92600D89923 /* WeatherModel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherModel+Extensions.swift"; sourceTree = "<group>"; };
+		B8D5C2492CCA336600D89923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B8EE5EBB2CC1533800C59C08 /* GoogleTranslationAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslationAPIServiceTests.swift; sourceTree = "<group>"; };
 		B8EE5EBF2CC1927800C59C08 /* TranslationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewModelTests.swift; sourceTree = "<group>"; };
 		B8EE5EC12CC1C8CD00C59C08 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -182,7 +183,8 @@
 		B820233F2C779CD8002F0494 /* Le-Baluchon */ = {
 			isa = PBXGroup;
 			children = (
-				B82023402C779CD8002F0494 /* Le_BaluchonApp.swift */,
+				B8D5C2492CCA336600D89923 /* Info.plist */,
+				B82023402C779CD8002F0494 /* LeBaluchonApp.swift */,
 				B8FA60FC2CA17D320034046D /* BackgroundModifier.swift */,
 				B8EE5EC32CC2652000C59C08 /* Weather */,
 				B8BCA1452C89368D00DEAB92 /* Currency */,
@@ -249,6 +251,13 @@
 			path = WeatherTests;
 			sourceTree = "<group>";
 		};
+		B8D5C2482CCA2F6300D89923 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		B8EE5EBA2CC1530100C59C08 /* CurrencyTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				B8EE5EE62CC64C8200C59C08 /* API */,
+				B8D5C2482CCA2F6300D89923 /* Location */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -450,6 +460,7 @@
 				B82023392C779CD8002F0494 /* Sources */,
 				B820233A2C779CD8002F0494 /* Frameworks */,
 				B820233B2C779CD8002F0494 /* Resources */,
+				B8D5C24A2CCA51FA00D89923 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -535,6 +546,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B8D5C24A2CCA51FA00D89923 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B82023392C779CD8002F0494 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -569,7 +602,7 @@
 				B8EE5ECC2CC2729100C59C08 /* WeatherModel.swift in Sources */,
 				B820236B2C779E44002F0494 /* CurrencyViewModel.swift in Sources */,
 				B8EE5ED72CC62AD600C59C08 /* GoogleTranslationAPIError.swift in Sources */,
-				B82023412C779CD8002F0494 /* Le_BaluchonApp.swift in Sources */,
+				B82023412C779CD8002F0494 /* LeBaluchonApp.swift in Sources */,
 				B8D5C2332CC8101B00D89923 /* WeatherInfoView.swift in Sources */,
 				B8EE5EDA2CC6365C00C59C08 /* CurrencyAPIServiceType.swift in Sources */,
 				B8EE5EEE2CC69A9A00C59C08 /* DataStoreServiceType.swift in Sources */,
@@ -730,7 +763,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Le-Baluchon/Preview Content\"";
 				DEVELOPMENT_TEAM = CJ4U3HXF7J;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Le-Baluchon/Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We would like to track your position to show weather conditions in your current location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -759,7 +795,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Le-Baluchon/Preview Content\"";
 				DEVELOPMENT_TEAM = CJ4U3HXF7J;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Le-Baluchon/Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We would like to track your position to show weather conditions in your current location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

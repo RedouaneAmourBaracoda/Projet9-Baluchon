@@ -39,4 +39,3 @@ enum LanguageItem: String, CaseIterable {
         }
     }
 }
-

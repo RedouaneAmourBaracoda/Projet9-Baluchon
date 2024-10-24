@@ -8,7 +8,7 @@
 @testable import Le_Baluchon
 import XCTest
 
-@MainActor 
+@MainActor
 final class CurrencyViewModelTests: XCTestCase {
 
     var currencyViewModel: CurrencyViewModel!
@@ -43,13 +43,12 @@ final class CurrencyViewModelTests: XCTestCase {
         XCTAssertEqual(dataStoreService.retrieveRatesCallsCounter, 0)
 
         guard let outputString = currencyViewModel.outputString else {
-            XCTFail()
+            XCTFail("Output string is nil.")
             return
         }
 
         XCTAssertTrue(outputString.isEmpty)
     }
-
 
     func testNoConversionWhenInputBaseIsInvalid() async {
 
@@ -164,6 +163,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         // Given.
 
+        // swiftlint:disable:next discouraged_direct_init
         let error: Error = NSError()
 
         currencyAPIService.error = error
@@ -186,8 +186,6 @@ final class CurrencyViewModelTests: XCTestCase {
 
         XCTAssertEqual(currencyViewModel.errorMessage, .currencyUndeterminedErrorDescription)
     }
-
-
 
     // Testing data was saved when an API service returns a value.
     func testGetCurrencyWhenAPIReturnsValue() async {

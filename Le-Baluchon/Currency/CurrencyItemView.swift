@@ -50,7 +50,7 @@ struct CurrencyItemView<Value: View>: View {
     }
 
     private func dropDownView() -> some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             HStack {
                 Menu(selectedCurrency.identifier) {
                     ForEach(CurrencyItem.allCases, id: \.self) { currency in

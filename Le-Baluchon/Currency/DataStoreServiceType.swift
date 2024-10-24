@@ -9,18 +9,18 @@ import Foundation
 
 protocol DataStoreServiceType {
 
-    func save(_ date: TimeInterval, rates: [String : Double])
+    func save(_ date: TimeInterval, rates: [String: Double])
 
     func retrieveDate() -> (TimeInterval?)
 
-    func retrieveRates() -> [String : Double]?
+    func retrieveRates() -> [String: Double]?
 }
 
 final class MockDataStoreService: DataStoreServiceType {
 
     var persistedDate: TimeInterval?
 
-    var persistedRates: [String : Double]?
+    var persistedRates: [String: Double]?
 
     var saveCallsCounter = 0
 
@@ -28,7 +28,7 @@ final class MockDataStoreService: DataStoreServiceType {
 
     var retrieveRatesCallsCounter = 0
 
-    func save(_ date: TimeInterval, rates: [String : Double]) {
+    func save(_ date: TimeInterval, rates: [String: Double]) {
         saveCallsCounter += 1
         persistedDate = date
         persistedRates = rates

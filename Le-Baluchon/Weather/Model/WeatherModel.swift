@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WeatherModel {
+struct WeatherModel: Equatable {
     let city: String
     let lon: Double
     let lat: Double
@@ -19,6 +19,20 @@ struct WeatherModel {
     let pressure: Int
     let description: String
     let weatherKind: WeatherKind
+
+    public static func == (lhs: WeatherModel, rhs: WeatherModel) -> Bool {
+        lhs.city == rhs.city
+        && lhs.lat == rhs.lat
+        && lhs.lon == rhs.lon
+        && lhs.description == rhs.description
+        && lhs.temperature == rhs.temperature
+        && lhs.weatherKind == rhs.weatherKind
+        && lhs.humidity == rhs.humidity
+        && lhs.pressure == rhs.pressure
+        && lhs.temperatureFelt == rhs.temperatureFelt
+        && lhs.temperatureMin == rhs.temperatureMin
+        && lhs.temperatureMax == rhs.temperatureMax
+    }
 }
 
 enum WeatherKind: String, CaseIterable {

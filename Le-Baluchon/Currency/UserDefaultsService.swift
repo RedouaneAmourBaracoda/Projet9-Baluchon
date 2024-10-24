@@ -24,11 +24,11 @@ final class UserDefaultsService: DataStoreServiceType {
 
     // MARK: - Properties.
 
-    private var persistedRates: [String : Double]?
+    private var persistedRates: [String: Double]?
 
     // MARK: - Methods.
 
-    func save(_ date: TimeInterval, rates: [String : Double]) {
+    func save(_ date: TimeInterval, rates: [String: Double]) {
         persistedDate = date
         persistedRates = rates
         rawPersistedRates = try? JSONEncoder().encode(persistedRates)
@@ -40,7 +40,7 @@ final class UserDefaultsService: DataStoreServiceType {
 
     func retrieveRates() -> [String: Double]? {
         guard let rawPersistedRates else { return nil }
-        persistedRates = try? JSONDecoder().decode([String : Double].self, from: rawPersistedRates)
+        persistedRates = try? JSONDecoder().decode([String: Double].self, from: rawPersistedRates)
         return persistedRates
     }
 }
