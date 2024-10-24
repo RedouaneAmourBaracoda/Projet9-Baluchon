@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GoogleTranslationAPIService: TranslationAPIServiceType {
+struct GoogleTranslationAPIService: TranslationAPIService {
 
     // MARK: - API infos.
 

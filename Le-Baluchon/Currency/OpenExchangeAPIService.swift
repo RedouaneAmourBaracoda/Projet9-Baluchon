@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OpenExchangeAPIService: CurrencyAPIServiceType {
+struct OpenExchangeAPIService: CurrencyAPIService {
 
     // MARK: - API infos.
 

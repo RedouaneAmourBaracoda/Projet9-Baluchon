@@ -8,7 +8,7 @@
 import Foundation
 
 enum LanguageItem: String, CaseIterable {
-    case autoDetection = "Auto"
+    case autoDetection = "Auto-detect"
     case anglais = "Anglais"
     case français = "Français"
     case espagnol = "Espagnol"

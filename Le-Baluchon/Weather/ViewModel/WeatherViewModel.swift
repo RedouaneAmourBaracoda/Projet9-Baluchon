@@ -22,11 +22,11 @@ final class WeatherViewModel: ObservableObject {
 
     // MARK: - Services.
 
-    private let weatherAPIService: WeatherAPIServiceType
+    private let weatherAPIService: WeatherAPIService
 
     // MARK: - Initializer.
 
-    init(weatherAPIService: WeatherAPIServiceType = OpenWeatherAPIService(), weatherModel: WeatherModel? = nil) {
+    init(weatherAPIService: WeatherAPIService = OpenWeatherAPIService(), weatherModel: WeatherModel? = nil) {
         self.weatherAPIService = weatherAPIService
         self.weatherModel = weatherModel
     }

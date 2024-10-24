@@ -87,17 +87,17 @@ final class WeatherViewModelTests: XCTestCase {
 
     func testGetWeatherIsSuccessWhenNoErrors() async {
 
-        // Given.
+        // Given
 
         let weather: WeatherModel = .random()
 
         weatherAPIService.weatherToReturn = weather
 
-        // When.
+        // When
 
         await weatherViewModel.getWeather()
 
-        // Then.
+        // Then
 
         XCTAssertEqual(weatherAPIService.fetchWeatherCallsCounter, 1)
 

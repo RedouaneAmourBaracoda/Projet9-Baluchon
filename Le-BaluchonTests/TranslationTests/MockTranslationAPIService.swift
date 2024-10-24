@@ -1,17 +1,14 @@
 //
-//  TranslationAPIService.swift
-//  Le-Baluchon
+//  MockTranslationAPIService.swift
+//  Le-BaluchonTests
 //
-//  Created by Redouane on 21/10/2024.
+//  Created by Redouane on 24/10/2024.
 //
 
+@testable import Le_Baluchon
 import Foundation
 
-protocol TranslationAPIServiceType {
-    func fetchTranslation(text: String, source: String, target: String, format: String) async throws -> String
-}
-
-final class MockTranslationAPIService: TranslationAPIServiceType {
+final class MockTranslationAPIService: TranslationAPIService {
 
     var textToReturn: String!
 

@@ -18,8 +18,6 @@ struct CurrencyView: View {
                     swapActionView()
                     targetCurrencyView()
                     Spacer()
-                    pullToRefreshView()
-                    Spacer()
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)
             }
@@ -62,14 +60,6 @@ struct CurrencyView: View {
                     .valueStyle(fontWeight: .light)
                     .lineLimit(1)
         }
-    }
-
-    private func pullToRefreshView() -> some View {
-        Image(uiImage: UIImage(resource: .init(name: "pull-to-refresh", bundle: .main)))
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(maxWidth: 150, maxHeight: 150)
-            .opacity(0.1)
     }
 }
 

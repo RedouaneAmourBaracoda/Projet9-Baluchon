@@ -26,11 +26,11 @@ final class TranslationViewModel: ObservableObject {
 
     // MARK: - Services.
 
-    private let translationAPIService: TranslationAPIServiceType
+    private let translationAPIService: TranslationAPIService
 
     // MARK: - Initializer.
 
-    init(translationAPIService: TranslationAPIServiceType = GoogleTranslationAPIService()) {
+    init(translationAPIService: TranslationAPIService = GoogleTranslationAPIService()) {
         self.translationAPIService = translationAPIService
     }
 

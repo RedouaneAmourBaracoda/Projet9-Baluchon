@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: - Packaging + i18n (internationalisation) -> String calatalog + Terminer Responsive design.
 @MainActor
 final class CurrencyViewModel: ObservableObject {
 
@@ -26,7 +27,7 @@ final class CurrencyViewModel: ObservableObject {
 
     // MARK: - Services.
 
-    private let currencyApiService: CurrencyAPIServiceType
+    private let currencyApiService: CurrencyAPIService
 
     private let dataStoreService: DataStoreServiceType
 
@@ -39,7 +40,7 @@ final class CurrencyViewModel: ObservableObject {
     // MARK: - Initializer.
 
     init(
-        currencyApiService: CurrencyAPIServiceType = OpenExchangeAPIService(),
+        currencyApiService: CurrencyAPIService = OpenExchangeAPIService(),
         dataStoreService: DataStoreServiceType = UserDefaultsService(),
         formatter: NumberFormatter = .currencyFormatter
     ) {

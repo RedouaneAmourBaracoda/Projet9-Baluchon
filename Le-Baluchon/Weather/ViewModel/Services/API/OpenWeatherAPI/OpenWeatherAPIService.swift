@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OpenWeatherAPIService: WeatherAPIServiceType {
+struct OpenWeatherAPIService: WeatherAPIService {
 
     // MARK: - API infos.
 

@@ -1,17 +1,14 @@
 //
-//  CurrencyAPIServiceType.swift
-//  Le-Baluchon
+//  MockCurrencyAPIService.swift
+//  Le-BaluchonTests
 //
-//  Created by Redouane on 21/10/2024.
+//  Created by Redouane on 24/10/2024.
 //
 
+@testable import Le_Baluchon
 import Foundation
 
-protocol CurrencyAPIServiceType {
-    func fetchCurrency() async throws -> [String: Double]
-}
-
-final class MockCurrencyAPIService: CurrencyAPIServiceType {
+final class MockCurrencyAPIService: CurrencyAPIService {
 
     var ratesToReturn: [String: Double]!
 
