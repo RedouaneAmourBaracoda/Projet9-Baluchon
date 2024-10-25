@@ -11,21 +11,24 @@ struct CurrencyView: View {
     @ObservedObject private var currencyViewModel = CurrencyViewModel()
 
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                VStack {
-                    baseCurrencyView()
-                    swapActionView()
-                    targetCurrencyView()
-                    Spacer()
+        NavigationStack {
+            GeometryReader { geometry in
+                ScrollView {
+                    VStack {
+                        baseCurrencyView()
+                        swapActionView()
+                        targetCurrencyView()
+                        Spacer()
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height)
                 }
-                .frame(width: geometry.size.width, height: geometry.size.height)
+                .refresh(currencyViewModel: currencyViewModel)
+                .safeAreaPadding(.vertical)
             }
-            .refresh(currencyViewModel: currencyViewModel)
-            .safeAreaPadding(.vertical)
-        }
-        .alert(isPresented: $currencyViewModel.shouldPresentAlert) {
-            Alert(title: Text("Error"), message: Text(currencyViewModel.errorMessage))
+            .alert(isPresented: $currencyViewModel.shouldPresentAlert) {
+                Alert(title: Text("Error"), message: Text(currencyViewModel.errorMessage))
+            }
+            .navigationTitle("Currency")
         }
     }
 

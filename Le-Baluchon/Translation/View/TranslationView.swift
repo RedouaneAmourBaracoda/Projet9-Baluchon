@@ -11,12 +11,15 @@ struct TranslationView: View {
     @ObservedObject private var translationViewModel = TranslationViewModel()
 
     var body: some View {
-        ViewThatFits(in: .vertical) {
-            verticalLayoutView()
-            horizontalLayoutView()
-        }
-        .alert(isPresented: $translationViewModel.shouldPresentAlert) {
-            Alert(title: Text("Error"), message: Text(translationViewModel.errorMessage))
+        NavigationStack {
+            ViewThatFits(in: .vertical) {
+                verticalLayoutView()
+                horizontalLayoutView()
+            }
+            .alert(isPresented: $translationViewModel.shouldPresentAlert) {
+                Alert(title: Text("Error"), message: Text(translationViewModel.errorMessage))
+            }
+            .navigationTitle("Translation")
         }
     }
 

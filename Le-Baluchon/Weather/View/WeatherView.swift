@@ -15,13 +15,16 @@ struct WeatherView: View {
     }
 
     var body: some View {
-        VStack {
-            CitySearchFieldView(weatherViewModel: weatherViewModel)
-            Spacer()
-            weatherInfoView()
-        }
-        .alert(isPresented: $weatherViewModel.shouldPresentAlert) {
-            Alert(title: Text("Error"), message: Text(weatherViewModel.errorMessage))
+        NavigationStack {
+            VStack {
+                CitySearchFieldView(weatherViewModel: weatherViewModel)
+                Spacer()
+                weatherInfoView()
+            }
+            .alert(isPresented: $weatherViewModel.shouldPresentAlert) {
+                Alert(title: Text("Error"), message: Text(weatherViewModel.errorMessage))
+            }
+            .navigationTitle("Weather")
         }
     }
 
