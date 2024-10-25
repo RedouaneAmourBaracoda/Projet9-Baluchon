@@ -22,7 +22,13 @@ struct TranslationView: View {
 
     private func verticalLayoutView() -> some View {
         VStack {
-            LanguageSelectionView(translationViewModel: translationViewModel, useVerticalLayout: true)
+            HStack {
+                BaseLanguageSelectionView(translationViewModel: translationViewModel)
+
+                SwapLanguagesActionView(translationViewModel: translationViewModel)
+
+                TargetLanguageSelectionView(translationViewModel: translationViewModel)
+            }
 
             InputTextView(translationViewModel: translationViewModel)
 
@@ -34,9 +40,17 @@ struct TranslationView: View {
 
     private func horizontalLayoutView() -> some View {
         HStack {
-            LanguageSelectionView(translationViewModel: translationViewModel, useVerticalLayout: false)
+            VStack {
+                BaseLanguageSelectionView(translationViewModel: translationViewModel)
+
+                SwapLanguagesActionView(translationViewModel: translationViewModel)
+
+                TargetLanguageSelectionView(translationViewModel: translationViewModel)
+            }
+
             VStack {
                 InputTextView(translationViewModel: translationViewModel)
+
                 OutputTextView(translationViewModel: translationViewModel)
             }
         }
