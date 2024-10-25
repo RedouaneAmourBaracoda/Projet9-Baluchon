@@ -17,7 +17,7 @@ struct WeatherView: View {
 
     var body: some View {
         NavigationStack {
-            ViewThatFits {
+            ViewThatFits(in: .vertical) {
 
                 verticalLayoutView()
 

@@ -28,10 +28,10 @@ struct TemperatureInfoView: View {
 
     private func currentTemperarureInfoView() -> some View {
         textView(
-            name: "",
+            description: nil,
             value: String(weather.temperature),
             symbol: "°C",
-            font: .title,
+            font: .body,
             weight: .bold,
             color: .black
         )
@@ -39,8 +39,8 @@ struct TemperatureInfoView: View {
 
     private func minTemperarureInfoView() -> some View {
         textView(
-            name: "min :",
-            value: String(weather.temperatureMax),
+            description: "min :",
+            value: String(weather.temperatureMin),
             symbol: "°C",
             font: .subheadline,
             weight: .thin,
@@ -50,7 +50,7 @@ struct TemperatureInfoView: View {
 
     private func maxTemperarureInfoView() -> some View {
         textView(
-            name: "max :",
+            description: "max :",
             value: String(weather.temperatureMax),
             symbol: "°C",
             font: .subheadline,
@@ -61,10 +61,10 @@ struct TemperatureInfoView: View {
 
     private func weatherDescriptionInfoView() -> some View {
         textView(
-            name: weather.description,
+            description: weather.description,
             value: nil,
             symbol: nil,
-            font: .title2,
+            font: .body,
             weight: .thin,
             color: .black
         )
@@ -72,14 +72,14 @@ struct TemperatureInfoView: View {
 
     // swiftlint:disable:next function_parameter_count
     private func textView(
-        name: String,
+        description: String?,
         value: String?,
         symbol: String?,
         font: Font,
         weight: Font.Weight,
         color: Color
     ) -> some View {
-        Text("\(name) " + "\(value ?? "")"  + "\(symbol ?? "")")
+        Text("\(description ?? "") " + "\(value ?? "")"  + "\(symbol ?? "")")
             .font(font)
             .fontWeight(weight)
             .foregroundStyle(color)

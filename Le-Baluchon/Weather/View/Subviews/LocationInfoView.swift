@@ -25,7 +25,7 @@ struct LocationInfoView: View {
     private func cityNameView() -> some View {
         HStack {
             Image(systemName: "location")
-            textView(text: weather.city, font: .title, weight: .bold, color: .black)
+            textView(text: weather.city, font: .title3, weight: .bold, color: .black)
         }
     }
 
