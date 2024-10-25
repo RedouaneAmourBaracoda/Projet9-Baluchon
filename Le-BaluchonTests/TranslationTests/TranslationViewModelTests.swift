@@ -26,9 +26,9 @@ final class TranslationViewModelTests: XCTestCase {
 
         // Given.
 
-        translationViewModel.inputText = LanguageItem.anglais.defaultWord
+        translationViewModel.inputText = LanguageItem.english.defaultWord
 
-        translationViewModel.outputText = LanguageItem.français.defaultWord
+        translationViewModel.outputText = LanguageItem.french.defaultWord
 
         // When.
 
@@ -45,9 +45,9 @@ final class TranslationViewModelTests: XCTestCase {
 
         // Given.
 
-        translationViewModel.baseLanguageItem = .français
+        translationViewModel.baseLanguageItem = .french
 
-        translationViewModel.targetLanguageItem = .espagnol
+        translationViewModel.targetLanguageItem = .spanish
 
         // When.
 
@@ -55,9 +55,9 @@ final class TranslationViewModelTests: XCTestCase {
 
         // Then.
 
-        XCTAssertEqual(translationViewModel.baseLanguageItem, .espagnol)
+        XCTAssertEqual(translationViewModel.baseLanguageItem, .spanish)
 
-        XCTAssertEqual(translationViewModel.targetLanguageItem, .français)
+        XCTAssertEqual(translationViewModel.targetLanguageItem, .french)
     }
 
     // Testing no fetch when input string is empty.
@@ -106,9 +106,9 @@ final class TranslationViewModelTests: XCTestCase {
 
         translationAPIService.error = error
 
-        translationViewModel.baseLanguageItem = .anglais
+        translationViewModel.baseLanguageItem = .english
 
-        translationViewModel.targetLanguageItem = .français
+        translationViewModel.targetLanguageItem = .french
 
         translationViewModel.inputText = translationViewModel.baseLanguageItem.defaultWord
 
@@ -137,9 +137,9 @@ final class TranslationViewModelTests: XCTestCase {
 
         translationAPIService.error = error
 
-        translationViewModel.baseLanguageItem = .anglais
+        translationViewModel.baseLanguageItem = .english
 
-        translationViewModel.targetLanguageItem = .français
+        translationViewModel.targetLanguageItem = .french
 
         translationViewModel.inputText = translationViewModel.baseLanguageItem.defaultWord
 
@@ -160,9 +160,9 @@ final class TranslationViewModelTests: XCTestCase {
 
         // Given.
 
-        let baseLanguageItem: LanguageItem = .anglais
+        let baseLanguageItem: LanguageItem = .english
 
-        let targetLanguageItem: LanguageItem = .espagnol
+        let targetLanguageItem: LanguageItem = .spanish
 
         let randomTranslation: String = .random()
 

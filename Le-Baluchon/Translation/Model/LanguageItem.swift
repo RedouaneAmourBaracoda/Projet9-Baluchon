@@ -9,19 +9,19 @@ import Foundation
 
 enum LanguageItem: String, CaseIterable {
     case autoDetection = "Auto-detect"
-    case anglais = "Anglais"
-    case français = "Français"
-    case espagnol = "Espagnol"
+    case english = "English"
+    case french = "French"
+    case spanish = "Spanish"
 
     var codeISO: String {
         switch self {
         case .autoDetection:
             ""
-        case .anglais:
+        case .english:
             "en"
-        case .français:
+        case .french:
             "fr"
-        case .espagnol:
+        case .spanish:
             "es"
         }
     }
@@ -30,11 +30,11 @@ enum LanguageItem: String, CaseIterable {
         switch self {
         case .autoDetection:
             "Hello !"
-        case .anglais:
+        case .english:
             "Hello !"
-        case .français:
+        case .french:
             "Bonjour !"
-        case .espagnol:
+        case .spanish:
             "¡Holà!"
         }
     }

@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ComplementaryInfoView: View {
 
-    private let weatherModel: WeatherModel
+    private let weather: Weather
 
-    init(weatherModel: WeatherModel) {
-        self.weatherModel = weatherModel
+    init(weather: Weather) {
+        self.weather = weather
     }
 
     var body: some View {
@@ -34,21 +34,21 @@ struct ComplementaryInfoView: View {
     }
 
     private func temperatureFeltView() -> some View {
-        textView(name: "Feels", value: weatherModel.temperatureFelt, symbol: "°C")
+        textView(name: "Feels", value: weather.temperatureFelt, symbol: "°C")
     }
 
     private func humidityView() -> some View {
-        textView(name: "Humidity", value: weatherModel.humidity, symbol: "%")
+        textView(name: "Humidity", value: weather.humidity, symbol: "%")
     }
 
     private func pressureView() -> some View {
-        textView(name: "Pressure", value: weatherModel.pressure, symbol: "HPa")
+        textView(name: "Pressure", value: weather.pressure, symbol: "HPa")
     }
 
     private func textView(name: String, value: Int, symbol: String) -> some View {
         VStack {
             Text(name)
-                .bold()
+                .font(.subheadline)
             Text("\(value) \(symbol)")
                 .fontWeight(.thin)
         }
@@ -57,5 +57,5 @@ struct ComplementaryInfoView: View {
 }
 
 #Preview {
-    ComplementaryInfoView(weatherModel: .forPreview)
+    ComplementaryInfoView(weather: .forPreview)
 }

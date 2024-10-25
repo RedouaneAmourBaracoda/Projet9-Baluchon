@@ -12,9 +12,9 @@ final class TranslationViewModel: ObservableObject {
 
     // MARK: - State
 
-    @Published var baseLanguageItem: LanguageItem = .anglais
+    @Published var baseLanguageItem: LanguageItem = .english
 
-    @Published var targetLanguageItem: LanguageItem = .français
+    @Published var targetLanguageItem: LanguageItem = .french
 
     @Published var inputText: String = ""
 

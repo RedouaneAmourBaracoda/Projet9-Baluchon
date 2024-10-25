@@ -56,9 +56,10 @@ struct WeatherView: View {
     }
 
     @ViewBuilder private func cityWeatherInfoView() -> some View {
-        if let weatherModel = weatherViewModel.weatherModel {
+        if let weather = weatherViewModel.weather {
             VStack {
-                WeatherInfoView(weatherModel: weatherModel)
+                Spacer()
+                WeatherInfoView(weather: weather)
                 Spacer()
             }
         }
@@ -66,5 +67,5 @@ struct WeatherView: View {
 }
 
 #Preview {
-    WeatherView(weatherViewModel: WeatherViewModel(weatherModel: WeatherModel.forPreview))
+    WeatherView(weatherViewModel: WeatherViewModel(weather: .forPreview))
 }

@@ -9,11 +9,11 @@ import Foundation
 
 struct OpenWeatherAPIResponse: Codable {
     private let coord: Location
-    private let weather: [Weather]
+    private let weather: [WeatherDescription]
     private let main: WeatherData
     private let name: String
 
-    var toWeatherModel: WeatherModel {
+    var toWeather: Weather {
 
         var weatherKind: WeatherKind = .undetermined
 
@@ -60,7 +60,7 @@ private struct Location: Codable {
     let lat: Double
 }
 
-private struct Weather: Codable {
+private struct WeatherDescription: Codable {
     let id: Int
     let main: String
     let description: String

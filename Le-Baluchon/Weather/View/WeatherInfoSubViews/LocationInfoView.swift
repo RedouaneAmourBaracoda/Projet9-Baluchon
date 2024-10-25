@@ -9,14 +9,14 @@ import SwiftUI
 
 struct LocationInfoView: View {
 
-    private let weatherModel: WeatherModel
+    private let weather: Weather
 
-    init(weatherModel: WeatherModel) {
-        self.weatherModel = weatherModel
+    init(weather: Weather) {
+        self.weather = weather
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: 8) {
             cityNameView()
             coordinatesView()
         }
@@ -25,27 +25,23 @@ struct LocationInfoView: View {
     private func cityNameView() -> some View {
         HStack {
             Image(systemName: "location")
-            textView(text: weatherModel.city, font: .title, weight: .bold, color: .black)
+            textView(text: weather.city, font: .title, weight: .bold, color: .black)
         }
     }
 
     private func coordinatesView() -> some View {
         HStack {
             longitudeInfoView()
-
-            Divider()
-                .frame(height: 20)
-
             latitudeInfoView()
         }
     }
 
     private func longitudeInfoView() -> some View {
-        coordinateInfoView(name: "lon", value: weatherModel.lon)
+        coordinateInfoView(name: "lon", value: weather.lon)
     }
 
     private func latitudeInfoView() -> some View {
-        coordinateInfoView(name: "lat", value: weatherModel.lat)
+        coordinateInfoView(name: "lat", value: weather.lat)
     }
 
     private func coordinateInfoView(name: String, value: Double) -> some View {
@@ -61,5 +57,5 @@ struct LocationInfoView: View {
 }
 
 #Preview {
-    LocationInfoView(weatherModel: .forPreview)
+    LocationInfoView(weather: .forPreview)
 }

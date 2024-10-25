@@ -9,39 +9,39 @@ import SwiftUI
 
 struct WeatherInfoView: View {
 
-    private let weatherModel: WeatherModel
+    private let weather: Weather
 
-    init(weatherModel: WeatherModel) {
-        self.weatherModel = weatherModel
+    init(weather: Weather) {
+        self.weather = weather
     }
 
     var body: some View {
         VStack {
-            LocationInfoView(weatherModel: weatherModel)
+            LocationInfoView(weather: weather)
+            ViewThatFits {
+                verticalLayoutView()
+                horizontalLayoutView()
+            }
+        }
+    }
 
-            TemperatureInfoView(weatherModel: weatherModel)
+    private func verticalLayoutView() -> some View {
+        VStack {
+            WeatherImageView(weather: weather)
+            TemperatureInfoView(weather: weather)
+            ComplementaryInfoView(weather: weather)
+        }
+    }
 
-            ComplementaryInfoView(weatherModel: weatherModel)
+    private func horizontalLayoutView() -> some View {
+        HStack {
+            WeatherImageView(weather: weather)
+            TemperatureInfoView(weather: weather)
+            ComplementaryInfoView(weather: weather)
         }
     }
 }
 
-extension WeatherModel {
-    static let forPreview = WeatherModel(
-        city: "Paris",
-        lon: 2.33,
-        lat: 48.86,
-        temperature: 25,
-        temperatureFelt: 21,
-        temperatureMin: 15,
-        temperatureMax: 27,
-        humidity: 70,
-        pressure: 1110,
-        description: "Ensoleillé",
-        weatherKind: .clear
-    )
-}
-
 #Preview {
-    WeatherInfoView(weatherModel: .forPreview)
+    WeatherInfoView(weather: .forPreview)
 }

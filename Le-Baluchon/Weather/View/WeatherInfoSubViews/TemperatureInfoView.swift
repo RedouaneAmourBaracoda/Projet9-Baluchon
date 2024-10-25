@@ -9,46 +9,29 @@ import SwiftUI
 
 struct TemperatureInfoView: View {
 
-    private let weatherModel: WeatherModel
+    private let weather: Weather
 
-    init(weatherModel: WeatherModel) {
-        self.weatherModel = weatherModel
+    init(weather: Weather) {
+        self.weather = weather
     }
 
     var body: some View {
-        VStack {
-            imageView()
-            temperaruresInfoView()
-            Divider()
-            weatherDescriptionInfoView()
-        }
-        .padding()
-    }
-
-    private func imageView() -> some View {
-        weatherModel.weatherKind.image
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 150)
-            .padding()
-    }
-
-    private func temperaruresInfoView() -> some View {
-        VStack {
+        VStack(spacing: 8) {
             currentTemperarureInfoView()
             HStack {
                 minTemperarureInfoView()
                 maxTemperarureInfoView()
             }
+            weatherDescriptionInfoView()
         }
     }
 
     private func currentTemperarureInfoView() -> some View {
         textView(
             name: "",
-            value: String(weatherModel.temperature),
+            value: String(weather.temperature),
             symbol: "°C",
-            font: .largeTitle,
+            font: .title,
             weight: .bold,
             color: .black
         )
@@ -57,7 +40,7 @@ struct TemperatureInfoView: View {
     private func minTemperarureInfoView() -> some View {
         textView(
             name: "min :",
-            value: String(weatherModel.temperatureMax),
+            value: String(weather.temperatureMax),
             symbol: "°C",
             font: .subheadline,
             weight: .thin,
@@ -68,7 +51,7 @@ struct TemperatureInfoView: View {
     private func maxTemperarureInfoView() -> some View {
         textView(
             name: "max :",
-            value: String(weatherModel.temperatureMax),
+            value: String(weather.temperatureMax),
             symbol: "°C",
             font: .subheadline,
             weight: .thin,
@@ -78,14 +61,13 @@ struct TemperatureInfoView: View {
 
     private func weatherDescriptionInfoView() -> some View {
         textView(
-            name: weatherModel.description,
+            name: weather.description,
             value: nil,
             symbol: nil,
             font: .title2,
             weight: .thin,
             color: .black
         )
-        .padding()
     }
 
     // swiftlint:disable:next function_parameter_count
@@ -105,5 +87,5 @@ struct TemperatureInfoView: View {
 }
 
 #Preview {
-    TemperatureInfoView(weatherModel: .forPreview)
+    TemperatureInfoView(weather: .forPreview)
 }

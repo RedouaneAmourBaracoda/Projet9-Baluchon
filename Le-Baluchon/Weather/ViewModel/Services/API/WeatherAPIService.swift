@@ -8,5 +8,5 @@
 import Foundation
 
 protocol WeatherAPIService {
-    func fetchWeather(cityName: String) async throws -> WeatherModel
+    func fetchWeather(cityName: String) async throws -> Weather
 }

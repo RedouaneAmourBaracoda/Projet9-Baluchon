@@ -12,17 +12,17 @@ struct TranslationView: View {
 
     var body: some View {
         ViewThatFits(in: .vertical) {
-            portraitView()
-            landscapeView()
+            verticalLayoutView()
+            horizontalLayoutView()
         }
         .alert(isPresented: $translationViewModel.shouldPresentAlert) {
             Alert(title: Text("Error"), message: Text(translationViewModel.errorMessage))
         }
     }
 
-    private func portraitView() -> some View {
+    private func verticalLayoutView() -> some View {
         VStack {
-            LanguageSelectionView(translationViewModel: translationViewModel)
+            LanguageSelectionView(translationViewModel: translationViewModel, useVerticalLayout: true)
 
             InputTextView(translationViewModel: translationViewModel)
 
@@ -32,9 +32,9 @@ struct TranslationView: View {
         }
     }
 
-    private func landscapeView() -> some View {
+    private func horizontalLayoutView() -> some View {
         HStack {
-            LanguageSelectionView(translationViewModel: translationViewModel)
+            LanguageSelectionView(translationViewModel: translationViewModel, useVerticalLayout: false)
             VStack {
                 InputTextView(translationViewModel: translationViewModel)
                 OutputTextView(translationViewModel: translationViewModel)

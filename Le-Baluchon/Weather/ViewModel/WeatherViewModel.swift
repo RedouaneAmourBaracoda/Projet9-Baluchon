@@ -14,7 +14,7 @@ final class WeatherViewModel: ObservableObject {
 
     @Published var inputCityName: String = ""
 
-    @Published var weatherModel: WeatherModel?
+    @Published var weather: Weather?
 
     @Published var shouldPresentAlert = false
 
@@ -26,16 +26,16 @@ final class WeatherViewModel: ObservableObject {
 
     // MARK: - Initializer.
 
-    init(weatherAPIService: WeatherAPIService = OpenWeatherAPIService(), weatherModel: WeatherModel? = nil) {
+    init(weatherAPIService: WeatherAPIService = OpenWeatherAPIService(), weather: Weather? = nil) {
         self.weatherAPIService = weatherAPIService
-        self.weatherModel = weatherModel
+        self.weather = weather
     }
 
     // MARK: - Methods.
 
     func getWeather() async {
         do {
-            weatherModel = try await weatherAPIService.fetchWeather(cityName: inputCityName)
+            weather = try await weatherAPIService.fetchWeather(cityName: inputCityName)
         } catch {
             if let weatherAPIError = error as? LocalizedError {
                 errorMessage = weatherAPIError.errorDescription ?? .weatherUndeterminedErrorDescription

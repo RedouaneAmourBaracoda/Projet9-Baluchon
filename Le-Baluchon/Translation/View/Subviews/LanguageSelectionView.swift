@@ -10,20 +10,28 @@ import SwiftUI
 struct LanguageSelectionView: View {
     @ObservedObject private var translationViewModel: TranslationViewModel
 
-    init(translationViewModel: TranslationViewModel) {
+    let useVerticalLayout: Bool
+
+    init(translationViewModel: TranslationViewModel, useVerticalLayout: Bool) {
         self.translationViewModel = translationViewModel
+        self.useVerticalLayout = useVerticalLayout
     }
 
     var body: some View {
-        ViewThatFits {
-            portraitOrientationView()
-            landscapeOrientationView()
-        }
+        conditionalLayoutView()
         .onChange(of: translationViewModel.baseLanguageItem) { translationViewModel.clear() }
         .onChange(of: translationViewModel.targetLanguageItem) { translationViewModel.clear() }
     }
 
-    private func portraitOrientationView() -> some View {
+    @ViewBuilder private func conditionalLayoutView() -> some View {
+        if useVerticalLayout {
+            horizontalLayoutView()
+        } else {
+            verticalLayoutView()
+        }
+    }
+
+    private func horizontalLayoutView() -> some View {
         HStack {
             baseLanguageSelectionView()
             swapLanguagesActionView()
@@ -31,7 +39,7 @@ struct LanguageSelectionView: View {
         }
     }
 
-    private func landscapeOrientationView() -> some View {
+    private func verticalLayoutView() -> some View {
         VStack {
             baseLanguageSelectionView()
             swapLanguagesActionView()
@@ -85,5 +93,5 @@ struct LanguageSelectionView: View {
 }
 
 #Preview {
-    LanguageSelectionView(translationViewModel: .init())
+    LanguageSelectionView(translationViewModel: .init(), useVerticalLayout: true)
 }

@@ -285,7 +285,7 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
 
         do {
             let actualResult = try await weatherAPIService.fetchWeather(cityName: cityName)
-            let expectedResult = WeatherModel(
+            let expectedResult = Weather(
                 city: "Londres",
                 lon: -0.1257,
                 lat: 51.5085,

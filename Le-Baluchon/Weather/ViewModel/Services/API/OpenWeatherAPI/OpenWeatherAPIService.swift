@@ -38,7 +38,7 @@ struct OpenWeatherAPIService: WeatherAPIService {
 
     // MARK: - Methods.
 
-    func fetchWeather(cityName: String) async throws -> WeatherModel {
+    func fetchWeather(cityName: String) async throws -> Weather {
 
         guard let url = URL(string: urlString + cityName) else { throw OpenWeatherAPIError.invalidURL }
 
@@ -54,7 +54,7 @@ struct OpenWeatherAPIService: WeatherAPIService {
 
             return try JSONDecoder()
                 .decode(OpenWeatherAPIResponse.self, from: data)
-                .toWeatherModel
+                .toWeather
 
         case let .failure(failure):
 

@@ -57,7 +57,7 @@ final class WeatherViewModelTests: XCTestCase {
 
         XCTAssertEqual(weatherViewModel.errorMessage, error?.errorDescription)
 
-        XCTAssertNil(weatherViewModel.weatherModel)
+        XCTAssertNil(weatherViewModel.weather)
     }
 
     // Testing when the WeatherAPI returns a random error.
@@ -82,14 +82,14 @@ final class WeatherViewModelTests: XCTestCase {
 
         XCTAssertEqual(weatherViewModel.errorMessage, .weatherUndeterminedErrorDescription)
 
-        XCTAssertNil(weatherViewModel.weatherModel)
+        XCTAssertNil(weatherViewModel.weather)
     }
 
     func testGetWeatherIsSuccessWhenNoErrors() async {
 
         // Given
 
-        let weather: WeatherModel = .random()
+        let weather: Weather = .random()
 
         weatherAPIService.weatherToReturn = weather
 
@@ -101,7 +101,7 @@ final class WeatherViewModelTests: XCTestCase {
 
         XCTAssertEqual(weatherAPIService.fetchWeatherCallsCounter, 1)
 
-        XCTAssertEqual(weatherViewModel.weatherModel, weather)
+        XCTAssertEqual(weatherViewModel.weather, weather)
 
         XCTAssertFalse(weatherViewModel.shouldPresentAlert)
 

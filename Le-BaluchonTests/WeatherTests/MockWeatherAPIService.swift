@@ -10,13 +10,13 @@ import Foundation
 
 final class MockWeatherAPIService: WeatherAPIService {
 
-    var weatherToReturn: WeatherModel!
+    var weatherToReturn: Weather!
 
     var error: Error?
 
     var fetchWeatherCallsCounter = 0
 
-    func fetchWeather(cityName: String) async throws -> WeatherModel {
+    func fetchWeather(cityName: String) async throws -> Weather {
         fetchWeatherCallsCounter += 1
 
         guard let error else { return weatherToReturn }

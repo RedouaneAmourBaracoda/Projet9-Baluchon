@@ -1,5 +1,5 @@
 //
-//  WeatherModel+Extensions.swift
+//  Weather+Extensions.swift
 //  Le-Baluchon
 //
 //  Created by Redouane on 24/10/2024.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension WeatherModel {
-    static func random() -> WeatherModel {
+extension Weather {
+    static func random() -> Weather {
         .init(
             city: .random(),
             lon: .random(in: -180...180),

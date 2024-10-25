@@ -1,5 +1,5 @@
 //
-//  WeatherModel.swift
+//  Weather.swift
 //  Le-Baluchon
 //
 //  Created by Redouane on 18/10/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WeatherModel: Equatable {
+struct Weather: Equatable {
     let city: String
     let lon: Double
     let lat: Double
@@ -20,7 +20,7 @@ struct WeatherModel: Equatable {
     let description: String
     let weatherKind: WeatherKind
 
-    public static func == (lhs: WeatherModel, rhs: WeatherModel) -> Bool {
+    public static func == (lhs: Weather, rhs: Weather) -> Bool {
         lhs.city == rhs.city
         && lhs.lat == rhs.lat
         && lhs.lon == rhs.lon
