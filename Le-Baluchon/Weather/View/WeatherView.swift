@@ -10,58 +10,50 @@ import SwiftUI
 struct WeatherView: View {
     @ObservedObject private var weatherViewModel: WeatherViewModel
 
-    @State private var onEditingChanged = false
-
     init(weatherViewModel: WeatherViewModel) {
         self.weatherViewModel = weatherViewModel
     }
 
     var body: some View {
         VStack {
-            citySearchView()
+            CitySearchFieldView(weatherViewModel: weatherViewModel)
             Spacer()
-            cityWeatherInfoView()
+            weatherInfoView()
         }
         .alert(isPresented: $weatherViewModel.shouldPresentAlert) {
             Alert(title: Text("Error"), message: Text(weatherViewModel.errorMessage))
         }
     }
 
-    private func citySearchView() -> some View {
-            HStack {
-                Image(systemName: "magnifyingglass")
-
-                TextField("City", text: $weatherViewModel.inputCityName, onEditingChanged: { onEditingChanged = $0
-                })
-                .fontWeight(.bold)
-                .autocorrectionDisabled()
-                .onSubmit {
-                    Task {
-                        await weatherViewModel.getWeather()
-                    }
-                }
-
-                if onEditingChanged {
-                    Button(action: {
-                        weatherViewModel.clear()
-                    }, label: {
-                        Image(systemName: "xmark")
-                            .padding(.trailing)
-                            .foregroundStyle(.black)
-                    })
-                }
-            }
-            .padding()
-            .withBackground()
-    }
-
-    @ViewBuilder private func cityWeatherInfoView() -> some View {
+    @ViewBuilder private func weatherInfoView() -> some View {
         if let weather = weatherViewModel.weather {
             VStack {
                 Spacer()
-                WeatherInfoView(weather: weather)
+                VStack {
+                    LocationInfoView(weather: weather)
+                    ViewThatFits {
+                        verticalLayoutView(weather: weather)
+                        horizontalLayoutView(weather: weather)
+                    }
+                }
                 Spacer()
             }
+        }
+    }
+
+    private func verticalLayoutView(weather: Weather) -> some View {
+        VStack {
+            WeatherImageView(weather: weather)
+            TemperatureInfoView(weather: weather)
+            AdditionalInfoView(weather: weather)
+        }
+    }
+
+    private func horizontalLayoutView(weather: Weather) -> some View {
+        HStack {
+            WeatherImageView(weather: weather)
+            TemperatureInfoView(weather: weather)
+            AdditionalInfoView(weather: weather)
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ComplementaryInfoView: View {
+struct AdditionalInfoView: View {
 
     private let weather: Weather
 
@@ -57,5 +57,5 @@ struct ComplementaryInfoView: View {
 }
 
 #Preview {
-    ComplementaryInfoView(weather: .forPreview)
+    AdditionalInfoView(weather: .forPreview)
 }
