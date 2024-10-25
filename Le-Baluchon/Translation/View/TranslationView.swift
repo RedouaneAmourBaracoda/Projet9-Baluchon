@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct TranslationView: View {
+
     @ObservedObject private var translationViewModel = TranslationViewModel()
 
     var body: some View {
         NavigationStack {
             ViewThatFits(in: .vertical) {
+
                 verticalLayoutView()
+
                 horizontalLayoutView()
             }
+            .ignoresSafeArea(.keyboard)
             .alert(isPresented: $translationViewModel.shouldPresentAlert) {
                 Alert(title: Text("Error"), message: Text(translationViewModel.errorMessage))
             }
@@ -24,8 +28,9 @@ struct TranslationView: View {
     }
 
     private func verticalLayoutView() -> some View {
-        VStack {
+        ScrollView { // ScrollView is necessary to avoid keyboard push up.
             HStack {
+
                 BaseLanguageSelectionView(translationViewModel: translationViewModel)
 
                 SwapLanguagesActionView(translationViewModel: translationViewModel)
@@ -36,25 +41,25 @@ struct TranslationView: View {
             InputTextView(translationViewModel: translationViewModel)
 
             OutputTextView(translationViewModel: translationViewModel)
-
-            Spacer()
         }
     }
 
     private func horizontalLayoutView() -> some View {
-        HStack {
-            VStack {
-                BaseLanguageSelectionView(translationViewModel: translationViewModel)
+        ScrollView { // ScrollView is necessary to avoid keyboard push up.
+            HStack {
+                VStack {
 
-                SwapLanguagesActionView(translationViewModel: translationViewModel)
+                    BaseLanguageSelectionView(translationViewModel: translationViewModel)
 
-                TargetLanguageSelectionView(translationViewModel: translationViewModel)
-            }
+                    SwapLanguagesActionView(translationViewModel: translationViewModel)
 
-            VStack {
-                InputTextView(translationViewModel: translationViewModel)
+                    TargetLanguageSelectionView(translationViewModel: translationViewModel)
+                }
+                VStack {
+                    InputTextView(translationViewModel: translationViewModel)
 
-                OutputTextView(translationViewModel: translationViewModel)
+                    OutputTextView(translationViewModel: translationViewModel)
+                }
             }
         }
     }

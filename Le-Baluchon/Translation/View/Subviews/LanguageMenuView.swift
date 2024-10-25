@@ -17,22 +17,21 @@ struct LanguageMenuView: View {
         self.languages = languages
     }
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Menu(selectedLanguage.rawValue) {
-                    ForEach(languages, id: \.self) { languageItem in
-                        Button(action: {
-                            selectedLanguage = languageItem
-                        }, label: {
-                            Text(languageItem.rawValue)
-                        })
-                    }
+        HStack {
+            Menu(selectedLanguage.rawValue) {
+                ForEach(languages, id: \.self) { languageItem in
+                    Button(action: {
+                        selectedLanguage = languageItem
+                    }, label: {
+                        Text(languageItem.rawValue)
+                    })
                 }
-                .font(.subheadline)
-                .foregroundStyle(Color.black)
-                .padding(.horizontal)
             }
+            .font(.subheadline)
+            .foregroundStyle(Color.black)
+            .padding(.horizontal)
         }
+        .padding()
     }
 }
 

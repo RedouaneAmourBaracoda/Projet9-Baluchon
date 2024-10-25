@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CurrencyItemView<Value: View>: View {
+
     @Binding private var selectedCurrency: CurrencyItem
+
     private let value: Value
 
     init(selectedCurrency: Binding<CurrencyItem>, @ViewBuilder value: () -> Value) {
@@ -22,16 +24,12 @@ struct CurrencyItemView<Value: View>: View {
                 .fixedSize()
             Spacer()
             Text(selectedCurrency.symbol)
-            ViewThatFits(in: .horizontal) {
-                value
-                    .fixedSize()
-                    .padding(.trailing)
-
-                value
-                    .padding(.trailing)
-            }
+            value
+                .padding(.trailing)
         }
-        .withBackground()
+        .background { Color.gray.opacity(0.3) }
+        .clipShape(RoundedRectangle(cornerRadius: 10.0))
+        .padding()
     }
 
     private func selectableCurrencyView() -> some View {

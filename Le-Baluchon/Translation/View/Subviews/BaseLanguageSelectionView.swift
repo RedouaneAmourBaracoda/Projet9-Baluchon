@@ -17,9 +17,10 @@ struct BaseLanguageSelectionView: View {
 
     var body: some View {
         LanguageMenuView(selectedLanguage: $translationViewModel.baseLanguageItem, languages: LanguageItem.allCases)
-            .padding()
-            .withBackground()
             .onChange(of: translationViewModel.baseLanguageItem) { translationViewModel.clear() }
+            .background { Color.gray.opacity(0.3) }
+            .clipShape(RoundedRectangle(cornerRadius: 10.0))
+            .padding()
     }
 }
 

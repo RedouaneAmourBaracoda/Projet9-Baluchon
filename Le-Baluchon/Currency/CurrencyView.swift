@@ -12,19 +12,16 @@ struct CurrencyView: View {
 
     var body: some View {
         NavigationStack {
-            GeometryReader { geometry in
-                ScrollView {
-                    VStack {
-                        baseCurrencyView()
-                        swapActionView()
-                        targetCurrencyView()
-                        Spacer()
-                    }
-                    .frame(width: geometry.size.width, height: geometry.size.height)
+            ScrollView {
+                VStack {
+                    baseCurrencyView()
+
+                    swapActionView()
+
+                    targetCurrencyView()
                 }
-                .refresh(currencyViewModel: currencyViewModel)
-                .safeAreaPadding(.vertical)
             }
+            .refresh(currencyViewModel: currencyViewModel)
             .alert(isPresented: $currencyViewModel.shouldPresentAlert) {
                 Alert(title: Text("Error"), message: Text(currencyViewModel.errorMessage))
             }
@@ -37,6 +34,7 @@ struct CurrencyView: View {
             TextField("", text: $currencyViewModel.inputString, axis: .horizontal)
                 .keyboardType(.decimalPad)
                 .valueStyle(fontWeight: .light)
+                .fixedSize()
                 .onSubmit {
                     Task {
                         await currencyViewModel.convert()
@@ -53,7 +51,6 @@ struct CurrencyView: View {
               .resizable()
               .aspectRatio(contentMode: .fit)
               .frame(width: 40, height: 40)
-              .padding()
         })
     }
 

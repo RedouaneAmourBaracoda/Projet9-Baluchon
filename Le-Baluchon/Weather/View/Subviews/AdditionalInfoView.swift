@@ -19,18 +19,14 @@ struct AdditionalInfoView: View {
         HStack {
             temperatureFeltView()
 
-            Divider()
-                .frame(height: 50)
-
             humidityView()
-
-            Divider()
-                .frame(height: 50)
 
             pressureView()
         }
         .padding()
-        .withBackground()
+        .background { Color.gray.opacity(0.3) }
+        .clipShape(RoundedRectangle(cornerRadius: 10.0))
+        .padding()
     }
 
     private func temperatureFeltView() -> some View {

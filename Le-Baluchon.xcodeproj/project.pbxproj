@@ -57,7 +57,6 @@
 		B8EE5EEE2CC69A9A00C59C08 /* DataStoreServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EE5EED2CC69A9A00C59C08 /* DataStoreServiceType.swift */; };
 		B8F44D102C9AF2D500485418 /* CurrencyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F44D0F2C9AF2D500485418 /* CurrencyViewModelTests.swift */; };
 		B8F44D122C9B674700485418 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F44D112C9B674700485418 /* UserDefaultsService.swift */; };
-		B8FA60FD2CA17D320034046D /* BackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA60FC2CA17D320034046D /* BackgroundModifier.swift */; };
 		B8FA60FF2CA1895E0034046D /* TranslationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA60FE2CA1895E0034046D /* TranslationViewModel.swift */; };
 		B8FA61012CA1A6E10034046D /* GoogleTranslationAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA61002CA1A6E10034046D /* GoogleTranslationAPIService.swift */; };
 /* End PBXBuildFile section */
@@ -126,7 +125,6 @@
 		B8EE5EED2CC69A9A00C59C08 /* DataStoreServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreServiceType.swift; sourceTree = "<group>"; };
 		B8F44D0F2C9AF2D500485418 /* CurrencyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModelTests.swift; sourceTree = "<group>"; };
 		B8F44D112C9B674700485418 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
-		B8FA60FC2CA17D320034046D /* BackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModifier.swift; sourceTree = "<group>"; };
 		B8FA60FE2CA1895E0034046D /* TranslationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewModel.swift; sourceTree = "<group>"; };
 		B8FA61002CA1A6E10034046D /* GoogleTranslationAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslationAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,7 +206,6 @@
 			children = (
 				B8D5C2492CCA336600D89923 /* Info.plist */,
 				B82023402C779CD8002F0494 /* LeBaluchonApp.swift */,
-				B8FA60FC2CA17D320034046D /* BackgroundModifier.swift */,
 				B8EE5EC32CC2652000C59C08 /* Weather */,
 				B8BCA1452C89368D00DEAB92 /* Currency */,
 				B808338D2CA0D01D00B43E6D /* Translation */,
@@ -250,6 +247,15 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		B8A07BD92CCBB37300CD9235 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				B8000E0F2C782D5A0006106D /* CurrencyItemView.swift */,
+				B8D133992C9AA3AA00983170 /* CurrencyViewModifiers.swift */,
+			);
+			name = Subviews;
+			sourceTree = "<group>";
+		};
 		B8BCA1452C89368D00DEAB92 /* Currency */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,7 +274,7 @@
 			path = Ressources;
 			sourceTree = "<group>";
 		};
-		B8D5C23E2CC93B0400D89923 /* WeatherInfoSubViews */ = {
+		B8D5C23E2CC93B0400D89923 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				B8D5C2382CC93ACA00D89923 /* LocationInfoView.swift */,
@@ -277,7 +283,7 @@
 				B8D5C23A2CC93AE100D89923 /* TemperatureInfoView.swift */,
 				B8D5C23C2CC93AFD00D89923 /* AdditionalInfoView.swift */,
 			);
-			path = WeatherInfoSubViews;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		B8D5C2412CC98D6100D89923 /* WeatherTests */ = {
@@ -349,7 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				B8EE5EC82CC26D6D00C59C08 /* WeatherView.swift */,
-				B8D5C23E2CC93B0400D89923 /* WeatherInfoSubViews */,
+				B8D5C23E2CC93B0400D89923 /* Subviews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,8 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				B82023422C779CD8002F0494 /* CurrencyView.swift */,
-				B8D133992C9AA3AA00983170 /* CurrencyViewModifiers.swift */,
-				B8000E0F2C782D5A0006106D /* CurrencyItemView.swift */,
+				B8A07BD92CCBB37300CD9235 /* Subviews */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -637,7 +642,6 @@
 				B8EE5ED42CC6260400C59C08 /* TranslationAPIService.swift in Sources */,
 				B808338F2CA0D3F100B43E6D /* LanguageItem.swift in Sources */,
 				B8FA60FF2CA1895E0034046D /* TranslationViewModel.swift in Sources */,
-				B8FA60FD2CA17D320034046D /* BackgroundModifier.swift in Sources */,
 				B8EE5EDF2CC636E400C59C08 /* OpenExchangeAPIError.swift in Sources */,
 				B8EE5ECC2CC2729100C59C08 /* Weather.swift in Sources */,
 				B8A07BD22CCB245900CD9235 /* TargetLanguageSelectionView.swift in Sources */,

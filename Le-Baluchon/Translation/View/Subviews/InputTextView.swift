@@ -35,7 +35,9 @@ struct InputTextView: View {
             }
         }
         .padding()
-        .withBackground()
+        .background { Color.gray.opacity(0.3) }
+        .clipShape(RoundedRectangle(cornerRadius: 10.0))
+        .padding()
     }
 }
 
