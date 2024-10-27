@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "%lld %@" : {
       "localizations" : {
         "en" : {
@@ -11,104 +8,922 @@
             "state" : "new",
             "value" : "%1$lld %2$@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld %2$@"
+          }
         }
       }
     },
-    "Access restricted for repeated over-use (status: 429), or other reason given in ‘description’ (403)" : {
-
+    "currency.errors.undetermined.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A non-determined error with currency services occurred."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se produjo un error no determinado con los servicios de divisas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur indéterminée s’est produite avec les services de change."
+          }
+        }
+      }
     },
-    "An issue occured with currency services. The base currency is unsupported or access is restricted." : {
-
+    "currency.navigation-title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Currency"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "divisa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devise"
+          }
+        }
+      }
     },
-    "API token not providen in the request or if provided does not grant access to this API." : {
-
+    "currency.open-exchange-api.errors.access-restricted.user-friendly-description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The limit of requests to currency services has been exceeded."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha superado el límite de solicitudes de servicios monetarios."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le nombre de requêtes vers les services monétaires a été dépassé."
+          }
+        }
+      }
     },
-    "City" : {
-
+    "currency.open-exchange-api.errors.invalid-app-id.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Client provided an invalid App ID"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente proporcionó un identificador de aplicación no válido (App ID)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le client a fourni un identifiant d'application (App ID) invalide."
+          }
+        }
+      }
     },
-    "Clear" : {
-
+    "currency.open-exchange-api.errors.invalid-base.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Client requested rates for an unsupported base currency"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente solicitó tipos para una moneda de base no respaldada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le client a demandé des taux pour une devise non-disponible."
+          }
+        }
+      }
     },
-    "Client doesn’t have permission to access requested route/feature" : {
-
+    "currency.open-exchange-api.errors.invalid-request" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An issue occured with currency services. The base currency is unsupported or access is restricted."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un problema con los servicios de divisas. La divisa base no tiene soporte o el acceso está restringido."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un problème lié aux services de change est survenu. Il se peut que la devise de base ne soit pas prise en charge ou que l’accès soit restreint."
+          }
+        }
+      }
     },
-    "Client provided an invalid App ID" : {
-
+    "currency.open-exchange-api.errors.invalid-request.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid request"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicitud inválida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requête invalide."
+          }
+        }
+      }
     },
-    "Client requested a non-existent resource/route" : {
-
+    "currency.open-exchange-api.errors.invalid-url.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid url"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL no válida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL invalide"
+          }
+        }
+      }
     },
-    "Client requested rates for an unsupported base currency" : {
-
+    "currency.open-exchange-api.errors.not-allowed.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Client doesn’t have permission to access requested route/feature"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente no tiene permiso para acceder al recurso solicitado."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le client n’a pas la permission d’accéder à la ressource demandée."
+          }
+        }
+      }
     },
-    "Currency" : {
-
+    "currency.open-exchange-api.errors.not-found.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Client requested a non-existent resource/route"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente solicitó un recurso inexistente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La ressource demandée est inexistante."
+          }
+        }
+      }
     },
-    "Data with requested parameters (lat, lon, date etc) does not exist in service database" : {
-
+    "currency.open-exchange-api.errors.restricted-access.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Access restricted for repeated over-use (status: 429), or other reason given in ‘description’ (403)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acceso restringido por uso excesivo repetido (estado: 429), u otro motivo dado en 'descripción' (403)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accès restreint pour dépassement du quota autorisé (statut : 429), ou autre raison indiquée dans la description (403)"
+          }
+        }
+      }
     },
-    "Error" : {
-
+    "currency.textfield.placeholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1000"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1000"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1000"
+          }
+        }
+      }
     },
-    "Invalid request" : {
-
+    "translation.button.clear" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer"
+          }
+        }
+      }
     },
-    "Invalid URL" : {
-
+    "translation.errors.undetermined.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A non-determined error with translation services occured."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha detectado un error con los servicios de traducción."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur indéterminée avec les services de traduction est survenue."
+          }
+        }
+      }
     },
-    "Missing parameters in the request or some have incorrect format or values out of allowed range." : {
-
+    "translation.google-translation-api.errors.bad-request.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The client provided invalid parameters for the request."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente proporcionó parámetros no válidos para la solicitud."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le client a fourni des paramètres invalides pour la requête."
+          }
+        }
+      }
     },
-    "Quota of requests was exceeded. Retry request later or after extending your key quota." : {
-
+    "translation.google-translation-api.errors.bad-request.user-friendly-description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The client entered invalid text or requests unavailable resource."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente ingresó texto no válido o solicita un recurso no disponible."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le text saisi est invalide ou la ressource demandé est inexistante."
+          }
+        }
+      }
     },
-    "The city provided does not exist in data base or has invalid format." : {
-
+    "translation.google-translation-api.errors.forbidden.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The requested operation is not allowed due to restricted access or exceeded limit of requests."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La operación solicitada no se permite debido a un acceso restringido o al límite de solicitudes excedido."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’opération demandée n’est pas autorisée en raison d’un accès restreint ou de la limite de demandes dépassée."
+          }
+        }
+      }
     },
-    "The client doesn’t have permission to access requested route/feature" : {
-
+    "translation.google-translation-api.errors.forbidden.user-friendly-description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The limit of requests to translation services has been exceeded."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha superado el límite de solicitudes a los servicios de traducción."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le nombre de requêtes vers les services de traduction a été dépassé."
+          }
+        }
+      }
     },
-    "The client has exceeded the limit of daily requests." : {
-
+    "translation.google-translation-api.errors.invalid-request.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid request"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "solicitud inválida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requête invalide."
+          }
+        }
+      }
     },
-    "The client has exceeded the limit of requests." : {
-
+    "translation.google-translation-api.errors.invalid-request.user-friendly-description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There was an issue with translation services. Access is restricted or services are simply down."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hubo un problema con los servicios de traducción. El acceso está restringido o los servicios simplemente están fuera."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les services de traduction rencontrent actuellement un problème. Il se peut que l’accès soit restreint ou que les services soient indisponibles."
+          }
+        }
+      }
     },
-    "The client provided invalid credentials or the session has expired." : {
-
+    "translation.google-translation-api.errors.invalid-url.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL no válida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL invalide."
+          }
+        }
+      }
     },
-    "The client provided invalid parameters for the request." : {
-
+    "translation.google-translation-api.errors.not-allowed.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The client doesn’t have permission to access requested route/feature"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente no tiene permiso para acceder al recurso solicitado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le client n’a pas la permission d’accéder à la ressource demandée."
+          }
+        }
+      }
     },
-    "The client requested a non-existent resource/route" : {
-
+    "translation.google-translation-api.errors.not-found.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The client requested a non-existent resource/route"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente solicitó un recurso inexistente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le client a demandé une ressource inexistante."
+          }
+        }
+      }
     },
-    "The limit of requests to currency services has been exceeded." : {
-
+    "translation.google-translation-api.errors.payment-required.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The client has exceeded the limit of daily requests."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente ha excedido el límite de solicitudes diarias."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le client a dépassé la limite de requêtes quotidiennes."
+          }
+        }
+      }
     },
-    "The limit of requests to translation services has been exceeded." : {
-
+    "translation.google-translation-api.errors.too-many-requests.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The client has exceeded the limit of requests."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente ha excedido el límite de solicitudes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le client a dépassé la limite de requêtes."
+          }
+        }
+      }
     },
-    "The limit of requests to weather services has been exceeded." : {
-
+    "translation.google-translation-api.errors.unauthorized.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The client provided invalid credentials or the session has expired."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cliente proporcionó credenciales inválidas o la sesión ha expirado."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le client a fourni des identifiants invalides ou la session est expirée."
+          }
+        }
+      }
     },
-    "The requested operation is not allowed due to restricted access or exceeded limit of requests." : {
-
+    "translation.navigation-title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translation"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "traducción"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduction"
+          }
+        }
+      }
     },
-    "There was an issue with translation services. Access is restricted or services are simply down." : {
-
+    "weather-open-weather-api.errors.bad-request.description." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missing parameters in the request or some have incorrect format or values out of allowed range."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parámetros que faltan en la solicitud o algunos tienen formato incorrecto o valores fuera del rango permitido."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres manquants dans la requête ou certains ont un format incorrect ou des valeurs hors de la plage autorisée."
+          }
+        }
+      }
     },
-    "There was an issue with weather services. Access might be restricted or services are simply down." : {
-
+    "weather-open-weather-api.errors.invalid-url.description." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL no válida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL invalide."
+          }
+        }
+      }
     },
-    "Translation" : {
-
+    "weather-open-weather-api.errors.unauthorized.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API token not providen in the request or if provided does not grant access to this API."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El token de API no se proporciona en la solicitud o si se proporciona no concede acceso a esta API."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le Token de l'API n’est pas fourni dans la requête ou alors ne permet pas d’accéder à cette API."
+          }
+        }
+      }
     },
-    "Unexpected Error due to internal issues." : {
-
+    "weather.alert.error.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur"
+          }
+        }
+      }
     },
-    "Weather" : {
-
+    "weather.errors.undetermined.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A non-determined error with weather services occured."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error no determinado con los servicios meteorológicos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur indéterminée avec les services météorologiques s’est produite."
+          }
+        }
+      }
+    },
+    "weather.navigation-title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weather"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Météo"
+          }
+        }
+      }
+    },
+    "weather.open-weather-api.errors.bad-request.user-friendly-description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The city provided does not exist in data base or has invalid format."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La ciudad indicada no existe en la base de datos o tiene un formato inválido."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La ville indiquée n’existe pas dans la base de données ou a un format invalide."
+          }
+        }
+      }
+    },
+    "weather.open-weather-api.errors.internal-error.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unexpected Error due to internal issues."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error inesperado debido a problemas internos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur inattendue due à des problèmes internes."
+          }
+        }
+      }
+    },
+    "weather.open-weather-api.errors.invalid-request.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid request"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "solicitud inválida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requête invalide."
+          }
+        }
+      }
+    },
+    "weather.open-weather-api.errors.invalid-request.user-friendly-description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There was an issue with weather services. Access might be restricted or services are simply down."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hubo un problema con los servicios meteorológicos. El acceso podría estar restringido o los servicios simplemente están fuera de servicio."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un souci est survenu avec les services météorologiques. L’accès peut être restreint ou les services sont indisponibles."
+          }
+        }
+      }
+    },
+    "weather.open-weather-api.errors.not-found.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data with requested parameters (lat, lon, date etc) does not exist in service database"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los datos con parámetros solicitados (lat, lon, date etc) no existen en la base de datos del servicio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les paramètres demandés (lat, lon, date etc.) n’existent pas dans la base de données du service"
+          }
+        }
+      }
+    },
+    "weather.open-weather-api.errors.too-many-requests.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quota of requests was exceeded. Retry request later or after extending your key quota."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha excedido la cuota de solicitudes. Vuelva a intentar la solicitud más tarde o después de ampliar su cuota clave."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le quota de demandes a été dépassé. Essayez plus tard ou après avoir changé votre quota de clés."
+          }
+        }
+      }
+    },
+    "weather.open-weather-api.errors.too-many-requests.user-friendly-description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The limit of requests to weather services has been exceeded."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha excedido el límite de solicitudes a los servicios meteorológicos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La limite de requêtes vers les services météorologiques a été dépassée."
+          }
+        }
+      }
+    },
+    "weather.textfield.placeholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "City"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciudad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ville"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

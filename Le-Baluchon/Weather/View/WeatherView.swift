@@ -25,9 +25,9 @@ struct WeatherView: View {
             }
             .ignoresSafeArea(.keyboard)
             .alert(isPresented: $weatherViewModel.shouldPresentAlert) {
-                Alert(title: Text("Error"), message: Text(weatherViewModel.errorMessage))
+                Alert(title: Text("weather.alert.error.title"), message: Text(weatherViewModel.errorMessage))
             }
-            .navigationTitle("Weather")
+            .navigationTitle("weather.navigation-title")
         }
     }
 
@@ -68,6 +68,13 @@ struct WeatherView: View {
             }
         }
     }
+}
+
+extension String {
+    static let errorAlertTitle = NSLocalizedString(
+        "weather.alert.error.title",
+        comment: ""
+    )
 }
 
 #Preview {

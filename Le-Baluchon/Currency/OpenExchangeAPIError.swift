@@ -19,22 +19,22 @@ enum OpenExchangeAPIError: CurrencyAPIError {
     var errorDescription: String {
         switch self {
         case .invalidURL:
-            return NSLocalizedString("Invalid URL", comment: "")
+            return NSLocalizedString("currency.open-exchange-api.errors.invalid-url.description", comment: "")
         case .invalidBase:
-            return NSLocalizedString("Client requested rates for an unsupported base currency", comment: "")
+            return NSLocalizedString("currency.open-exchange-api.errors.invalid-base.description", comment: "")
         case .invalidAppId:
-            return NSLocalizedString("Client provided an invalid App ID", comment: "")
+            return NSLocalizedString("currency.open-exchange-api.errors.invalid-app-id.description", comment: "")
         case .accessRestricted:
             return NSLocalizedString(
-                "Access restricted for repeated over-use (status: 429), or other reason given in ‘description’ (403)",
+                "currency.open-exchange-api.errors.restricted-access.description",
                 comment: ""
             )
         case .notFound:
-            return NSLocalizedString("Client requested a non-existent resource/route", comment: "")
+            return NSLocalizedString("currency.open-exchange-api.errors.not-found.description", comment: "")
         case .notAllowed:
-            return NSLocalizedString("Client doesn’t have permission to access requested route/feature", comment: "")
+            return NSLocalizedString("currency.open-exchange-api.errors.not-allowed.description", comment: "")
         case .invalidRequest:
-            return NSLocalizedString("Invalid request", comment: "")
+            return NSLocalizedString("currency.open-exchange-api.errors.invalid-request.description", comment: "")
         }
     }
 
@@ -42,11 +42,14 @@ enum OpenExchangeAPIError: CurrencyAPIError {
         switch self {
         case .invalidURL, .invalidBase, .invalidAppId, .notFound, .notAllowed, .invalidRequest:
             return NSLocalizedString(
-                "An issue occured with currency services. The base currency is unsupported or access is restricted.",
+                "currency.open-exchange-api.errors.invalid-request",
                 comment: ""
             )
         case .accessRestricted:
-            return NSLocalizedString("The limit of requests to currency services has been exceeded.", comment: "")
+            return NSLocalizedString(
+                "currency.open-exchange-api.errors.access-restricted.user-friendly-description",
+                comment: ""
+            )
         }
     }
 
@@ -74,5 +77,9 @@ enum OpenExchangeAPIError: CurrencyAPIError {
 }
 
 extension String {
-    static let currencyUndeterminedErrorDescription = "A non-determined error with currency services occured."
+    static let currencyUndeterminedErrorDescription =
+    NSLocalizedString(
+        "currency.errors.undetermined.description",
+        comment: ""
+    )
 }

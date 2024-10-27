@@ -18,7 +18,7 @@ struct CitySearchFieldView: View {
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "magnifyingglass")
-            TextField("City", text: $weatherViewModel.inputCityName)
+            TextField("weather.textfield.placeholder", text: $weatherViewModel.inputCityName)
                 .fontWeight(.bold)
                 .autocorrectionDisabled()
                 .onSubmit {

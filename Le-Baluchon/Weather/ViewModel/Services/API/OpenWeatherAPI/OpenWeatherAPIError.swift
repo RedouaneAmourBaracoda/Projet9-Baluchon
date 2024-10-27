@@ -19,31 +19,31 @@ enum OpenWeatherAPIError: WeatherAPIError {
     var errorDescription: String {
         switch self {
         case .invalidURL:
-            return NSLocalizedString("Invalid URL", comment: "")
+            return NSLocalizedString("weather-open-weather-api.errors.invalid-url.description.", comment: "")
         case .badRequest:
             return NSLocalizedString(
-                "Missing parameters in the request or some have incorrect format or values out of allowed range.",
+                "weather-open-weather-api.errors.bad-request.description.",
                 comment: ""
             )
         case .unauthorized:
             return NSLocalizedString(
-                "API token not providen in the request or if provided does not grant access to this API.",
+                "weather-open-weather-api.errors.unauthorized.description",
                 comment: ""
             )
         case .notFound:
             return NSLocalizedString(
-                "Data with requested parameters (lat, lon, date etc) does not exist in service database",
+                "weather.open-weather-api.errors.not-found.description",
                 comment: ""
             )
         case .tooManyRequests:
             return NSLocalizedString(
-                "Quota of requests was exceeded. Retry request later or after extending your key quota.",
+                "weather.open-weather-api.errors.too-many-requests.description",
                 comment: ""
             )
         case .internalError:
-            return NSLocalizedString("Unexpected Error due to internal issues.", comment: "")
+            return NSLocalizedString("weather.open-weather-api.errors.internal-error.description", comment: "")
         case .invalidRequest:
-            return NSLocalizedString("Invalid request", comment: "")
+            return NSLocalizedString("weather.open-weather-api.errors.invalid-request.description", comment: "")
         }
     }
 
@@ -51,16 +51,19 @@ enum OpenWeatherAPIError: WeatherAPIError {
         switch self {
         case .invalidURL, .unauthorized, .internalError, .invalidRequest:
             return NSLocalizedString(
-                "There was an issue with weather services. Access might be restricted or services are simply down.",
+                "weather.open-weather-api.errors.invalid-request.user-friendly-description",
                 comment: ""
             )
         case .badRequest, .notFound:
             return NSLocalizedString(
-                "The city provided does not exist in data base or has invalid format.",
+                "weather.open-weather-api.errors.bad-request.user-friendly-description",
                 comment: ""
             )
         case .tooManyRequests:
-            return NSLocalizedString("The limit of requests to weather services has been exceeded.", comment: "")
+            return NSLocalizedString(
+                "weather.open-weather-api.errors.too-many-requests.user-friendly-description",
+                comment: ""
+            )
         }
     }
 
@@ -88,5 +91,8 @@ enum OpenWeatherAPIError: WeatherAPIError {
 }
 
 extension String {
-    static let weatherUndeterminedErrorDescription = "A non-determined error with weather services occured."
+    static let weatherUndeterminedErrorDescription = NSLocalizedString(
+        "weather.errors.undetermined.description",
+        comment: ""
+    )
 }

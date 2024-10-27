@@ -23,15 +23,15 @@ struct CurrencyView: View {
             }
             .refresh(currencyViewModel: currencyViewModel)
             .alert(isPresented: $currencyViewModel.shouldPresentAlert) {
-                Alert(title: Text("Error"), message: Text(currencyViewModel.errorMessage))
+                Alert(title: Text(verbatim: .errorAlertTitle), message: Text(currencyViewModel.errorMessage))
             }
-            .navigationTitle("Currency")
+            .navigationTitle("currency.navigation-title")
         }
     }
 
     private func baseCurrencyView() -> some View {
         CurrencyItemView(selectedCurrency: $currencyViewModel.baseCurrency) {
-            TextField("", text: $currencyViewModel.inputString, axis: .horizontal)
+            TextField("currency.textfield.placeholder", text: $currencyViewModel.inputString, axis: .horizontal)
                 .keyboardType(.decimalPad)
                 .valueStyle(fontWeight: .light)
                 .onSubmit {

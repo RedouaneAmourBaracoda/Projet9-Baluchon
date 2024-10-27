@@ -21,29 +21,38 @@ enum GoogleTranslationAPIError: TranslationAPIError {
     var errorDescription: String {
         switch self {
         case .invalidURL:
-            return NSLocalizedString("Invalid URL", comment: "")
+            return NSLocalizedString("translation.google-translation-api.errors.invalid-url.description", comment: "")
         case .badRequest:
-            return NSLocalizedString("The client provided invalid parameters for the request.", comment: "")
+            return NSLocalizedString("translation.google-translation-api.errors.bad-request.description", comment: "")
         case .unauthorized:
-            return NSLocalizedString("The client provided invalid credentials or the session has expired.", comment: "")
+            return NSLocalizedString("translation.google-translation-api.errors.unauthorized.description", comment: "")
         case .paymentRequired:
-            return NSLocalizedString("The client has exceeded the limit of daily requests.", comment: "")
+            return NSLocalizedString(
+                "translation.google-translation-api.errors.payment-required.description",
+                comment: ""
+            )
         case .forbidden:
             return NSLocalizedString(
-                "The requested operation is not allowed due to restricted access or exceeded limit of requests.",
+                "translation.google-translation-api.errors.forbidden.description",
                 comment: ""
             )
         case .notFound:
-            return NSLocalizedString("The client requested a non-existent resource/route", comment: "")
+            return NSLocalizedString("translation.google-translation-api.errors.not-found.description", comment: "")
         case .notAllowed:
             return NSLocalizedString(
-                "The client doesn’t have permission to access requested route/feature",
+                "translation.google-translation-api.errors.not-allowed.description",
                 comment: ""
             )
         case .tooManyRequests:
-            return NSLocalizedString("The client has exceeded the limit of requests.", comment: "")
+            return NSLocalizedString(
+                "translation.google-translation-api.errors.too-many-requests.description",
+                comment: ""
+            )
         case .invalidRequest:
-            return NSLocalizedString("Invalid request", comment: "")
+            return NSLocalizedString(
+                "translation.google-translation-api.errors.invalid-request.description",
+                comment: ""
+            )
         }
     }
 
@@ -51,16 +60,19 @@ enum GoogleTranslationAPIError: TranslationAPIError {
         switch self {
         case .invalidURL, .unauthorized, .invalidRequest, .notAllowed:
             return NSLocalizedString(
-                "There was an issue with translation services. Access is restricted or services are simply down.",
+                "translation.google-translation-api.errors.invalid-request.user-friendly-description",
                 comment: ""
             )
         case .badRequest, .notFound:
             return NSLocalizedString(
-                "The city provided does not exist in data base or has invalid format.",
+                "translation.google-translation-api.errors.bad-request.user-friendly-description",
                 comment: ""
             )
         case .paymentRequired, .forbidden, .tooManyRequests:
-            return NSLocalizedString("The limit of requests to translation services has been exceeded.", comment: "")
+            return NSLocalizedString(
+                "translation.google-translation-api.errors.forbidden.user-friendly-description",
+                comment: ""
+            )
         }
     }
 
@@ -92,5 +104,8 @@ enum GoogleTranslationAPIError: TranslationAPIError {
 }
 
 extension String {
-    static let translationUndeterminedErrorDescription = "A non-determined error with translation services occured."
+    static let translationUndeterminedErrorDescription = NSLocalizedString(
+        "translation.errors.undetermined.description",
+        comment: ""
+    )
 }

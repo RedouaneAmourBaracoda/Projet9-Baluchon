@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: - Packaging + i18n (internationalisation) -> String calatalog
 @MainActor
 final class CurrencyViewModel: ObservableObject {
 

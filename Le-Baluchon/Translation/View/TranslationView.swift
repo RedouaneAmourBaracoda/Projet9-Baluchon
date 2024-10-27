@@ -21,9 +21,9 @@ struct TranslationView: View {
             }
             .ignoresSafeArea(.keyboard)
             .alert(isPresented: $translationViewModel.shouldPresentAlert) {
-                Alert(title: Text("Error"), message: Text(translationViewModel.errorMessage))
+                Alert(title: Text(verbatim: .errorAlertTitle), message: Text(translationViewModel.errorMessage))
             }
-            .navigationTitle("Translation")
+            .navigationTitle("translation.navigation-title")
         }
     }
 
