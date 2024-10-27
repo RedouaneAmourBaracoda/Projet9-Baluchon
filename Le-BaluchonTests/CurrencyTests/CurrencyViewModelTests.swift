@@ -155,7 +155,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         XCTAssertTrue(currencyViewModel.shouldPresentAlert)
 
-        XCTAssertEqual(currencyViewModel.errorMessage, error?.errorDescription)
+        XCTAssertEqual(currencyViewModel.errorMessage, error?.userFriendlyDescription)
     }
 
     // Testing no data was saved when an API service returns a random error.

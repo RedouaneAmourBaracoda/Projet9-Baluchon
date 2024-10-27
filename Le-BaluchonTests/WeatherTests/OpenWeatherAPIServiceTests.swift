@@ -30,8 +30,9 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
         do {
             _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .invalidURL)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.invalidURL.errorDescription)
+            XCTAssertTrue(error == .invalidURL)
+            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.invalidURL.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.invalidURL.userFriendlyDescription)
         }
     }
 
@@ -59,8 +60,9 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
         do {
             _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .badRequest)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.badRequest.errorDescription)
+            XCTAssertTrue(error == .badRequest)
+            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.badRequest.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.badRequest.userFriendlyDescription)
         }
     }
 
@@ -88,8 +90,9 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
         do {
             _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .unauthorized)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.unauthorized.errorDescription)
+            XCTAssertTrue(error == .unauthorized)
+            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.unauthorized.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.unauthorized.userFriendlyDescription)
         }
     }
 
@@ -117,8 +120,9 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
         do {
             _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .notFound)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.notFound.errorDescription)
+            XCTAssertTrue(error == .notFound)
+            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.notFound.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.notFound.userFriendlyDescription)
         }
     }
 
@@ -146,8 +150,9 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
         do {
             _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .tooManyRequests)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.tooManyRequests.errorDescription)
+            XCTAssertTrue(error == .tooManyRequests)
+            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.tooManyRequests.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.tooManyRequests.userFriendlyDescription)
         }
     }
 
@@ -175,8 +180,9 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
         do {
             _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .internalError)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.internalError.errorDescription)
+            XCTAssertTrue(error == .internalError)
+            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.internalError.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.internalError.userFriendlyDescription)
         }
     }
 
@@ -208,8 +214,9 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
         do {
             _ = try await weatherAPIService.fetchWeather(cityName: "")
         } catch let error as OpenWeatherAPIError {
-            XCTAssert(error == .invalidRequest)
-            XCTAssert(error.errorDescription == OpenWeatherAPIError.invalidRequest.errorDescription)
+            XCTAssertTrue(error == .invalidRequest)
+            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.invalidRequest.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.invalidRequest.userFriendlyDescription)
         }
     }
 

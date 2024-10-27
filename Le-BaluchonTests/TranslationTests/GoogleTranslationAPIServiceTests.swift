@@ -30,8 +30,9 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         do {
             _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .invalidURL)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.invalidURL.errorDescription)
+            XCTAssertTrue(error == .invalidURL)
+            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.invalidURL.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.invalidURL.userFriendlyDescription)
         }
     }
 
@@ -59,8 +60,9 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         do {
             _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .badRequest)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.badRequest.errorDescription)
+            XCTAssertTrue(error == .badRequest)
+            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.badRequest.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.badRequest.userFriendlyDescription)
         }
     }
 
@@ -90,6 +92,7 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         } catch let error as GoogleTranslationAPIError {
             XCTAssert(error == .unauthorized)
             XCTAssert(error.errorDescription == GoogleTranslationAPIError.unauthorized.errorDescription)
+            XCTAssert(error.userFriendlyDescription == GoogleTranslationAPIError.unauthorized.userFriendlyDescription)
         }
     }
 
@@ -119,6 +122,8 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         } catch let error as GoogleTranslationAPIError {
             XCTAssert(error == .paymentRequired)
             XCTAssert(error.errorDescription == GoogleTranslationAPIError.paymentRequired.errorDescription)
+            XCTAssert(
+                error.userFriendlyDescription == GoogleTranslationAPIError.paymentRequired.userFriendlyDescription)
         }
     }
 
@@ -146,8 +151,9 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         do {
             _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .forbidden)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.forbidden.errorDescription)
+            XCTAssertTrue(error == .forbidden)
+            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.forbidden.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.forbidden.userFriendlyDescription)
         }
     }
 
@@ -175,8 +181,9 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         do {
             _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .notFound)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.notFound.errorDescription)
+            XCTAssertTrue(error == .notFound)
+            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.notFound.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.notFound.userFriendlyDescription)
         }
     }
 
@@ -204,8 +211,9 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         do {
             _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .notAllowed)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.notAllowed.errorDescription)
+            XCTAssertTrue(error == .notAllowed)
+            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.notAllowed.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.notAllowed.userFriendlyDescription)
         }
     }
 
@@ -233,8 +241,12 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         do {
             _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .tooManyRequests)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.tooManyRequests.errorDescription)
+            XCTAssertTrue(error == .tooManyRequests)
+            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.tooManyRequests.errorDescription)
+            XCTAssertEqual(
+                error.userFriendlyDescription,
+                GoogleTranslationAPIError.tooManyRequests.userFriendlyDescription
+            )
         }
     }
 
@@ -265,8 +277,12 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
         do {
             _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
         } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .invalidRequest)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.invalidRequest.errorDescription)
+            XCTAssertTrue(error == .invalidRequest)
+            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.invalidRequest.errorDescription)
+            XCTAssertEqual(
+                error.userFriendlyDescription,
+                GoogleTranslationAPIError.invalidRequest.userFriendlyDescription
+            )
         }
     }
 

@@ -24,8 +24,13 @@ struct CurrencyItemView<Value: View>: View {
                 .fixedSize()
             Spacer()
             Text(selectedCurrency.symbol)
-            value
-                .padding(.trailing)
+            ViewThatFits(in: .horizontal) {
+                value
+                    .fixedSize()
+                    .padding(.trailing)
+                value
+                    .padding(.trailing)
+            }
         }
         .background { Color.gray.opacity(0.3) }
         .clipShape(RoundedRectangle(cornerRadius: 10.0))

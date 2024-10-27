@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OpenWeatherAPIError: LocalizedError, CaseIterable {
+enum OpenWeatherAPIError: WeatherAPIError {
     case invalidURL
     case badRequest
     case unauthorized
@@ -16,7 +16,7 @@ enum OpenWeatherAPIError: LocalizedError, CaseIterable {
     case internalError
     case invalidRequest
 
-    var errorDescription: String? {
+    var errorDescription: String {
         switch self {
         case .invalidURL:
             return NSLocalizedString("Invalid URL", comment: "")
@@ -47,6 +47,23 @@ enum OpenWeatherAPIError: LocalizedError, CaseIterable {
         }
     }
 
+    var userFriendlyDescription: String {
+        switch self {
+        case .invalidURL, .unauthorized, .internalError, .invalidRequest:
+            return NSLocalizedString(
+                "There was an issue with weather services. Access might be restricted or services are simply down.",
+                comment: ""
+            )
+        case .badRequest, .notFound:
+            return NSLocalizedString(
+                "The city provided does not exist in data base or has invalid format.",
+                comment: ""
+            )
+        case .tooManyRequests:
+            return NSLocalizedString("The limit of requests to weather services has been exceeded.", comment: "")
+        }
+    }
+
     static func checkStatusCode(urlResponse: URLResponse) -> Result<Void, OpenWeatherAPIError> {
         guard let httpURLResponse = urlResponse as? HTTPURLResponse else { return .failure(.invalidRequest) }
 
@@ -68,4 +85,8 @@ enum OpenWeatherAPIError: LocalizedError, CaseIterable {
         default: return .failure(.invalidRequest)
         }
     }
+}
+
+extension String {
+    static let weatherUndeterminedErrorDescription = "A non-determined error with weather services occured."
 }

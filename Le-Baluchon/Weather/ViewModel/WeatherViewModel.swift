@@ -37,8 +37,9 @@ final class WeatherViewModel: ObservableObject {
         do {
             weather = try await weatherAPIService.fetchWeather(cityName: inputCityName)
         } catch {
-            if let weatherAPIError = error as? LocalizedError {
-                errorMessage = weatherAPIError.errorDescription ?? .weatherUndeterminedErrorDescription
+            if let weatherAPIError = error as? (any WeatherAPIError) {
+                NSLog(weatherAPIError.errorDescription ?? .weatherUndeterminedErrorDescription)
+                errorMessage = weatherAPIError.userFriendlyDescription
             } else {
                 errorMessage = .weatherUndeterminedErrorDescription
             }
@@ -49,8 +50,4 @@ final class WeatherViewModel: ObservableObject {
     func clear() {
         inputCityName.removeAll()
     }
-}
-
-extension String {
-    static let weatherUndeterminedErrorDescription = "A non-determined error with weather services occured."
 }

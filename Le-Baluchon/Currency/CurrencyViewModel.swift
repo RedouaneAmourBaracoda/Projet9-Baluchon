@@ -104,8 +104,9 @@ final class CurrencyViewModel: ObservableObject {
             let rates = try await currencyApiService.fetchCurrency()
             dataStoreService.save(Date.now.timeIntervalSince1970, rates: rates)
         } catch {
-            if let currencyAPIError = error as? LocalizedError {
-                errorMessage = currencyAPIError.errorDescription ?? .currencyUndeterminedErrorDescription
+            if let currencyAPIError = error as? (any CurrencyAPIError) {
+                NSLog(currencyAPIError.errorDescription ?? .currencyUndeterminedErrorDescription)
+                errorMessage = currencyAPIError.userFriendlyDescription
             } else {
                 errorMessage = .currencyUndeterminedErrorDescription
             }

@@ -30,8 +30,9 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
         do {
             _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .invalidURL)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.invalidURL.errorDescription)
+            XCTAssertTrue(error == .invalidURL)
+            XCTAssertEqual(error.errorDescription, OpenExchangeAPIError.invalidURL.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenExchangeAPIError.invalidURL.userFriendlyDescription)
         }
     }
 
@@ -59,8 +60,9 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
         do {
             _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .invalidBase)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.invalidBase.errorDescription)
+            XCTAssertTrue(error == .invalidBase)
+            XCTAssertEqual(error.errorDescription, OpenExchangeAPIError.invalidBase.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenExchangeAPIError.invalidBase.userFriendlyDescription)
         }
     }
 
@@ -88,8 +90,9 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
         do {
             _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .invalidAppId)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.invalidAppId.errorDescription)
+            XCTAssertTrue(error == .invalidAppId)
+            XCTAssertEqual(error.errorDescription, OpenExchangeAPIError.invalidAppId.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenExchangeAPIError.invalidAppId.userFriendlyDescription)
         }
     }
 
@@ -117,8 +120,9 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
         do {
             _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .accessRestricted)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.accessRestricted.errorDescription)
+            XCTAssertTrue(error == .accessRestricted)
+            XCTAssertEqual(error.errorDescription, OpenExchangeAPIError.accessRestricted.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenExchangeAPIError.accessRestricted.userFriendlyDescription)
         }
     }
 
@@ -146,8 +150,9 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
         do {
             _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .notFound)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.notFound.errorDescription)
+            XCTAssertTrue(error == .notFound)
+            XCTAssertEqual(error.errorDescription, OpenExchangeAPIError.notFound.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenExchangeAPIError.notFound.userFriendlyDescription)
         }
     }
 
@@ -175,8 +180,9 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
         do {
             _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .notAllowed)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.notAllowed.errorDescription)
+            XCTAssertTrue(error == .notAllowed)
+            XCTAssertEqual(error.errorDescription, OpenExchangeAPIError.notAllowed.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenExchangeAPIError.notAllowed.userFriendlyDescription)
         }
     }
 
@@ -204,8 +210,9 @@ final class OpenExchangeAPIServiceTests: XCTestCase {
         do {
             _ = try await currencyAPIService.fetchCurrency()
         } catch let error as OpenExchangeAPIError {
-            XCTAssert(error == .invalidRequest)
-            XCTAssert(error.errorDescription == OpenExchangeAPIError.invalidRequest.errorDescription)
+            XCTAssertTrue(error == .invalidRequest)
+            XCTAssertEqual(error.errorDescription, OpenExchangeAPIError.invalidRequest.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, OpenExchangeAPIError.invalidRequest.userFriendlyDescription)
         }
     }
 

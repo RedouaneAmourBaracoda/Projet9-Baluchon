@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GoogleTranslationAPIError: LocalizedError, CaseIterable {
+enum GoogleTranslationAPIError: TranslationAPIError {
     case invalidURL
     case badRequest
     case unauthorized
@@ -18,7 +18,7 @@ enum GoogleTranslationAPIError: LocalizedError, CaseIterable {
     case tooManyRequests
     case invalidRequest
 
-    var errorDescription: String? {
+    var errorDescription: String {
         switch self {
         case .invalidURL:
             return NSLocalizedString("Invalid URL", comment: "")
@@ -44,6 +44,23 @@ enum GoogleTranslationAPIError: LocalizedError, CaseIterable {
             return NSLocalizedString("The client has exceeded the limit of requests.", comment: "")
         case .invalidRequest:
             return NSLocalizedString("Invalid request", comment: "")
+        }
+    }
+
+    var userFriendlyDescription: String {
+        switch self {
+        case .invalidURL, .unauthorized, .invalidRequest, .notAllowed:
+            return NSLocalizedString(
+                "There was an issue with translation services. Access is restricted or services are simply down.",
+                comment: ""
+            )
+        case .badRequest, .notFound:
+            return NSLocalizedString(
+                "The city provided does not exist in data base or has invalid format.",
+                comment: ""
+            )
+        case .paymentRequired, .forbidden, .tooManyRequests:
+            return NSLocalizedString("The limit of requests to translation services has been exceeded.", comment: "")
         }
     }
 

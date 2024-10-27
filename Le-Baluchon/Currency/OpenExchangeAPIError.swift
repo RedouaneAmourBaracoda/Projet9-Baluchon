@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OpenExchangeAPIError: LocalizedError, CaseIterable {
+enum OpenExchangeAPIError: CurrencyAPIError {
     case invalidURL
     case invalidBase
     case invalidAppId
@@ -16,7 +16,7 @@ enum OpenExchangeAPIError: LocalizedError, CaseIterable {
     case notAllowed
     case invalidRequest
 
-    var errorDescription: String? {
+    var errorDescription: String {
         switch self {
         case .invalidURL:
             return NSLocalizedString("Invalid URL", comment: "")
@@ -31,11 +31,22 @@ enum OpenExchangeAPIError: LocalizedError, CaseIterable {
             )
         case .notFound:
             return NSLocalizedString("Client requested a non-existent resource/route", comment: "")
-
         case .notAllowed:
             return NSLocalizedString("Client doesn’t have permission to access requested route/feature", comment: "")
         case .invalidRequest:
             return NSLocalizedString("Invalid request", comment: "")
+        }
+    }
+
+    var userFriendlyDescription: String {
+        switch self {
+        case .invalidURL, .invalidBase, .invalidAppId, .notFound, .notAllowed, .invalidRequest:
+            return NSLocalizedString(
+                "An issue occured with currency services. The base currency is unsupported or access is restricted.",
+                comment: ""
+            )
+        case .accessRestricted:
+            return NSLocalizedString("The limit of requests to currency services has been exceeded.", comment: "")
         }
     }
 

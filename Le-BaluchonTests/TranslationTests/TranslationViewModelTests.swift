@@ -122,7 +122,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         XCTAssertTrue(translationViewModel.shouldPresentAlert)
 
-        XCTAssertEqual(translationViewModel.errorMessage, error?.errorDescription)
+        XCTAssertEqual(translationViewModel.errorMessage, error?.userFriendlyDescription)
 
         XCTAssertTrue(translationViewModel.outputText.isEmpty)
     }

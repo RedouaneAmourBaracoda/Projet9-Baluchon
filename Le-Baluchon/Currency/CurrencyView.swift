@@ -34,7 +34,6 @@ struct CurrencyView: View {
             TextField("", text: $currencyViewModel.inputString, axis: .horizontal)
                 .keyboardType(.decimalPad)
                 .valueStyle(fontWeight: .light)
-                .fixedSize()
                 .onSubmit {
                     Task {
                         await currencyViewModel.convert()

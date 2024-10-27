@@ -1,0 +1,115 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
+    "Access restricted for repeated over-use (status: 429), or other reason given in ‘description’ (403)" : {
+
+    },
+    "An issue occured with currency services. The base currency is unsupported or access is restricted." : {
+
+    },
+    "API token not providen in the request or if provided does not grant access to this API." : {
+
+    },
+    "City" : {
+
+    },
+    "Clear" : {
+
+    },
+    "Client doesn’t have permission to access requested route/feature" : {
+
+    },
+    "Client provided an invalid App ID" : {
+
+    },
+    "Client requested a non-existent resource/route" : {
+
+    },
+    "Client requested rates for an unsupported base currency" : {
+
+    },
+    "Currency" : {
+
+    },
+    "Data with requested parameters (lat, lon, date etc) does not exist in service database" : {
+
+    },
+    "Error" : {
+
+    },
+    "Invalid request" : {
+
+    },
+    "Invalid URL" : {
+
+    },
+    "Missing parameters in the request or some have incorrect format or values out of allowed range." : {
+
+    },
+    "Quota of requests was exceeded. Retry request later or after extending your key quota." : {
+
+    },
+    "The city provided does not exist in data base or has invalid format." : {
+
+    },
+    "The client doesn’t have permission to access requested route/feature" : {
+
+    },
+    "The client has exceeded the limit of daily requests." : {
+
+    },
+    "The client has exceeded the limit of requests." : {
+
+    },
+    "The client provided invalid credentials or the session has expired." : {
+
+    },
+    "The client provided invalid parameters for the request." : {
+
+    },
+    "The client requested a non-existent resource/route" : {
+
+    },
+    "The limit of requests to currency services has been exceeded." : {
+
+    },
+    "The limit of requests to translation services has been exceeded." : {
+
+    },
+    "The limit of requests to weather services has been exceeded." : {
+
+    },
+    "The requested operation is not allowed due to restricted access or exceeded limit of requests." : {
+
+    },
+    "There was an issue with translation services. Access is restricted or services are simply down." : {
+
+    },
+    "There was an issue with weather services. Access might be restricted or services are simply down." : {
+
+    },
+    "Translation" : {
+
+    },
+    "Unexpected Error due to internal issues." : {
+
+    },
+    "Weather" : {
+
+    }
+  },
+  "version" : "1.0"
+}
