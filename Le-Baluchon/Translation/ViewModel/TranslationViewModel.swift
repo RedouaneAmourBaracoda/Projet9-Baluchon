@@ -57,10 +57,10 @@ final class TranslationViewModel: ObservableObject {
             )
         } catch {
             if let translationAPIError = error as? (any TranslationAPIError) {
-                NSLog(translationAPIError.errorDescription ?? .translationUndeterminedErrorDescription)
+                NSLog(translationAPIError.errorDescription ?? Localizable.Translation.undeterminedErrorDescription)
                 errorMessage = translationAPIError.userFriendlyDescription
             } else {
-                errorMessage = .translationUndeterminedErrorDescription
+                errorMessage = Localizable.Translation.undeterminedErrorDescription
             }
             clear()
             shouldPresentAlert = true

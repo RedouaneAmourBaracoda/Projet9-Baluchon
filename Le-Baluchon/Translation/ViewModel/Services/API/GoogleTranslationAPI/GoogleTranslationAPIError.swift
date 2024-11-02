@@ -59,20 +59,11 @@ enum GoogleTranslationAPIError: TranslationAPIError {
     var userFriendlyDescription: String {
         switch self {
         case .invalidURL, .unauthorized, .invalidRequest, .notAllowed:
-            return NSLocalizedString(
-                "translation.google-translation-api.errors.invalid-request.user-friendly-description",
-                comment: ""
-            )
+            return Localizable.invalidRequestUserDescription
         case .badRequest, .notFound:
-            return NSLocalizedString(
-                "translation.google-translation-api.errors.bad-request.user-friendly-description",
-                comment: ""
-            )
+            return Localizable.badRequestUserDescription
         case .paymentRequired, .forbidden, .tooManyRequests:
-            return NSLocalizedString(
-                "translation.google-translation-api.errors.forbidden.user-friendly-description",
-                comment: ""
-            )
+            return Localizable.tooManyRequestsUserDescription
         }
     }
 
@@ -103,9 +94,63 @@ enum GoogleTranslationAPIError: TranslationAPIError {
     }
 }
 
-extension String {
-    static let translationUndeterminedErrorDescription = NSLocalizedString(
-        "translation.errors.undetermined.description",
+private extension Localizable {
+    static let invalidURLDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.invalid-url.description",
+        comment: ""
+    )
+    static let badRequestDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.bad-request.description",
+        comment: ""
+    )
+
+    static let unauthorizedDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.unauthorized.description",
+        comment: ""
+    )
+
+    static let paymentRequiredDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.payment-required.description",
+        comment: ""
+    )
+
+    static let forbiddenDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.forbidden.description",
+        comment: ""
+    )
+
+    static let notFoundDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.not-found.description",
+        comment: ""
+    )
+
+    static let notAllowedDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.not-allowed.description",
+        comment: ""
+    )
+
+    static let tooManyRequestsDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.too-many-requests.description",
+        comment: ""
+    )
+
+    static let invalidRequestDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.invalid-request.description",
+        comment: ""
+    )
+
+    static let invalidRequestUserDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.invalid-request.user-friendly-description",
+        comment: ""
+    )
+
+    static let badRequestUserDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.bad-request.user-friendly-description",
+        comment: ""
+    )
+
+    static let tooManyRequestsUserDescription = NSLocalizedString(
+        "translation.google-translation-api.errors.forbidden.user-friendly-description",
         comment: ""
     )
 }

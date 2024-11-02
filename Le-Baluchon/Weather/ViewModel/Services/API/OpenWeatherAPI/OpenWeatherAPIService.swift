@@ -17,7 +17,7 @@ struct OpenWeatherAPIService: WeatherAPIService {
 
         static let key = "29aafb965a5a05167b697998854d37e9"
 
-        static let languageCode = "fr"
+        static let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
 
         static let units = "metric"
 

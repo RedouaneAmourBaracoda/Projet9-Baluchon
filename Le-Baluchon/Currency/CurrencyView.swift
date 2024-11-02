@@ -23,22 +23,26 @@ struct CurrencyView: View {
             }
             .refresh(currencyViewModel: currencyViewModel)
             .alert(isPresented: $currencyViewModel.shouldPresentAlert) {
-                Alert(title: Text(verbatim: .errorAlertTitle), message: Text(currencyViewModel.errorMessage))
+                Alert(title: Text(Localizable.errorAlertTitle), message: Text(currencyViewModel.errorMessage))
             }
-            .navigationTitle("currency.navigation-title")
+            .navigationTitle(Localizable.Currency.navigationTitle)
         }
     }
 
     private func baseCurrencyView() -> some View {
         CurrencyItemView(selectedCurrency: $currencyViewModel.baseCurrency) {
-            TextField("currency.textfield.placeholder", text: $currencyViewModel.inputString, axis: .horizontal)
-                .keyboardType(.decimalPad)
-                .valueStyle(fontWeight: .light)
-                .onSubmit {
-                    Task {
-                        await currencyViewModel.convert()
-                    }
+            TextField(
+                Localizable.Currency.textFieldPlaceHolder,
+                text: $currencyViewModel.inputString,
+                axis: .horizontal
+            )
+            .keyboardType(.decimalPad)
+            .valueStyle(fontWeight: .light)
+            .onSubmit {
+                Task {
+                    await currencyViewModel.convert()
                 }
+            }
         }
     }
 
@@ -55,9 +59,9 @@ struct CurrencyView: View {
 
     private func targetCurrencyView() -> some View {
         CurrencyItemView(selectedCurrency: $currencyViewModel.targetCurrency) {
-            Text(currencyViewModel.outputString ?? "No data available" )
-                    .valueStyle(fontWeight: .light)
-                    .lineLimit(1)
+            Text(currencyViewModel.outputString ?? Localizable.Currency.noData)
+                .valueStyle(fontWeight: .light)
+                .lineLimit(1)
         }
     }
 }

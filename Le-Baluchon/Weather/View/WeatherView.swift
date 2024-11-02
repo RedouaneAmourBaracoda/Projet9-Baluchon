@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+// TODO: a faire :
+/*
+
+ -- currrency view:
+ pb avec le notepad pour entrer la valeur a convertir: on n’a pas la touche “retour” lorsque le clavier sort. Pour resoudre ca ajouter un toolbarl avec un bouton retour
+
+ -- Resources :
+ enlever les deux S en anglais un seul s
+ Sortir le dossier resources de sources et ajouter un sous dossier preview content
+
+ -- Sortir le info.plist dans un dossier “configuration”
+
+ -- Unit tests: refactoriser les tests, des fonctions sont similaires.
+ */
+
 struct WeatherView: View {
 
     @ObservedObject private var weatherViewModel: WeatherViewModel
@@ -17,48 +32,25 @@ struct WeatherView: View {
 
     var body: some View {
         NavigationStack {
-            ViewThatFits(in: .vertical) {
-
-                verticalLayoutView()
-
-                horizontalLayoutView()
-            }
-            .ignoresSafeArea(.keyboard)
-            .alert(isPresented: $weatherViewModel.shouldPresentAlert) {
-                Alert(title: Text("weather.alert.error.title"), message: Text(weatherViewModel.errorMessage))
-            }
-            .navigationTitle("weather.navigation-title")
+            contentView()
+                .ignoresSafeArea(.keyboard)
+                .alert(isPresented: $weatherViewModel.shouldPresentAlert) {
+                    Alert(title: Text(Localizable.errorAlertTitle), message: Text(weatherViewModel.errorMessage))
+                }
+                .navigationTitle(Localizable.Weather.navigationTitle)
         }
     }
 
-    private func verticalLayoutView() -> some View {
-        ScrollView { // ScrollView is necessary to avoid keyboard push up.
-
+    private func contentView() -> some View {
+        VStack {
             CitySearchFieldView(weatherViewModel: weatherViewModel)
 
-            if let weather = weatherViewModel.weather {
+            ScrollView { // ScrollView is necessary to avoid keyboard push up.
 
-                LocationInfoView(weather: weather)
+                if let weather = weatherViewModel.weather {
 
-                WeatherImageView(weather: weather)
+                    LocationInfoView(weather: weather)
 
-                TemperatureInfoView(weather: weather)
-
-                AdditionalInfoView(weather: weather)
-            }
-        }
-    }
-
-    private func horizontalLayoutView() -> some View {
-        ScrollView { // ScrollView is necessary to avoid keyboard push up.
-
-            CitySearchFieldView(weatherViewModel: weatherViewModel)
-
-            if let weather = weatherViewModel.weather {
-
-                LocationInfoView(weather: weather)
-
-                HStack {
                     WeatherImageView(weather: weather)
 
                     TemperatureInfoView(weather: weather)
@@ -68,13 +60,6 @@ struct WeatherView: View {
             }
         }
     }
-}
-
-extension String {
-    static let errorAlertTitle = NSLocalizedString(
-        "weather.alert.error.title",
-        comment: ""
-    )
 }
 
 #Preview {

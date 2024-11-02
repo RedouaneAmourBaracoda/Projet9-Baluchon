@@ -36,6 +36,7 @@
 		B8D161E52CCAB5B700465B2E /* MockTranslationAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D161E42CCAB5B700465B2E /* MockTranslationAPIService.swift */; };
 		B8D161E72CCAB61600465B2E /* MockCurrencyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D161E62CCAB61600465B2E /* MockCurrencyAPIService.swift */; };
 		B8D161E92CCAB64300465B2E /* MockWeatherAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D161E82CCAB64300465B2E /* MockWeatherAPIService.swift */; };
+		B8D436542CD564CA00C7A683 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D436532CD564CA00C7A683 /* Localizable.swift */; };
 		B8D5C2392CC93ACA00D89923 /* LocationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D5C2382CC93ACA00D89923 /* LocationInfoView.swift */; };
 		B8D5C23B2CC93AE100D89923 /* TemperatureInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D5C23A2CC93AE100D89923 /* TemperatureInfoView.swift */; };
 		B8D5C23D2CC93AFD00D89923 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D5C23C2CC93AFD00D89923 /* AdditionalInfoView.swift */; };
@@ -107,6 +108,7 @@
 		B8D161E42CCAB5B700465B2E /* MockTranslationAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTranslationAPIService.swift; sourceTree = "<group>"; };
 		B8D161E62CCAB61600465B2E /* MockCurrencyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrencyAPIService.swift; sourceTree = "<group>"; };
 		B8D161E82CCAB64300465B2E /* MockWeatherAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWeatherAPIService.swift; sourceTree = "<group>"; };
+		B8D436532CD564CA00C7A683 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		B8D5C2382CC93ACA00D89923 /* LocationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoView.swift; sourceTree = "<group>"; };
 		B8D5C23A2CC93AE100D89923 /* TemperatureInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureInfoView.swift; sourceTree = "<group>"; };
 		B8D5C23C2CC93AFD00D89923 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			children = (
 				B82023442C779CDA002F0494 /* Assets.xcassets */,
 				B8A07BDC2CCC005800CD9235 /* Localizable.xcstrings */,
+				B8D436532CD564CA00C7A683 /* Localizable.swift */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				B8D5C23D2CC93AFD00D89923 /* AdditionalInfoView.swift in Sources */,
 				B820236D2C779E58002F0494 /* OpenExchangeAPIService.swift in Sources */,
 				B8FA61012CA1A6E10034046D /* GoogleTranslationAPIService.swift in Sources */,
+				B8D436542CD564CA00C7A683 /* Localizable.swift in Sources */,
 				B8000E102C782D5A0006106D /* CurrencyItemView.swift in Sources */,
 				B8A07BC92CCB058500CD9235 /* OutputTextView.swift in Sources */,
 				B8A07BD62CCB257900CD9235 /* LanguageMenuView.swift in Sources */,

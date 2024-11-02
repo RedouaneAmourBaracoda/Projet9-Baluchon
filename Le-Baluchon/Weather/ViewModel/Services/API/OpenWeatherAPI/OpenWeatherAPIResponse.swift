@@ -49,7 +49,7 @@ struct OpenWeatherAPIResponse: Codable {
             temperatureMax: Int(main.temp_max),
             humidity: main.humidity,
             pressure: main.pressure,
-            description: weather.first?.description ?? "No description available",
+            description: weather.first?.description ?? Localizable.Weather.noWeatherDescription,
             weatherKind: weatherKind
         )
     }
@@ -79,3 +79,10 @@ private struct WeatherData: Codable {
     let grnd_level: Int
 }
 // swiftlint:enable identifier_name
+
+private extension Localizable.Weather {
+    static let noWeatherDescription = NSLocalizedString(
+        "weather.errors.no-description",
+        comment: ""
+    )
+}

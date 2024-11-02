@@ -104,10 +104,10 @@ final class CurrencyViewModel: ObservableObject {
             dataStoreService.save(Date.now.timeIntervalSince1970, rates: rates)
         } catch {
             if let currencyAPIError = error as? (any CurrencyAPIError) {
-                NSLog(currencyAPIError.errorDescription ?? .currencyUndeterminedErrorDescription)
+                NSLog(currencyAPIError.errorDescription ?? Localizable.Currency.undeterminedErrorDescription)
                 errorMessage = currencyAPIError.userFriendlyDescription
             } else {
-                errorMessage = .currencyUndeterminedErrorDescription
+                errorMessage = Localizable.Currency.undeterminedErrorDescription
             }
             shouldPresentAlert = true
         }

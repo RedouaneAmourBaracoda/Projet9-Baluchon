@@ -19,51 +19,30 @@ enum OpenWeatherAPIError: WeatherAPIError {
     var errorDescription: String {
         switch self {
         case .invalidURL:
-            return NSLocalizedString("weather-open-weather-api.errors.invalid-url.description.", comment: "")
+            return Localizable.invalidURLDescription
         case .badRequest:
-            return NSLocalizedString(
-                "weather-open-weather-api.errors.bad-request.description.",
-                comment: ""
-            )
+            return Localizable.badRequestDescription
         case .unauthorized:
-            return NSLocalizedString(
-                "weather-open-weather-api.errors.unauthorized.description",
-                comment: ""
-            )
+            return Localizable.unauthorizedDescription
         case .notFound:
-            return NSLocalizedString(
-                "weather.open-weather-api.errors.not-found.description",
-                comment: ""
-            )
+            return Localizable.notFoundDescription
         case .tooManyRequests:
-            return NSLocalizedString(
-                "weather.open-weather-api.errors.too-many-requests.description",
-                comment: ""
-            )
+            return Localizable.tooManyRequestsDescription
         case .internalError:
-            return NSLocalizedString("weather.open-weather-api.errors.internal-error.description", comment: "")
+            return Localizable.internalErrorDescription
         case .invalidRequest:
-            return NSLocalizedString("weather.open-weather-api.errors.invalid-request.description", comment: "")
+            return Localizable.invalidRequestDescription
         }
     }
 
     var userFriendlyDescription: String {
         switch self {
         case .invalidURL, .unauthorized, .internalError, .invalidRequest:
-            return NSLocalizedString(
-                "weather.open-weather-api.errors.invalid-request.user-friendly-description",
-                comment: ""
-            )
+            return Localizable.invalidRequestUserDescription
         case .badRequest, .notFound:
-            return NSLocalizedString(
-                "weather.open-weather-api.errors.bad-request.user-friendly-description",
-                comment: ""
-            )
+            return Localizable.badRequestUserDescription
         case .tooManyRequests:
-            return NSLocalizedString(
-                "weather.open-weather-api.errors.too-many-requests.user-friendly-description",
-                comment: ""
-            )
+            return Localizable.tooManyRequestsUserDescription
         }
     }
 
@@ -90,9 +69,54 @@ enum OpenWeatherAPIError: WeatherAPIError {
     }
 }
 
-extension String {
-    static let weatherUndeterminedErrorDescription = NSLocalizedString(
-        "weather.errors.undetermined.description",
+private extension Localizable {
+    static let invalidURLDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.invalid-url.description",
+        comment: ""
+    )
+
+    static let badRequestDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.bad-request.description",
+        comment: ""
+    )
+
+    static let unauthorizedDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.unauthorized.description",
+        comment: ""
+    )
+
+    static let notFoundDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.not-found.description",
+        comment: ""
+    )
+
+    static let tooManyRequestsDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.too-many-requests.description",
+        comment: ""
+    )
+
+    static let internalErrorDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.internal-error.description",
+        comment: ""
+    )
+
+    static let invalidRequestDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.invalid-request.description",
+        comment: ""
+    )
+
+    static let invalidRequestUserDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.invalid-request.user-friendly-description",
+        comment: ""
+    )
+
+    static let badRequestUserDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.bad-request.user-friendly-description",
+        comment: ""
+    )
+
+    static let tooManyRequestsUserDescription = NSLocalizedString(
+        "weather.open-weather-api.errors.too-many-requests.user-friendly-description",
         comment: ""
     )
 }

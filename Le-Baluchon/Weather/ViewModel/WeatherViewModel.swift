@@ -38,10 +38,10 @@ final class WeatherViewModel: ObservableObject {
             weather = try await weatherAPIService.fetchWeather(cityName: inputCityName)
         } catch {
             if let weatherAPIError = error as? (any WeatherAPIError) {
-                NSLog(weatherAPIError.errorDescription ?? .weatherUndeterminedErrorDescription)
+                NSLog(weatherAPIError.errorDescription ?? Localizable.Weather.undeterminedErrorDescription)
                 errorMessage = weatherAPIError.userFriendlyDescription
             } else {
-                errorMessage = .weatherUndeterminedErrorDescription
+                errorMessage = Localizable.Weather.undeterminedErrorDescription
             }
             shouldPresentAlert = true
         }

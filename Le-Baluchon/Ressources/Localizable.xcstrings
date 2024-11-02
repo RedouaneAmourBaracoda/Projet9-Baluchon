@@ -67,6 +67,29 @@
         }
       }
     },
+    "currency.no-data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No data available"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "datos indisponibles"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données indisponibles"
+          }
+        }
+      }
+    },
     "currency.open-exchange-api.errors.access-restricted.user-friendly-description" : {
       "localizations" : {
         "en" : {
@@ -617,68 +640,71 @@
         }
       }
     },
-    "weather-open-weather-api.errors.bad-request.description." : {
+    "weather.additional-info.humidity.name" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Missing parameters in the request or some have incorrect format or values out of allowed range."
+            "value" : "Humidity"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Parámetros que faltan en la solicitud o algunos tienen formato incorrecto o valores fuera del rango permitido."
+            "value" : "Humedad"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paramètres manquants dans la requête ou certains ont un format incorrect ou des valeurs hors de la plage autorisée."
+            "value" : "Humidité"
           }
         }
       }
     },
-    "weather-open-weather-api.errors.invalid-url.description." : {
+    "weather.additional-info.pressure.name" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Invalid URL"
+            "value" : "Pressure"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "URL no válida."
+            "value" : "Presión"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "URL invalide."
+            "value" : "Pression"
           }
         }
       }
     },
-    "weather-open-weather-api.errors.unauthorized.description" : {
+    "weather.additional-info.temperature-felt.name" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "API token not providen in the request or if provided does not grant access to this API."
+            "value" : "Feels"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El token de API no se proporciona en la solicitud o si se proporciona no concede acceso a esta API."
+            "value" : "Sentido"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le Token de l'API n’est pas fourni dans la requête ou alors ne permet pas d’accéder à cette API."
+            "value" : "Ressenti"
           }
         }
       }
@@ -701,6 +727,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erreur"
+          }
+        }
+      }
+    },
+    "weather.errors.no-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No description"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descripción indisponible"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description indisponible"
           }
         }
       }
@@ -745,6 +794,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Météo"
+          }
+        }
+      }
+    },
+    "weather.open-weather-api.errors.bad-request.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missing parameters in the request or some have incorrect format or values out of allowed range."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parámetros que faltan en la solicitud o algunos tienen formato incorrecto o valores fuera del rango permitido."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres manquants dans la requête ou certains ont un format incorrect ou des valeurs hors de la plage autorisée."
           }
         }
       }
@@ -837,6 +909,28 @@
         }
       }
     },
+    "weather.open-weather-api.errors.invalid-url.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL no válida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL Invalide"
+          }
+        }
+      }
+    },
     "weather.open-weather-api.errors.not-found.description" : {
       "localizations" : {
         "en" : {
@@ -899,6 +993,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La limite de requêtes vers les services météorologiques a été dépassée."
+          }
+        }
+      }
+    },
+    "weather.open-weather-api.errors.unauthorized.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API token not providen in the request or if provided does not grant access to this API."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El token de API no se proporciona en la solicitud o si se proporciona no concede acceso a esta API."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le Token de l'API n’est pas fourni dans la requête ou alors ne permet pas d’accéder à cette API."
           }
         }
       }

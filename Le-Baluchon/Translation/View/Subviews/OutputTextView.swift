@@ -47,7 +47,7 @@ struct OutputTextView: View {
             Button {
                 translationViewModel.clear()
             } label: {
-                Text("translation.button.clear")
+                Text(Localizable.Translation.clearButtonTitle)
             }
             .padding()
         }

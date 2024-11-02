@@ -67,8 +67,6 @@ struct CurrencyItemView<Value: View>: View {
                 .font(.title3)
                 .fontWeight(.bold)
                 .foregroundStyle(Color.black)
-
-                Image(systemName: "chevron.down")
             }
 
             Text(selectedCurrency.rawValue)

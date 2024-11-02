@@ -30,15 +30,15 @@ struct AdditionalInfoView: View {
     }
 
     private func temperatureFeltView() -> some View {
-        textView(name: "Feels", value: weather.temperatureFelt, symbol: "°C")
+        textView(name: Localizable.Weather.temperatureFeltTitle, value: weather.temperatureFelt, symbol: "°C")
     }
 
     private func humidityView() -> some View {
-        textView(name: "Humidity", value: weather.humidity, symbol: "%")
+        textView(name: Localizable.Weather.humidityTitle, value: weather.humidity, symbol: "%")
     }
 
     private func pressureView() -> some View {
-        textView(name: "Pressure", value: weather.pressure, symbol: "HPa")
+        textView(name: Localizable.Weather.pressureTitle, value: weather.pressure, symbol: "HPa")
     }
 
     private func textView(name: String, value: Int, symbol: String) -> some View {
