@@ -20,204 +20,38 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
     }
 
     func testNetworkCallFailsWhenInvalidURL() async throws {
-
-        // Given.
-
         weatherAPIService.urlString = ""
-
-        // Then.
-
-        do {
-            _ = try await weatherAPIService.fetchWeather(cityName: "")
-        } catch let error as OpenWeatherAPIError {
-            XCTAssertTrue(error == .invalidURL)
-            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.invalidURL.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.invalidURL.userFriendlyDescription)
-        }
+        try await testOpenWeatherAPIError(statusCode: Int(), testedError: .invalidURL)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs400() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 400,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await weatherAPIService.fetchWeather(cityName: "")
-        } catch let error as OpenWeatherAPIError {
-            XCTAssertTrue(error == .badRequest)
-            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.badRequest.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.badRequest.userFriendlyDescription)
-        }
+        try await testOpenWeatherAPIError(statusCode: 400, testedError: .badRequest)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs401() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 401,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await weatherAPIService.fetchWeather(cityName: "")
-        } catch let error as OpenWeatherAPIError {
-            XCTAssertTrue(error == .unauthorized)
-            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.unauthorized.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.unauthorized.userFriendlyDescription)
-        }
+        try await testOpenWeatherAPIError(statusCode: 401, testedError: .unauthorized)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs404() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 404,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await weatherAPIService.fetchWeather(cityName: "")
-        } catch let error as OpenWeatherAPIError {
-            XCTAssertTrue(error == .notFound)
-            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.notFound.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.notFound.userFriendlyDescription)
-        }
+        try await testOpenWeatherAPIError(statusCode: 404, testedError: .notFound)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs429() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 429,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await weatherAPIService.fetchWeather(cityName: "")
-        } catch let error as OpenWeatherAPIError {
-            XCTAssertTrue(error == .tooManyRequests)
-            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.tooManyRequests.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.tooManyRequests.userFriendlyDescription)
-        }
+        try await testOpenWeatherAPIError(statusCode: 429, testedError: .tooManyRequests)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs5XX() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: Int.random(in: 500...599),
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await weatherAPIService.fetchWeather(cityName: "")
-        } catch let error as OpenWeatherAPIError {
-            XCTAssertTrue(error == .internalError)
-            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.internalError.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.internalError.userFriendlyDescription)
-        }
+        try await testOpenWeatherAPIError(statusCode: Int.random(in: 500...599), testedError: .internalError)
     }
 
     func testNetworkCallFailsWhenStatusCodeIsUnknown() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode:
-                    Set(-1000...1000)
-                    .subtracting(Set([200, 400, 401, 403, 404, 429]))
-                    .subtracting(Set(500...599))
-                    .randomElement() ?? 0,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await weatherAPIService.fetchWeather(cityName: "")
-        } catch let error as OpenWeatherAPIError {
-            XCTAssertTrue(error == .invalidRequest)
-            XCTAssertEqual(error.errorDescription, OpenWeatherAPIError.invalidRequest.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, OpenWeatherAPIError.invalidRequest.userFriendlyDescription)
-        }
+        try await testOpenWeatherAPIError(
+            statusCode: Set(-1000...1000)
+                .subtracting(Set([200, 400, 401, 403, 404, 429]))
+                .subtracting(Set(500...599))
+                .randomElement() ?? 0,
+            testedError: .invalidRequest
+        )
     }
 
     // swiftlint:disable:next function_body_length
@@ -309,6 +143,32 @@ final class OpenWeatherAPIServiceTests: XCTestCase {
             XCTAssertEqual(actualResult, expectedResult)
         } catch {
             XCTAssertNil(error)
+        }
+    }
+
+    private func testOpenWeatherAPIError(statusCode: Int, testedError: OpenWeatherAPIError) async throws {
+
+        MockURLProtocol.requestHandler = { request in
+            XCTAssertNotNil(request.url)
+            let mockResponse = HTTPURLResponse(
+                url: request.url!,
+                statusCode: statusCode,
+                httpVersion: nil,
+                headerFields: nil
+            )!
+
+            let mockData = Data()
+            return (mockResponse, mockData)
+        }
+
+        // Then.
+
+        do {
+            _ = try await weatherAPIService.fetchWeather(cityName: "")
+        } catch let error as OpenWeatherAPIError {
+            XCTAssertTrue(error == testedError)
+            XCTAssertEqual(error.errorDescription, testedError.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, testedError.userFriendlyDescription)
         }
     }
 }

@@ -309,9 +309,9 @@
 		B8D5C2412CC98D6100D89923 /* WeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				B8D161E82CCAB64300465B2E /* MockWeatherAPIService.swift */,
 				B8D5C23F2CC98D5D00D89923 /* OpenWeatherAPIServiceTests.swift */,
 				B8D5C2422CC9AD4300D89923 /* WeatherViewModelTests.swift */,
-				B8D161E82CCAB64300465B2E /* MockWeatherAPIService.swift */,
 			);
 			path = WeatherTests;
 			sourceTree = "<group>";
@@ -319,9 +319,9 @@
 		B8EE5EBA2CC1530100C59C08 /* CurrencyTests */ = {
 			isa = PBXGroup;
 			children = (
+				B8D161E62CCAB61600465B2E /* MockCurrencyAPIService.swift */,
 				B82023512C779CDA002F0494 /* OpenExchangeAPIServiceTests.swift */,
 				B8F44D0F2C9AF2D500485418 /* CurrencyViewModelTests.swift */,
-				B8D161E62CCAB61600465B2E /* MockCurrencyAPIService.swift */,
 			);
 			path = CurrencyTests;
 			sourceTree = "<group>";
@@ -329,9 +329,9 @@
 		B8EE5EBD2CC190D900C59C08 /* TranslationTests */ = {
 			isa = PBXGroup;
 			children = (
+				B8D161E42CCAB5B700465B2E /* MockTranslationAPIService.swift */,
 				B8EE5EBB2CC1533800C59C08 /* GoogleTranslationAPIServiceTests.swift */,
 				B8EE5EBF2CC1927800C59C08 /* TranslationViewModelTests.swift */,
-				B8D161E42CCAB5B700465B2E /* MockTranslationAPIService.swift */,
 			);
 			path = TranslationTests;
 			sourceTree = "<group>";

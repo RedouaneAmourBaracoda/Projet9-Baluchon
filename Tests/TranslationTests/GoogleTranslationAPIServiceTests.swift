@@ -20,270 +20,45 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
     }
 
     func testNetworkCallFailsWhenInvalidURL() async throws {
-
-        // Given.
-
         translationAPIService.urlString = ""
-
-        // Then.
-
-        do {
-            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
-        } catch let error as GoogleTranslationAPIError {
-            XCTAssertTrue(error == .invalidURL)
-            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.invalidURL.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.invalidURL.userFriendlyDescription)
-        }
+        try await testGoogleAPIError(statusCode: Int(), testedError: .invalidURL)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs400() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 400,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
-        } catch let error as GoogleTranslationAPIError {
-            XCTAssertTrue(error == .badRequest)
-            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.badRequest.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.badRequest.userFriendlyDescription)
-        }
+        try await testGoogleAPIError(statusCode: 400, testedError: .badRequest)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs401() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 401,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
-        } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .unauthorized)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.unauthorized.errorDescription)
-            XCTAssert(error.userFriendlyDescription == GoogleTranslationAPIError.unauthorized.userFriendlyDescription)
-        }
+        try await testGoogleAPIError(statusCode: 401, testedError: .unauthorized)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs402() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 402,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
-        } catch let error as GoogleTranslationAPIError {
-            XCTAssert(error == .paymentRequired)
-            XCTAssert(error.errorDescription == GoogleTranslationAPIError.paymentRequired.errorDescription)
-            XCTAssert(
-                error.userFriendlyDescription == GoogleTranslationAPIError.paymentRequired.userFriendlyDescription)
-        }
+        try await testGoogleAPIError(statusCode: 402, testedError: .paymentRequired)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs403() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 403,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
-        } catch let error as GoogleTranslationAPIError {
-            XCTAssertTrue(error == .forbidden)
-            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.forbidden.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.forbidden.userFriendlyDescription)
-        }
+        try await testGoogleAPIError(statusCode: 403, testedError: .forbidden)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs404() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 404,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
-        } catch let error as GoogleTranslationAPIError {
-            XCTAssertTrue(error == .notFound)
-            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.notFound.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.notFound.userFriendlyDescription)
-        }
+        try await testGoogleAPIError(statusCode: 404, testedError: .notFound)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs405() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 405,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
-        } catch let error as GoogleTranslationAPIError {
-            XCTAssertTrue(error == .notAllowed)
-            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.notAllowed.errorDescription)
-            XCTAssertEqual(error.userFriendlyDescription, GoogleTranslationAPIError.notAllowed.userFriendlyDescription)
-        }
+        try await testGoogleAPIError(statusCode: 405, testedError: .notAllowed)
     }
 
     func testNetworkCallFailsWhenStatusCodeIs429() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 429,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
-        } catch let error as GoogleTranslationAPIError {
-            XCTAssertTrue(error == .tooManyRequests)
-            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.tooManyRequests.errorDescription)
-            XCTAssertEqual(
-                error.userFriendlyDescription,
-                GoogleTranslationAPIError.tooManyRequests.userFriendlyDescription
-            )
-        }
+        try await testGoogleAPIError(statusCode: 429, testedError: .tooManyRequests)
     }
 
     func testNetworkCallFailsWhenStatusCodeIsUnknown() async throws {
-
-        // Given.
-
-        // When.
-
-        MockURLProtocol.requestHandler = { request in
-            XCTAssertNotNil(request.url)
-            let mockResponse = HTTPURLResponse(
-                url: request.url!,
-                statusCode:
-                    Set(-1000...1000)
-                    .subtracting(Set([200, 400, 401, 402, 403, 404, 405, 429]))
-                    .randomElement() ?? 0,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-
-            let mockData = Data()
-            return (mockResponse, mockData)
-        }
-
-        // Then.
-
-        do {
-            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
-        } catch let error as GoogleTranslationAPIError {
-            XCTAssertTrue(error == .invalidRequest)
-            XCTAssertEqual(error.errorDescription, GoogleTranslationAPIError.invalidRequest.errorDescription)
-            XCTAssertEqual(
-                error.userFriendlyDescription,
-                GoogleTranslationAPIError.invalidRequest.userFriendlyDescription
-            )
-        }
+        try await testGoogleAPIError(
+            statusCode: Set(-1000...1000)
+                .subtracting(Set([200, 400, 401, 402, 403, 404, 405, 429]))
+                .randomElement() ?? 0,
+            testedError: .invalidRequest
+        )
     }
 
     func testNetworkCallSuccess() async throws {
@@ -322,6 +97,32 @@ final class GoogleTranslationAPIServiceTests: XCTestCase {
             XCTAssertEqual(result, "Bonsoir")
         } catch {
             XCTAssertNil(error)
+        }
+    }
+
+    private func testGoogleAPIError(statusCode: Int, testedError: GoogleTranslationAPIError) async throws {
+
+        MockURLProtocol.requestHandler = { request in
+            XCTAssertNotNil(request.url)
+            let mockResponse = HTTPURLResponse(
+                url: request.url!,
+                statusCode: statusCode,
+                httpVersion: nil,
+                headerFields: nil
+            )!
+
+            let mockData = Data()
+            return (mockResponse, mockData)
+        }
+
+        // Then.
+
+        do {
+            _ = try await translationAPIService.fetchTranslation(text: "", source: "", target: "", format: "")
+        } catch let error as GoogleTranslationAPIError {
+            XCTAssertTrue(error == testedError)
+            XCTAssertEqual(error.errorDescription, testedError.errorDescription)
+            XCTAssertEqual(error.userFriendlyDescription, testedError.userFriendlyDescription)
         }
     }
 }
