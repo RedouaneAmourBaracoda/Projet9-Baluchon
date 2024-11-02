@@ -10,12 +10,7 @@ import SwiftUI
 // TODO: a faire :
 /*
 
- -- currrency view:
- pb avec le notepad pour entrer la valeur a convertir: on n’a pas la touche “retour” lorsque le clavier sort. Pour resoudre ca ajouter un toolbarl avec un bouton retour
-
- -- Resources :
- enlever les deux S en anglais un seul s
- Sortir le dossier resources de sources et ajouter un sous dossier preview content
+ -- Sortir le dossier resources de sources et ajouter un sous dossier preview content
 
  -- Sortir le info.plist dans un dossier “configuration”
 

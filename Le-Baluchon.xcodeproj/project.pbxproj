@@ -219,7 +219,7 @@
 				B8EE5EC32CC2652000C59C08 /* Weather */,
 				B8BCA1452C89368D00DEAB92 /* Currency */,
 				B808338D2CA0D01D00B43E6D /* Translation */,
-				B8BCA1472C8936B400DEAB92 /* Ressources */,
+				B8BCA1472C8936B400DEAB92 /* Resources */,
 				B82023462C779CDA002F0494 /* Preview Content */,
 			);
 			path = "Le-Baluchon";
@@ -276,14 +276,14 @@
 			path = Currency;
 			sourceTree = "<group>";
 		};
-		B8BCA1472C8936B400DEAB92 /* Ressources */ = {
+		B8BCA1472C8936B400DEAB92 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				B82023442C779CDA002F0494 /* Assets.xcassets */,
 				B8A07BDC2CCC005800CD9235 /* Localizable.xcstrings */,
 				B8D436532CD564CA00C7A683 /* Localizable.swift */,
 			);
-			path = Ressources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B8D5C23E2CC93B0400D89923 /* Subviews */ = {

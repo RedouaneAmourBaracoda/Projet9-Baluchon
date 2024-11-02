@@ -10,22 +10,28 @@ import SwiftUI
 struct CurrencyView: View {
     @ObservedObject private var currencyViewModel = CurrencyViewModel()
 
+    @FocusState private var showKeyboard: Bool
+
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack {
-                    baseCurrencyView()
-
-                    swapActionView()
-
-                    targetCurrencyView()
+            contentView()
+                .refresh(currencyViewModel: currencyViewModel)
+                .alert(isPresented: $currencyViewModel.shouldPresentAlert) {
+                    Alert(title: Text(Localizable.errorAlertTitle), message: Text(currencyViewModel.errorMessage))
                 }
+                .navigationTitle(Localizable.Currency.navigationTitle)
+        }
+    }
+
+    private func contentView() -> some View {
+        ScrollView {
+            VStack {
+                baseCurrencyView()
+
+                swapActionView()
+
+                targetCurrencyView()
             }
-            .refresh(currencyViewModel: currencyViewModel)
-            .alert(isPresented: $currencyViewModel.shouldPresentAlert) {
-                Alert(title: Text(Localizable.errorAlertTitle), message: Text(currencyViewModel.errorMessage))
-            }
-            .navigationTitle(Localizable.Currency.navigationTitle)
         }
     }
 
@@ -37,10 +43,18 @@ struct CurrencyView: View {
                 axis: .horizontal
             )
             .keyboardType(.decimalPad)
+            .focused($showKeyboard)
             .valueStyle(fontWeight: .light)
-            .onSubmit {
-                Task {
-                    await currencyViewModel.convert()
+            .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    Button(action: {
+                        showKeyboard = false
+                        Task {
+                            await currencyViewModel.convert()
+                        }
+                    }, label: {
+                        Text(Localizable.Currency.toolbarDoneButtonTitle)
+                    })
                 }
             }
         }

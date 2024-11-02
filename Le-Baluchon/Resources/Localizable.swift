@@ -33,7 +33,11 @@ enum Localizable {
             "currency.errors.undetermined.description",
             comment: ""
         )
-    }
+
+        static let toolbarDoneButtonTitle = NSLocalizedString(
+            "currency.toolbar.done-button.title",
+            comment: ""
+        )    }
 
     enum Weather {
         static let navigationTitle = NSLocalizedString(
