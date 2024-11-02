@@ -184,7 +184,7 @@ final class CurrencyViewModelTests: XCTestCase {
 
         XCTAssertTrue(currencyViewModel.shouldPresentAlert)
 
-        XCTAssertEqual(currencyViewModel.errorMessage, .currencyUndeterminedErrorDescription)
+        XCTAssertEqual(currencyViewModel.errorMessage, Localizable.Currency.undeterminedErrorDescription)
     }
 
     // Testing data was saved when an API service returns a value.

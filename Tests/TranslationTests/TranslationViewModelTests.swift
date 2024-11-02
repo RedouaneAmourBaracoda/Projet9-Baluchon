@@ -153,7 +153,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         XCTAssertTrue(translationViewModel.shouldPresentAlert)
 
-        XCTAssertEqual(translationViewModel.errorMessage, .translationUndeterminedErrorDescription)
+        XCTAssertEqual(translationViewModel.errorMessage, Localizable.Translation.undeterminedErrorDescription)
     }
 
     func testTranslateIsSuccessWhenNoErrors() async {

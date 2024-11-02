@@ -45,6 +45,11 @@ enum Localizable {
             comment: ""
         )
 
+        static let textFieldPlaceHolder = NSLocalizedString(
+            "weather.textfield.placeholder",
+            comment: ""
+        )
+
         static let humidityTitle = NSLocalizedString(
             "weather.additional-info.humidity.name",
             comment: ""

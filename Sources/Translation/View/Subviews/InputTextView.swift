@@ -10,6 +10,8 @@ import SwiftUI
 struct InputTextView: View {
     @ObservedObject private var translationViewModel: TranslationViewModel
 
+    @FocusState private var showKeyboard: Bool
+
     init(translationViewModel: TranslationViewModel) {
         self.translationViewModel = translationViewModel
     }
@@ -27,10 +29,19 @@ struct InputTextView: View {
             )
             .lineLimit(1, reservesSpace: true)
             .fontWeight(.ultraLight)
+            .keyboardType(.emailAddress)
+            .focused($showKeyboard)
             .autocorrectionDisabled()
-            .onSubmit {
-                Task {
-                    await translationViewModel.translate()
+            .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    Button(action: {
+                        showKeyboard = false
+                        Task {
+                            await translationViewModel.translate()
+                        }
+                    }, label: {
+                        Text(Localizable.Currency.toolbarDoneButtonTitle)
+                    })
                 }
             }
         }

@@ -80,7 +80,7 @@ final class WeatherViewModelTests: XCTestCase {
 
         XCTAssertTrue(weatherViewModel.shouldPresentAlert)
 
-        XCTAssertEqual(weatherViewModel.errorMessage, .weatherUndeterminedErrorDescription)
+        XCTAssertEqual(weatherViewModel.errorMessage, Localizable.Weather.undeterminedErrorDescription)
 
         XCTAssertNil(weatherViewModel.weather)
     }

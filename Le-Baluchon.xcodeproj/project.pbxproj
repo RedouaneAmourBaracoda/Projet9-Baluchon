@@ -115,7 +115,7 @@
 		B8D5C23F2CC98D5D00D89923 /* OpenWeatherAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAPIServiceTests.swift; sourceTree = "<group>"; };
 		B8D5C2422CC9AD4300D89923 /* WeatherViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelTests.swift; sourceTree = "<group>"; };
 		B8D5C2442CC9B92600D89923 /* Weather+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weather+Random.swift"; sourceTree = "<group>"; };
-		B8D5C2492CCA336600D89923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B8D5C2492CCA336600D89923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8EE5EBB2CC1533800C59C08 /* GoogleTranslationAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslationAPIServiceTests.swift; sourceTree = "<group>"; };
 		B8EE5EBF2CC1927800C59C08 /* TranslationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewModelTests.swift; sourceTree = "<group>"; };
 		B8EE5EC12CC1C8CD00C59C08 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -196,8 +196,10 @@
 		B82023342C779CD8002F0494 = {
 			isa = PBXGroup;
 			children = (
-				B820233F2C779CD8002F0494 /* Le-Baluchon */,
-				B82023502C779CDA002F0494 /* Le-BaluchonTests */,
+				B8D436562CD5D13100C7A683 /* Configuration */,
+				B8D436552CD5CB6A00C7A683 /* Sources */,
+				B8BCA1472C8936B400DEAB92 /* Resources */,
+				B82023502C779CDA002F0494 /* Tests */,
 				B820233E2C779CD8002F0494 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -211,20 +213,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B820233F2C779CD8002F0494 /* Le-Baluchon */ = {
-			isa = PBXGroup;
-			children = (
-				B8D5C2492CCA336600D89923 /* Info.plist */,
-				B82023402C779CD8002F0494 /* LeBaluchonApp.swift */,
-				B8EE5EC32CC2652000C59C08 /* Weather */,
-				B8BCA1452C89368D00DEAB92 /* Currency */,
-				B808338D2CA0D01D00B43E6D /* Translation */,
-				B8BCA1472C8936B400DEAB92 /* Resources */,
-				B82023462C779CDA002F0494 /* Preview Content */,
-			);
-			path = "Le-Baluchon";
-			sourceTree = "<group>";
-		};
 		B82023462C779CDA002F0494 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +221,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B82023502C779CDA002F0494 /* Le-BaluchonTests */ = {
+		B82023502C779CDA002F0494 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				B820236E2C779E76002F0494 /* MockURLProtocol.swift */,
@@ -241,7 +229,7 @@
 				B8EE5EBA2CC1530100C59C08 /* CurrencyTests */,
 				B8D5C2412CC98D6100D89923 /* WeatherTests */,
 			);
-			path = "Le-BaluchonTests";
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		B8A07BCA2CCB071000CD9235 /* Subviews */ = {
@@ -282,8 +270,28 @@
 				B82023442C779CDA002F0494 /* Assets.xcassets */,
 				B8A07BDC2CCC005800CD9235 /* Localizable.xcstrings */,
 				B8D436532CD564CA00C7A683 /* Localizable.swift */,
+				B82023462C779CDA002F0494 /* Preview Content */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B8D436552CD5CB6A00C7A683 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B82023402C779CD8002F0494 /* LeBaluchonApp.swift */,
+				B808338D2CA0D01D00B43E6D /* Translation */,
+				B8BCA1452C89368D00DEAB92 /* Currency */,
+				B8EE5EC32CC2652000C59C08 /* Weather */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B8D436562CD5D13100C7A683 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				B8D5C2492CCA336600D89923 /* Info.plist */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		B8D5C23E2CC93B0400D89923 /* Subviews */ = {
@@ -830,12 +838,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Le-Baluchon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = CJ4U3HXF7J;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Le-Baluchon/Info.plist";
+				INFOPLIST_FILE = Configuration/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We would like to track your position to show weather conditions in your current location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -862,12 +870,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Le-Baluchon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = CJ4U3HXF7J;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Le-Baluchon/Info.plist";
+				INFOPLIST_FILE = Configuration/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We would like to track your position to show weather conditions in your current location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

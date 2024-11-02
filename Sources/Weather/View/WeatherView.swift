@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-// TODO: a faire :
-/*
-
- -- Sortir le dossier resources de sources et ajouter un sous dossier preview content
-
- -- Sortir le info.plist dans un dossier “configuration”
-
- -- Unit tests: refactoriser les tests, des fonctions sont similaires.
- */
-
 struct WeatherView: View {
 
     @ObservedObject private var weatherViewModel: WeatherViewModel
