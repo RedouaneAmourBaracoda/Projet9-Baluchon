@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// TODO: Review and test app.
-
 @main
 struct LeBaluchonApp: App {
     var body: some Scene {
