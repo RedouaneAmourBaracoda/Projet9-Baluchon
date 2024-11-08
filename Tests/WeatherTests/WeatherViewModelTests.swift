@@ -37,9 +37,28 @@ final class WeatherViewModelTests: XCTestCase {
         XCTAssertTrue(weatherViewModel.inputCityName.isEmpty)
     }
 
+    func testNoFetchWhenInputCityNameIsEmpty() async {
+
+        // Given.
+
+        weatherViewModel.inputCityName = ""
+
+        // When.
+
+        await weatherViewModel.getWeather()
+
+        // Then.
+
+        XCTAssertEqual(weatherAPIService.fetchWeatherCallsCounter, 0)
+
+        XCTAssertNil(weatherViewModel.weather)
+    }
+
     func testGetWeatherWhenOpenWeatherAPIReturnsError() async {
 
         // Given.
+
+        weatherViewModel.inputCityName = "Paris"
 
         let error = OpenWeatherAPIError.allCases.randomElement()
 
@@ -65,6 +84,8 @@ final class WeatherViewModelTests: XCTestCase {
 
         // Given.
 
+        weatherViewModel.inputCityName = "Paris"
+
         // swiftlint:disable:next discouraged_direct_init
         let error = NSError()
 
@@ -88,6 +109,8 @@ final class WeatherViewModelTests: XCTestCase {
     func testGetWeatherIsSuccessWhenNoErrors() async {
 
         // Given
+
+        weatherViewModel.inputCityName = "Paris"
 
         let weather: Weather = .random()
 

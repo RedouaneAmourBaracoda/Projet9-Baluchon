@@ -60,8 +60,7 @@ final class TranslationViewModelTests: XCTestCase {
         XCTAssertEqual(translationViewModel.targetLanguageItem, .french)
     }
 
-    // Testing no fetch when input string is empty.
-    func testTranslateWhenInputStringIsEmpty() async {
+    func testNoTranslationWhenInputStringIsEmpty() async {
 
         // When.
 

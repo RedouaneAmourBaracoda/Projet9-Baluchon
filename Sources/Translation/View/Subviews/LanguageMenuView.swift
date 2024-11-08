@@ -16,21 +16,19 @@ struct LanguageMenuView: View {
         self._selectedLanguage = selectedLanguage
         self.languages = languages
     }
+
     var body: some View {
-        HStack {
-            Menu(selectedLanguage.rawValue) {
-                ForEach(languages, id: \.self) { languageItem in
-                    Button(action: {
-                        selectedLanguage = languageItem
-                    }, label: {
-                        Text(languageItem.rawValue)
-                    })
-                }
+        Menu(selectedLanguage.rawValue) {
+            ForEach(languages, id: \.self) { languageItem in
+                Button(action: {
+                    selectedLanguage = languageItem
+                }, label: {
+                    Text(languageItem.rawValue)
+                })
             }
-            .font(.subheadline)
-            .foregroundStyle(Color.black)
-            .padding(.horizontal)
         }
+        .font(.subheadline)
+        .foregroundStyle(Color.black)
         .padding()
     }
 }

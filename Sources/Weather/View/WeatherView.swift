@@ -18,7 +18,6 @@ struct WeatherView: View {
     var body: some View {
         NavigationStack {
             contentView()
-                .ignoresSafeArea(.keyboard)
                 .alert(isPresented: $weatherViewModel.shouldPresentAlert) {
                     Alert(title: Text(Localizable.errorAlertTitle), message: Text(weatherViewModel.errorMessage))
                 }
@@ -30,7 +29,7 @@ struct WeatherView: View {
         VStack {
             CitySearchFieldView(weatherViewModel: weatherViewModel)
 
-            ScrollView { // ScrollView is necessary to avoid keyboard push up.
+            ScrollView {
 
                 if let weather = weatherViewModel.weather {
 
