@@ -662,6 +662,22 @@
         }
       }
     },
+    "translation.toolbar.translate-button.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translate"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduire"
+          }
+        }
+      }
+    },
     "weather.additional-info.humidity.name" : {
       "extractionState" : "manual",
       "localizations" : {

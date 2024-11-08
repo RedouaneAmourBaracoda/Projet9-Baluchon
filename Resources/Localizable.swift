@@ -87,5 +87,10 @@ enum Localizable {
             "translation.button.clear",
             comment: ""
         )
+
+        static let toolbarTranslateButtonTitle = NSLocalizedString(
+            "translation.toolbar.translate-button.title",
+            comment: ""
+        )
     }
 }

@@ -33,15 +33,17 @@ struct InputTextView: View {
             .focused($showKeyboard)
             .autocorrectionDisabled()
             .toolbar {
-                ToolbarItem(placement: .keyboard) {
-                    Button(action: {
-                        showKeyboard = false
-                        Task {
-                            await translationViewModel.translate()
-                        }
-                    }, label: {
-                        Text(Localizable.Currency.toolbarDoneButtonTitle)
-                    })
+                if showKeyboard {
+                    ToolbarItemGroup(placement: .topBarTrailing) {
+                        Button(action: {
+                            showKeyboard = false
+                            Task {
+                                await translationViewModel.translate()
+                            }
+                        }, label: {
+                            Text(Localizable.Translation.toolbarTranslateButtonTitle)
+                        })
+                    }
                 }
             }
         }
