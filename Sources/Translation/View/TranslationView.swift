@@ -14,9 +14,7 @@ struct TranslationView: View {
     var body: some View {
         NavigationStack {
             ViewThatFits(in: .vertical) {
-
                 verticalLayoutView()
-
                 horizontalLayoutView()
             }
             .ignoresSafeArea(.keyboard)

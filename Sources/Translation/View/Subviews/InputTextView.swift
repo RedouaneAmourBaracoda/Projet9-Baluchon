@@ -23,25 +23,27 @@ struct InputTextView: View {
                 .foregroundStyle(Color.black)
 
             TextField(
-                translationViewModel.baseLanguageItem.defaultWord,
+                translationViewModel.baseLanguageItem.greetings,
                 text: $translationViewModel.inputText,
                 axis: .vertical
             )
             .lineLimit(1, reservesSpace: true)
             .fontWeight(.ultraLight)
-            .keyboardType(.emailAddress)
+            .keyboardType(.alphabet)
             .focused($showKeyboard)
             .autocorrectionDisabled()
             .toolbar {
-                ToolbarItem(placement: .keyboard) {
-                    Button(action: {
-                        showKeyboard = false
-                        Task {
-                            await translationViewModel.translate()
-                        }
-                    }, label: {
-                        Text(Localizable.Currency.toolbarDoneButtonTitle)
-                    })
+                if showKeyboard {
+                    ToolbarItemGroup(placement: .topBarTrailing) {
+                        Button(action: {
+                            showKeyboard = false
+                            Task {
+                                await translationViewModel.translate()
+                            }
+                        }, label: {
+                            Text(Localizable.Translation.toolbarTranslateButtonTitle)
+                        })
+                    }
                 }
             }
         }

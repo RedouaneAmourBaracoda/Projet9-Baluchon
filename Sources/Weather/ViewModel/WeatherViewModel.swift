@@ -34,6 +34,9 @@ final class WeatherViewModel: ObservableObject {
     // MARK: - Methods.
 
     func getWeather() async {
+
+        guard !inputCityName.isEmpty else { return }
+
         do {
             weather = try await weatherAPIService.fetchWeather(cityName: inputCityName)
         } catch {

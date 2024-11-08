@@ -46,7 +46,7 @@ struct CurrencyView: View {
             .focused($showKeyboard)
             .valueStyle(fontWeight: .light)
             .toolbar {
-                ToolbarItem(placement: .keyboard) {
+                ToolbarItemGroup(placement: .keyboard) {
                     Button(action: {
                         showKeyboard = false
                         Task {

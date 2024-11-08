@@ -25,7 +25,7 @@ struct OutputTextView: View {
 
             ScrollView {
                 Text(translationViewModel.outputText.isEmpty ?
-                     translationViewModel.targetLanguageItem.defaultWord
+                     translationViewModel.targetLanguageItem.greetings
                      : translationViewModel.outputText
                 )
                 .background {
