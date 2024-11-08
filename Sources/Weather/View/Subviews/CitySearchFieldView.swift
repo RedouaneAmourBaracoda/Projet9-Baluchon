@@ -21,6 +21,7 @@ struct CitySearchFieldView: View {
             TextField(Localizable.Weather.textFieldPlaceHolder, text: $weatherViewModel.inputCityName)
                 .fontWeight(.bold)
                 .autocorrectionDisabled()
+                .submitLabel(.search)
                 .onSubmit {
                     Task {
                         await weatherViewModel.getWeather()

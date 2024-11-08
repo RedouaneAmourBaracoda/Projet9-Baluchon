@@ -26,9 +26,9 @@ final class TranslationViewModelTests: XCTestCase {
 
         // Given.
 
-        translationViewModel.inputText = LanguageItem.english.defaultWord
+        translationViewModel.inputText = LanguageItem.english.greetings
 
-        translationViewModel.outputText = LanguageItem.french.defaultWord
+        translationViewModel.outputText = LanguageItem.french.greetings
 
         // When.
 
@@ -85,7 +85,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         translationViewModel.targetLanguageItem = randomLanguageItem
 
-        translationViewModel.inputText = randomLanguageItem.defaultWord
+        translationViewModel.inputText = randomLanguageItem.greetings
 
         // When.
 
@@ -110,7 +110,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         translationViewModel.targetLanguageItem = .french
 
-        translationViewModel.inputText = translationViewModel.baseLanguageItem.defaultWord
+        translationViewModel.inputText = translationViewModel.baseLanguageItem.greetings
 
         // When.
 
@@ -141,7 +141,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         translationViewModel.targetLanguageItem = .french
 
-        translationViewModel.inputText = translationViewModel.baseLanguageItem.defaultWord
+        translationViewModel.inputText = translationViewModel.baseLanguageItem.greetings
 
         // When.
 
@@ -170,7 +170,7 @@ final class TranslationViewModelTests: XCTestCase {
 
         translationViewModel.targetLanguageItem = targetLanguageItem
 
-        translationViewModel.inputText = baseLanguageItem.defaultWord
+        translationViewModel.inputText = baseLanguageItem.greetings
 
         translationAPIService.textToReturn = randomTranslation
 

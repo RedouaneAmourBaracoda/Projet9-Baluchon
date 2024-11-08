@@ -26,7 +26,7 @@ enum LanguageItem: String, CaseIterable {
         }
     }
 
-    var defaultWord: String {
+    var greetings: String {
         switch self {
         case .autoDetection:
             "Hello !"

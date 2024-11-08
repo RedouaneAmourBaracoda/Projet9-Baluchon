@@ -23,7 +23,7 @@ struct InputTextView: View {
                 .foregroundStyle(Color.black)
 
             TextField(
-                translationViewModel.baseLanguageItem.defaultWord,
+                translationViewModel.baseLanguageItem.greetings,
                 text: $translationViewModel.inputText,
                 axis: .vertical
             )
