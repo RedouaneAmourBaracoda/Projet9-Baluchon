@@ -20,7 +20,7 @@ struct TargetLanguageSelectionView: View {
             selectedLanguage: $translationViewModel.targetLanguageItem,
             languages: LanguageItem.allCases.filter({ $0 != .autoDetection })
         )
-        .onChange(of: translationViewModel.targetLanguageItem) { translationViewModel.clear() }
+        .onChange(of: translationViewModel.targetLanguageItem) { _ in translationViewModel.clear() }
         .background { Color.gray.opacity(0.3) }
         .clipShape(RoundedRectangle(cornerRadius: 10.0))
         .padding()
