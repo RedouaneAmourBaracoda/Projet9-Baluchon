@@ -29,7 +29,7 @@ struct InputTextView: View {
             )
             .lineLimit(1, reservesSpace: true)
             .fontWeight(.ultraLight)
-            .keyboardType(.emailAddress)
+            .keyboardType(.alphabet)
             .focused($showKeyboard)
             .autocorrectionDisabled()
             .toolbar {
