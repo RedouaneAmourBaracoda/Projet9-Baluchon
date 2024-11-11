@@ -29,6 +29,11 @@ enum Localizable {
             comment: ""
         )
 
+        static let invalidNumberDescription = NSLocalizedString(
+            "currency.errors.invalid-number.description",
+            comment: ""
+        )
+
         static let undeterminedErrorDescription = NSLocalizedString(
             "currency.errors.undetermined.description",
             comment: ""

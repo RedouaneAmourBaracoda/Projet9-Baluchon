@@ -23,6 +23,28 @@
         }
       }
     },
+    "currency.errors.invalid-number.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid number."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numero invalido."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre invalide."
+          }
+        }
+      }
+    },
     "currency.errors.undetermined.description" : {
       "localizations" : {
         "en" : {
@@ -668,6 +690,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Translate"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traducir"
           }
         },
         "fr" : {

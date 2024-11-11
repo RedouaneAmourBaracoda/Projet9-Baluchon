@@ -69,7 +69,7 @@ final class CurrencyViewModel: ObservableObject {
         }
 
         guard let inputBaseNumber = formatter.number(from: inputString) else {
-            errorMessage = "Invalid number."
+            errorMessage = Localizable.Currency.invalidNumberDescription
             shouldPresentAlert = true
             return
         }
